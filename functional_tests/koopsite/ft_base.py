@@ -148,7 +148,13 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
             except:
                 print('except', end=' >> ')
                 sleep(3)
-        assert browser_created, 'webdriver.Firefox() browser is not created'
+        if not browser_created:
+            if PYTHON_ANYWHERE:
+                cls.display.stop() # ignore any output from this.
+                print('pyvirtualdisplay.display.stop()')
+
+        # assert browser_created, 'webdriver.Firefox() browser is not created'
+
         cls.browser.implicitly_wait(20)
         cls.browser.set_window_position(250, 0)
         for arg in sys.argv:
