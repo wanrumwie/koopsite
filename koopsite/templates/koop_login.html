@@ -1,0 +1,46 @@
+{% extends "base_koop_change.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+
+{% block page-name %}
+    Авторизація
+{% endblock %}
+
+{% block welcome_text %}
+{% endblock %}
+
+{% block message_text %}
+{% endblock %}
+
+{% block href_continue %}
+{% endblock %}
+
+{% block one_two_forms %}
+    <div align="center">
+        <form id="login_form" method="post"
+            class="tableform">
+            {% csrf_token %}
+            <table>
+                  {{ form }}
+            </table>
+
+            {% block input-submit %}
+                <input type="submit" value="Увійти" />
+            {% endblock %}
+
+            {% block input-cancel %}
+                {% url 'index' as cancel_url %}
+                <input type="button" value="Скасувати"
+                       onclick="location.href='{{ cancel_url }}'" />
+            {% endblock %}
+
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}
+

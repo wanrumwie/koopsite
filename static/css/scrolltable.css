@@ -1,0 +1,363 @@
+/* CSS Document */
+/*
+ * Ref: http://ksesocss.blogspot.com/2014/10/responsive-table-encabezado-fijo-scroll.html
+ */
+ 
+/*
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:300);
+html{
+  background: #0D757D;
+  font-size: 1rem;
+  color: #e6eff0;
+  font-family: Roboto Slab;
+}
+*/
+
+/*table.scrolltable * {height: auto; min-height: none;}*/ /* fixed ie9 & <*/
+
+table.scrolltable {
+    background:         #15BFCC;
+    box-shadow:         0 0 4px 2px rgba(0,0,0,.4);
+    border-collapse:    collapse;
+    border:             1px solid rgba(0,0,0,.5);
+    border-top:         0 none;
+    margin:             0.5rem 0.2rem;
+    table-layout:       fixed;
+    width:              calc(100% - 6px);
+}
+.scrolltable thead {
+    background:     #FF7361;
+    text-align:     center;
+    z-index:        2;
+}
+.scrolltable thead tr {
+    padding-right:  17px;      /* compensation of scroll bar width in tbody */
+    box-shadow:     0 4px 6px rgba(0,0,0,.6);
+    z-index:        2;
+}
+.scrolltable tbody {
+    display:        block;
+    height:         calc(65vh - 1px);
+    min-height:     calc(200px + 1px);
+    /*use calc for fixed ie9 & <*/
+    overflow-Y:     scroll;
+    color:          #000;
+}
+.scrolltable tr {
+    display:        block;
+    overflow:       hidden;
+}
+.scrolltable tbody tr:nth-child(odd) {
+    background:     rgba(0,0,0,.2);
+}
+.scrolltable th, 
+.scrolltable td {
+    float:          left;
+    text-align:     left; 
+    overflow-x:     hidden;
+    overflow-y:     hidden;
+}
+.scrolltable th {
+    height:         2em;
+    border-right:   1px solid rgba(0,0,0,.2);
+    padding:        0;
+/*    
+    font-size:      1.5rem;
+    font-weight:    normal;
+    font-variant:   small-caps;
+*/
+}
+.scrolltable td {
+    height:         2em;
+    padding:        0px 0.3em;
+    border-right:   1px solid rgba(0,0,0,.2);
+}
+.scrolltable td:nth-child(2n) {color: #fff;}
+.scrolltable th:last-child, 
+.scrolltable td:last-child {
+    border-right:   0 none;
+/*    padding-left:   0;*/
+}
+.scrolltable th span {
+    line-height:    2em;
+    padding:        0 0.3em;
+}
+.scrolltable td > * {
+    line-height:    2em;
+}
+.scrolltable td img {
+    height:         2em;
+    margin:         0;
+    padding:        0.3em 0;
+    }
+    
+.img-box {
+    display:        flex;
+    width:          32px;
+    height:         32px;
+/*    overflow:       hidden;*/
+}
+.img-box img {
+    margin:         auto !important;    
+    max-width:      30px;
+    max-height:     30px;
+}
+.instead-img {
+    width:          2em;
+}
+.width-2em {
+/*    display: inline-block;*/
+    display:        flex;
+    width:          2em;
+}
+.after-img-box {
+    display:        flex;
+    vertical-align: middle;
+    margin-left:    0.3em;
+}
+/*    
+.scrolltable th button {text-align: center; }
+*/
+/* Buttons in table header must fill all space:*/
+.scrolltable th button {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing:    border-box; /* Firefox, other Gecko */
+    box-sizing:         border-box; /* Opera/IE 8+ */
+    width:              100%; 
+    height:             100%; 
+    margin:             0;
+    padding:            0;
+}
+
+.tbody-height-55vh tbody {
+    height:         calc(55vh - 1px);
+}
+
+/* Case of 5 columns table: */
+/********************************************************************/
+.scrolltable th, 
+.scrolltable td     { width: 20%; } /* 20%*5 = 100% */
+/********************************************************************/
+
+/* Case of 7 columns table Users: */
+/********************************************************************/
+.users7 th, 
+.users7 td                  { width: 10%; } /* 10%*1 = 10% */
+.users7 th:first-child, 
+.users7 td:first-child      { width: 15%; } /* Login */
+.users7 th:nth-child(2), 
+.users7 td:nth-child(2)     { width: 25%; } /* Full-name */
+.users7 th:nth-child(3), 
+.users7 td:nth-child(3)     { width:  5%; } /* Flat-No */
+.users7 [data-column-header='e-mail']   
+                            { width: 20%; } /* e-mail */ 
+.users7 th:nth-child(5), 
+.users7 td:nth-child(5)     { width: 15%; } /* Date from */
+.users7 th:last-child, 
+.users7 td:last-child       { width: 10%; } /* adm */
+.users7 td:nth-child(3)     { text-align: right;  } /* Flat-No */
+.users7 td:nth-child(5)     { text-align: center; } /* Date from */
+.users7 td:nth-child(6)     { text-align: center; }
+.users7 td:nth-child(7)     { text-align: center; }
+/********************************************************************/
+
+/* Case of 8 columns table Users: */
+/********************************************************************/
+.users8 th, 
+.users8 td                  { width:  9%; } /* 9%*3 = 27% */
+.users8 th:nth-child(1), 
+.users8 td:nth-child(1)     { width: 20%; } /* Login */
+.users8 th:nth-child(2), 
+.users8 td:nth-child(2)     { width: 20%; } /* Full-name */
+.users8 th:nth-child(3), 
+.users8 td:nth-child(3)     { width:  5%; } /* Flat-No */
+.users8 th:nth-child(4), 
+.users8 td:nth-child(4)     { width: 15%; } /* e-mail */ 
+.users8 th:nth-child(5), 
+.users8 td:nth-child(5)     { width: 13%; } /* Date from */
+.users8 td:nth-child(3)     { text-align: right;  } /* Flat-No */
+.users8 td:nth-child(5)     { text-align: center; } /* Date from */
+.users8 td:nth-child(6)     { text-align: center; }
+.users8 td:nth-child(7)     { text-align: center; }
+.users8 td:nth-child(8)     { text-align: center; }
+/********************************************************************/
+
+/* Case of 4 columns table Folders content: */
+/********************************************************************/
+.folders4 th:nth-child(1), 
+.folders4 td:nth-child(1)     { width: 10%; } /* Type */
+.folders4 th:nth-child(2), 
+.folders4 td:nth-child(2)     { width: 60%; } /* Name */
+.folders4 th:nth-child(3), 
+.folders4 td:nth-child(3)     { width: 15%; } /* Date */
+.folders4 th:nth-child(4), 
+.folders4 td:nth-child(4)     { width: 15%; } /* Size */
+.folders4 th:nth-child(1)     { text-align: center; } 
+.folders4 td:nth-child(1)     { text-align: center; }
+.folders4 th:nth-child(2)     { text-align: left; }
+.folders4 td:nth-child(2)     { text-align: left; }
+.folders4 th:nth-child(3)     { text-align: center; }
+.folders4 td:nth-child(3)     { text-align: center; }
+.folders4 th:nth-child(4)     { text-align: center; }
+.folders4 td:nth-child(4)     { text-align: right; }
+.folders4-wide th:nth-child(1), 
+.folders4-wide td:nth-child(1)     { width: 5%; } /* Type */
+.folders4-wide th:nth-child(2), 
+.folders4-wide td:nth-child(2)     { width: 75%; } /* Name */
+.folders4-wide th:nth-child(3), 
+.folders4-wide td:nth-child(3)     { width: 10%; } /* Date */
+.folders4-wide th:nth-child(4), 
+.folders4-wide td:nth-child(4)     { width: 10%; } /* Size */
+/********************************************************************/
+
+/* Case of 4 columns table Flat-users: */
+/********************************************************************/
+.flat-users4 th:nth-child(1),
+.flat-users4 td:nth-child(1)     { width: 30%; } /* Username */
+.flat-users4 th:nth-child(2),
+.flat-users4 td:nth-child(2)     { width: 30%; } /* FullName */
+.flat-users4 th:nth-child(3),
+.flat-users4 td:nth-child(3)     { width: 20%; } /* DateJoin */
+.flat-users4 th:nth-child(4),
+.flat-users4 td:nth-child(4)     { width: 20%; } /* Status */
+.flat-users4 th:nth-child(1)     { text-align: center; }
+.flat-users4 td:nth-child(1)     { text-align: left; }
+.flat-users4 th:nth-child(2)     { text-align: center; }
+.flat-users4 td:nth-child(2)     { text-align: left; }
+.flat-users4 th:nth-child(3)     { text-align: center; }
+.flat-users4 td:nth-child(3)     { text-align: center; }
+.flat-users4 th:nth-child(4)     { text-align: center; }
+.flat-users4 td:nth-child(4)     { text-align: center; }
+/********************************************************************/
+
+
+@media only screen and (max-width:600px) {
+  table.transformtable {
+    border-top: 1px solid ;
+  }
+  .transformtable thead {display: none;}
+  .transformtable tbody {
+    height: auto;
+    max-height: 90vh;
+  }
+  .scrolltable tr {
+    font-size: 75%;
+  }
+  .transformtable tr {
+    border-bottom: 2px solid rgba(0,0,0,.35);
+  }
+  .transformtable tbody tr:nth-child(odd) {background: #15BFCC;}
+  .transformtable tbody tr:nth-child(even) {background:#FF7361;}
+  .transformtable td {
+    display:        block;
+    width:          100%;
+    min-width:      100%;
+    border-right:   0 none;
+    padding:        0 .5rem 0 40%;
+    text-align:     left    !important; 
+  }
+  .transformtable td:before {
+    content:        attr(data-column-header);
+    background:     rgba(0,0,0,.1);
+    position:       absolute;
+    left:           0;
+    top:            0;
+    bottom:         0;
+    max-width:      37%;
+    min-width:      37%;
+    padding-left:   .5rem;
+    line-height:    2em;
+    overflow:       hidden;
+  }
+  .transformtable td:nth-child(even) {
+    background:     rgba(0,0,0,.2);
+  }
+}
+
+.hidden     {visibility: hidden;}
+.nodisplay  {display:    none;  }
+.display    {display:    initial;  }
+.selected {
+    color:              black;    /***** #F0E68C; */  /* khaki */
+    background-color:   #D8CF7E; /* dark khaki */
+    }
+.normal {
+    color:              black;    /***** blue; */
+    background-color:   #F0E68C;  /* khaki */
+    }
+
+.scrolltable a          {color: black; border: none}
+.scrolltable a:link     {color: black}
+.scrolltable a:visited  {color: black}
+.scrolltable a:hover    {color: black}
+.scrolltable a:active   {color: black}
+
+.normal    a            {color: black; border: none}
+.normal    a:link       {color: black}
+.normal    a:visited    {color: black}
+.normal    a:hover      {color: black}
+.normal    a:active     {color: black}
+
+.selected  a            {color: black;  /* khaki */ border: none}
+.selected  a:link       {color: black;  /* khaki */}
+.selected  a:visited    {color: black;  /* khaki */}
+.selected  a:hover      {color: black;  /* khaki */}
+.selected  a:active     {color: black;  /* khaki */}
+
+
+/*****************************************************
+ * Mixin styles
+ *****************************************************/
+table.khaki-theme {
+    background:         #ffffaa                     !important;
+    box-shadow:         0 0 4px 2px rgba(0,0,0,.4)  !important;
+    border:             1px solid rgba(0,0,0,.5)    !important;
+    }
+.khaki-theme thead                  { background    : #f0e68c                   !important; }
+.khaki-theme thead tr               { box-shadow    : 0 4px 6px rgba(0,0,0,.6)  !important; }
+.khaki-theme tbody                  { color         : #000                      !important; }
+.khaki-theme tbody tr:nth-child(odd){ background    : rgba(0,0,0,.1);           !important; }
+.khaki-theme th                     { border-right  : 1px solid rgba(0,0,0,.2)  !important; }
+.khaki-theme td                     { border-right  : 1px solid rgba(0,0,0,.2)  !important; }
+.khaki-theme td:nth-child(2n)       { color         : #000                      !important; }
+
+.selected {
+    color:              black               !important;
+    background-color:   rgba(0,0,0,.2)      !important;
+    }
+
+@media only screen and (max-width:600px) {
+  table.transformtable.khaki-theme                     { border-top    : 1px solid                 !important; }
+  .transformtable.khaki-theme tr                       { border-bottom : 2px solid rgba(0,0,0,.35) !important; }
+  .transformtable.khaki-theme tbody tr:nth-child(odd)  { background    : rgba(0,0,0,.1);           !important; }
+  .transformtable.khaki-theme tbody tr:nth-child(even) { background    : rgba(0,0,0,.15);          !important; }
+  .transformtable.khaki-theme td:before                { background    : rgba(0,0,0,.1)            !important; }
+  .transformtable.khaki-theme td:nth-child(even)       { background    : rgba(0,0,0,.1)            !important; }
+  .transformtable tr.selected { 
+    box-shadow:         0 0 3px 3px rgba(0,0,0,.5) inset    !important;
+    background-color:   rgba(0,0,0,.25)                     !important;
+  }  
+}
+/*
+.date-input {
+    height: 1.25em;
+    line-height:    1.25em;
+  }
+*/
+.date-input label {
+    display:        inline-block;
+    min-width:      1em;
+  }
+.date-input input {
+    width:          7em;
+  }
+/*  
+.date-input img {
+    height:    1.25em;
+    padding-top:        2px !important;
+    padding-bottom:     2px !important;
+}
+*/
+.ui-datepicker {
+    font-size:      12px; 
+}

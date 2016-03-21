@@ -1,0 +1,53 @@
+{% block one-two-forms %}
+    <div align="center">
+        <form id="one_two_form" method="post" action=""
+                class="tableform cell-height-1em5 break_after_a striped"
+                enctype="multipart/form-data">
+            {% csrf_token %}
+            {% if render_variant == "as_ul" %}
+                <ul>
+                    {{ form_one.as_ul }}
+                    {{ form_two.as_ul }}
+                </ul>
+            {% elif render_variant == "as_p" %}
+                    {{ form_one.as_p }}
+                    {{ form_two.as_p }}
+            {% else %}
+                <table>
+                    {{ form_one }}
+                    {{ form_two }}
+                </table>
+            {% endif %}
+
+            {% block input-submit %}
+                <input type="submit" value="Готово" />
+            {% endblock %}
+
+            {% block input-cancel %}
+                {% if two.get_absolute_url %}
+                    {% if one == user %}
+                        {% url 'own-profile' as cancel_url %}
+                        <input type="button" value="Скасувати"
+                               onclick="location.href='{{ cancel_url }}'" />
+                    {% else %}
+                        <input type="button" value="Скасувати"
+                               onclick="location.href='{{ two.get_absolute_url }}'" />
+                    {% endif %}
+                {% else %}
+                    {% if perms.koopsite.activate_account %}
+                        {% url 'adm-users-table' as cancel_url %}
+                        <input type="button" value="Скасувати"
+                               onclick="location.href='{{ cancel_url }}'" />
+                    {% else %}
+                        {% url 'index' as cancel_url %}
+                        <input type="button" value="Скасувати"
+                               onclick="location.href='{{ cancel_url }}'" />
+                    {% endif %}
+
+                {% endif %}
+            {% endblock %}
+
+        </form>
+    </div>
+{% endblock %}
+

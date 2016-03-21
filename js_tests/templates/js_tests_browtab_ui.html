@@ -1,0 +1,26 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    KoopSite - browtab_ui.js
+{% endblock title %}
+
+{% block qunit-fixture %}
+
+    {% include "block_popup.html" %}
+
+{% endblock qunit-fixture %}
+
+
+{% block script_library %}
+    <script src="{% static 'js/browtab.js' %}"          ></script>
+{% endblock script_library %}
+
+{% block tested_script %}
+    <script src="{% static 'js/browtab_ui.js' %}"          ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'js/tests_browtab_ui.js' %}"></script>
+{% endblock test_script %}

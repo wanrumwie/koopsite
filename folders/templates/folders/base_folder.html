@@ -1,0 +1,120 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+{# Є одночасно базовим шаблоном для folders app #}
+
+{% block href-group-index %}
+{% endblock href-group-index %}
+
+
+{% block href-group-folders-index %}
+        {% block href-folder-list-all %}
+            <li><a href="{% url 'folders:folder-list-all' %}">Картотека (ст.)</a></li>
+        {% endblock %}
+        {% block href-folder-list %}
+            <li><a href="{% url 'folders:folder-list' %}">Теки</a></li>
+        {% endblock %}
+        {% block href-folder-parent %}
+            <li><a href="{% url 'folders:folder-parents' %}">Кореневі теки</a></li>
+        {% endblock %}
+        {% block href-report-list %}
+            <li><a href="{% url 'folders:report-list' %}">Файли</a></li>
+        {% endblock %}
+
+        {% block href-folder-create %}
+            <li><a href="{% url 'folders:folder-create' %}">Нова тека</a></li>
+        {% endblock %}
+        {% block href-report-upload %}
+            <li><a href="{% url 'folders:report-upload' %}">Новий файл</a></li>
+        {% endblock %}
+
+        {% block href-folder-create-in %}
+            <li><a href="{% url 'folders:folder-create-in' folder.id %}">Нова тека в цій</a></li>
+        {% endblock %}
+        {% block href-folder-update %}
+            <li><a href="{% url 'folders:folder-update' folder.id %}">Редагувати деталі теки</a></li>
+        {% endblock %}
+        {% block href-folder-download %}
+            <li><a href="{% url 'folders:folder-download' folder.id %}">Завантажити теку</a></li>
+        {% endblock %}
+        {% block href-folder-delete %}
+            <li><a href="{% url 'folders:folder-delete' folder.id %}">Видалити теку</a></li>
+        {% endblock %}
+        {% block href-report-upload-in %}
+            <li><a href="{% url 'folders:report-upload-in' folder.id %}" >Новий файл в цю теку</a></li>
+        {% endblock %}
+
+        {% block href-report-detail %}
+            <li><a href="{% url 'folders:report-detail' report.id %}">Деталі файла</a></li>
+        {% endblock %}
+        {% block href-report-preview %}
+            <li><a href="{% url 'folders:report-preview' report.id %}">Попередній перегляд</a></li>
+        {% endblock %}
+        {% block href-report-update %}
+            <li><a href="{% url 'folders:report-update' report.id %}">Редагувати деталі файла</a></li>
+        {% endblock %}
+        {% block href-report-download %}
+            <li><a href="{% url 'folders:report-download' report.id %}">Завантажити файл</a></li>
+        {% endblock %}
+        {% block href-report-delete %}
+            <li><a href="{% url 'folders:report-delete' report.id %}">Видалити файл</a></li>
+        {% endblock %}
+
+        {% block href-folder-contents %}
+            <li><a href="{% url 'folders:folder-contents' 1 %}">Картотека (js)</a></li>
+        {% endblock %}
+{% endblock href-group-folders-index %}
+
+{% block href-back %}
+    <li><a href="{% url 'folders:folder-list-all' %}">Уверх</a></li>
+{% endblock %}
+
+
+<!------------------------------------------------>
+{% comment %}
+
+{% block href-index %}
+{% endblock %}
+{% block href-folder-list-all %}
+{% endblock %}
+{% block href-folder-list %}
+{% endblock %}
+{% block href-folder-parent %}
+{% endblock %}
+{% block href-report-list %}
+{% endblock %}
+
+{% block href-folder-create %}
+{% endblock %}
+{% block href-report-upload %}
+{% endblock %}
+
+{% block href-folder-create-in %}
+{% endblock %}
+{% block href-folder-update %}
+{% endblock %}
+{% block href-folder-download %}
+{% endblock %}
+{% block href-folder-delete %}
+{% endblock %}
+{% block href-report-upload-in %}
+{% endblock %}
+
+{% block href-report-detail %}
+{% endblock %}
+{% block href-report-preview %}
+{% endblock %}
+{% block href-report-update %}
+{% endblock %}
+{% block href-report-download %}
+{% endblock %}
+{% block href-report-delete %}
+{% endblock %}
+
+{% block href-folder-contents %}
+{% endblock %}
+{% block href-back %}
+{% endblock %}
+
+{% endcomment %}
+<!------------------------------------------------>

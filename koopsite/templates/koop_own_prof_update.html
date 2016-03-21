@@ -1,0 +1,35 @@
+﻿{% extends "base_koop_change.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+
+{% block page-name %}
+    Мій профіль: редагування
+{% endblock %}
+
+{% block welcome_text %}
+    Вітаємо, {{ user.username }}!
+{% endblock %}
+
+{% block message_text %}
+    Ваш профіль збережено!
+{% endblock %}
+
+{% block href_continue %}
+    <a href="{% url 'own-profile' %}">Продовжити роботу</a>
+{% endblock %}
+
+{% block one_two_forms %}
+    {% include "block_one_two_forms.html" %}
+{% endblock %}
+
+{% block input-cancel %}
+    {% url 'own-profile' as cancel_url %}
+    <input type="button" value="Скасувати"
+           onclick="location.href='{{ cancel_url }}'" />
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'own-profile' %}">Уверх</a></li>
+{% endblock %}
+

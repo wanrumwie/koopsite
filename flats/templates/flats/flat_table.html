@@ -1,0 +1,35 @@
+{% extends "flats/base_flat.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+        {% block page-name %}
+            Характеристика квартир
+        {% endblock %}
+        </h3>
+    </div>
+    <table id="body-table"
+        class="tabledetail max-width-4em">
+        <tr>
+            {% for k in field_names %}
+                <th>{{ k }}</th>
+            {% endfor %}
+        </tr>
+            {% for f in field_vals %}
+                <tr>
+                    {% for v in f %}
+                        <td>{{ v }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+    </table>
+
+    {% include "block_paginator.html" %}
+
+{% endblock %}
+
+{% block href-flat-table %}
+{% endblock %}

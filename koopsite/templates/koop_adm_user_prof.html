@@ -1,0 +1,30 @@
+﻿{% extends "base_koop_adm.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+            {% block page-name %}
+                Профіль користувача {{ one }}
+            {% endblock %}
+        </h3>
+    </div>
+    {% block one_two_detail_show %}
+        {% include "block_one_two_detail_show.html" %}
+    {% endblock %}
+{% endblock %}
+
+{% block href-adm-users-profile %}
+{% endblock %}
+
+{% block href-adm-users-list %}
+{% endblock %}
+
+{% block href-admin %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'adm-users-table' %}">Уверх</a></li>
+{% endblock %}

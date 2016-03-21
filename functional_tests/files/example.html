@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="page-name"
+         class="padding-y-05">
+            {# Переозначити тут назву сторінки, наприклад: Створення теки #}
+    </div>
+    <div align="center">
+        <form id="body_form" method="post" action=""
+              class="tableform"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                  <tr class="required"><th><label class="required" for="id_parent">Тека:</label></th><td><select id="id_parent" name="parent">
+<option value="">---------</option>
+<option value="1" selected="selected">Документи</option>
+<option value="2">Статутні документи</option>
+<option value="3">QQQ</option>
+<option value="4">Скан Статуту</option>
+<option value="5">Звітність в податкову</option>
+<option value="6">Протоколи</option>
+<option value="7">Скан Свідоцтва і Статистики</option>
+<option value="8">Витяги з Протоколів (про вступ і виключення)</option>
+<option value="9">Проектна документація</option>
+<option value="10">Teka з 10+</option>
+<option value="11">Протоколи зборів Кооперативу</option>
+<option value="13">Перейменована тека (99) 33333 44444 55555</option>
+<option value="15">Протоколи зборів правління</option>
+<option value="16">Тека без назви</option>
+<option value="17">Звітність</option>
+<option value="18">Тека без н</option>
+<option value="19">Статут і Положення</option>
+<option value="20">Інші документи</option>
+<option value="21">Тека без назви long long long name</option>
+<option value="22">Тека 4 octoberfest</option>
+<option value="23">Тека october 4</option>
+<option value="24">NONAME</option>
+<option value="25">QQQ 1</option>
+<option value="27">QQQ-2</option>
+</select></td></tr>
+<tr class="required"><th><label class="required" for="id_filename">Назва файлу:</label></th><td><input id="id_filename" maxlength="512" name="filename" type="text" value="Pismo M..jpg" /></td></tr>
+<tr class="required"><th><label class="required" for="id_file">Файл:</label></th><td>Наразі: <a href="/media/uploads/folders/0/138.data">uploads/folders/0/138.data</a> <br />Змінити: <input id="id_file" name="file" type="file" /></td></tr>
+            </table>
+
+                <input type="submit" value="Створити" />
+                <input type="button" value="Скасувати"
+                       onclick="location.href='{{ object.get_absolute_url }}'" />
+        </form>
+    </div>
+
+</body>
+</html>
+
+

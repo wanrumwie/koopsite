@@ -1,0 +1,32 @@
+    <!-- Обмін даними через AJAX: -->
+    <form method="post"
+        id="selRowIndex_form"
+        class="nodisplay"
+        >
+        {% csrf_token %}
+
+        <input id="csrfmiddlewaretoken" type="text" value="{{ csrf_token }}">
+        <label for="parent_id">parent_folder_id:</label>
+        <input id="parent_id"       type="text" value="{{ folder.id }}">
+        <label for="list_length">list_length:</label>
+        <input id="list_length"     type="text" value="{{ object_list|length }}">
+        <label for="json_arr">json_arr:</label>
+        <input id="json_arr"        type="text" value="{{ json_arr }}">
+
+        <!-- У ці поля view запише назву таблиці та параметри стартового
+            обраного рядка (індекс рядка, id та тип елемента (ім'я моделі)).
+            Крім того js силоміць перезапише ці параметри (на випадок
+            якщо сторінка кешувалася і не хоче перезавантажуватися): -->
+        <label for="browTabName">browTabName:</label>
+        <input id="browTabName"   type="text" value="{{ browTabName }}">
+        <label for="startRowIndex">startRowIndex:</label>
+        <input id="startRowIndex"   type="text" value="{{ startRowIndex }}">
+        <label for="selRowIndex">selRowIndex:</label>
+        <input id="selRowIndex"     type="text" value="{{ selRowIndex }}">
+        <label for="selElementModel">selected_element_model:</label>
+        <input id="selElementModel" type="text" value="{{ selElementModel }}">
+        <label for="selElementID">selected_element_id:</label>
+        <input id="selElementID"    type="text"   value="{{ selElementID }}">
+        <input id="button"      type="button" value="send to server">
+    </form>
+

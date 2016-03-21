@@ -1,0 +1,14 @@
+{% extends "flats/base_flat_users_list.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block page-name %}
+    Квартира № {{ object }}: Список користувачів сайту
+{% endblock %}
+
+{% block href-flat-users-list %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'flats:flat-scheme-users' %}">Уверх</a></li>
+{% endblock %}

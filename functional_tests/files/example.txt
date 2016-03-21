@@ -1,0 +1,193 @@
+C:\Python34\python.exe C:/PyPrograms/Django/koopsite/manage-test-FT-koopsite.py
+Creating test database for alias 'default'...
+finished: setUp                          of IndexPageAnonymousVisitorTest
+Traceback (most recent call last):
+  File "C:\Python34\lib\wsgiref\handlers.py", line 138, in run
+    self.finish_response()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 180, in finish_response
+    self.write(data)
+  File "C:\Python34\lib\wsgiref\handlers.py", line 274, in write
+    self.send_headers()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 332, in send_headers
+    self.send_preamble()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 255, in send_preamble
+    ('Date: %s\r\n' % format_date_time(time.time())).encode('iso-8859-1')
+  File "C:\Python34\lib\wsgiref\handlers.py", line 453, in _write
+    self.stdout.write(data)
+  File "C:\Python34\lib\socket.py", line 391, in write
+    return self._sock.send(b)
+ConnectionAbortedError: [WinError 10053] Програмне забезпечення на хості розірвало встановлене підключення
+Traceback (most recent call last):
+  File "C:\Python34\lib\wsgiref\handlers.py", line 138, in run
+    self.finish_response()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 180, in finish_response
+    self.write(data)
+  File "C:\Python34\lib\wsgiref\handlers.py", line 274, in write
+    self.send_headers()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 332, in send_headers
+    self.send_preamble()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 255, in send_preamble
+    ('Date: %s\r\n' % format_date_time(time.time())).encode('iso-8859-1')
+  File "C:\Python34\lib\wsgiref\handlers.py", line 453, in _write
+    self.stdout.write(data)
+  File "C:\Python34\lib\socket.py", line 391, in write
+    return self._sock.send(b)
+ConnectionAbortedError: [WinError 10053] Програмне забезпечення на хості розірвало встановлене підключення
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python34\lib\wsgiref\handlers.py", line 141, in run
+    self.handle_error()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 95, in handle_error
+    super(ServerHandler, self).handle_error()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 368, in handle_error
+    self.finish_response()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 180, in finish_response
+    self.write(data)
+  File "C:\Python34\lib\wsgiref\handlers.py", line 274, in write
+    self.send_headers()
+  File "C:\Python34\lib\wsgiref\handlers.py", line 331, in send_headers
+    if not self.origin_server or self.client_is_modern():
+  File "C:\Python34\lib\wsgiref\handlers.py", line 344, in client_is_modern
+    return self.environ['SERVER_PROTOCOL'].upper() != 'HTTP/0.9'
+TypeError: 'NoneType' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python34\lib\socketserver.py", line 305, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 331, in process_request
+    self.finish_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 344, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 102, in __init__
+    super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+  File "C:\Python34\lib\socketserver.py", line 669, in __init__
+    self.handle()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 182, in handle
+    handler.run(self.server.get_app())
+  File "C:\Python34\lib\wsgiref\handlers.py", line 144, in run
+    self.close()
+  File "C:\Python34\lib\wsgiref\simple_server.py", line 35, in close
+    self.status.split(' ',1)[0], self.bytes_sent
+AttributeError: 'NoneType' object has no attribute 'split'
+ETraceback (most recent call last):
+  File "C:\Python34\lib\socketserver.py", line 305, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 331, in process_request
+    self.finish_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 344, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 102, in __init__
+    super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+  File "C:\Python34\lib\socketserver.py", line 669, in __init__
+    self.handle()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 167, in handle
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Python34\lib\socket.py", line 371, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] Віддалений хост примусово закрив наявне підключення
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 53297)
+----------------------------------------
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 53308)
+----------------------------------------
+.finished: test_can_visit_page            of IndexPageAuthenticatedVisitorTest
+.finished: test_layout_and_styling_page   of IndexPageAuthenticatedVisitorTest
+.finished: test_visitor_can_go_to_links   of IndexPageAuthenticatedVisitorTest
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 53488)
+----------------------------------------
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 53489)
+----------------------------------------
+Traceback (most recent call last):
+  File "C:\Python34\lib\socketserver.py", line 305, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 331, in process_request
+    self.finish_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 344, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 102, in __init__
+    super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+  File "C:\Python34\lib\socketserver.py", line 669, in __init__
+    self.handle()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 167, in handle
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Python34\lib\socket.py", line 371, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] Віддалений хост примусово закрив наявне підключення
+Traceback (most recent call last):
+  File "C:\Python34\lib\socketserver.py", line 305, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 331, in process_request
+    self.finish_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 344, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 102, in __init__
+    super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+  File "C:\Python34\lib\socketserver.py", line 669, in __init__
+    self.handle()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 167, in handle
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Python34\lib\socket.py", line 371, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] Віддалений хост примусово закрив наявне підключення
+finished: setUp                          of IndexPageAuthenticatedVisitorWithFlatTest
+finished: test_visitor_can_go_to_links   of IndexPageAuthenticatedVisitorWithFlatTest
+.Traceback (most recent call last):
+  File "C:\Python34\lib\socketserver.py", line 305, in _handle_request_noblock
+    self.process_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 331, in process_request
+    self.finish_request(request, client_address)
+  File "C:\Python34\lib\socketserver.py", line 344, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 102, in __init__
+    super(WSGIRequestHandler, self).__init__(*args, **kwargs)
+  File "C:\Python34\lib\socketserver.py", line 669, in __init__
+    self.handle()
+  File "C:\Python34\lib\site-packages\django-1.8.2-py3.4.egg\django\core\servers\basehttp.py", line 167, in handle
+    self.raw_requestline = self.rfile.readline(65537)
+  File "C:\Python34\lib\socket.py", line 371, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [WinError 10054] Віддалений хост примусово закрив наявне підключення
+----------------------------------------
+Exception happened during processing of request from ('127.0.0.1', 53653)
+----------------------------------------
+finished: setUp                          of IndexPageAuthenticatedVisitorWithPermissionTest
+.finished: test_visitor_can_go_to_links   of IndexPageAuthenticatedVisitorWithPermissionTest
+
+======================================================================
+ERROR: test_visitor_can_go_to_links (functional_tests_koopsite.tests_page_visit.IndexPageAnonymousVisitorTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\PyPrograms\Django\koopsite\functional_tests_koopsite\tests_page_visit.py", line 90, in test_visitor_can_go_to_links
+    self.visitor_can_go_to_links()
+  File "C:\PyPrograms\Django\koopsite\functional_tests_koopsite\ft_base.py", line 329, in visitor_can_go_to_links
+    url_name=url_name, kwargs=kwargs, expected_regex=expected_regex)
+  File "C:\PyPrograms\Django\koopsite\functional_tests_koopsite\ft_base.py", line 111, in check_go_to_link
+    link_parent_selector)
+  File "C:\Python34\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 402, in find_element_by_css_selector
+    return self.find_element(by=By.CSS_SELECTOR, value=css_selector)
+  File "C:\Python34\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 712, in find_element
+    {'using': by, 'value': value})['value']
+  File "C:\Python34\lib\site-packages\selenium\webdriver\remote\webdriver.py", line 201, in execute
+    self.error_handler.check_response(response)
+  File "C:\Python34\lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 180, in check_response
+    raise exception_class(message, screen, stacktrace, value['alert'].get('text'))
+selenium.common.exceptions.UnexpectedAlertPresentException: Alert Text: xhrErrorAlert:
+ xhr.status=0
+ xhr.statusText=error
+ xhr.responseText=
+<super: <class 'WebDriverException'>, <UnexpectedAlertPresentException object>>
+
+----------------------------------------------------------------------
+Ran 6 tests in 139.768s
+
+FAILED (errors=1)
+Destroying test database for alias 'default'...
+
+Process finished with exit code 1

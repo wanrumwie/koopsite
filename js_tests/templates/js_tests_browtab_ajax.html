@@ -1,0 +1,91 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    KoopSite - browtab_ajax.js
+{% endblock title %}
+
+{% block qunit-fixture %}
+    {% load koop_template_filters %}
+    {% load folder_template_filters %}
+    <div id="thisfolder"
+         class="padding-u-05">
+         <span>СПИСОК АКАУНТІВ ЗАРЕЄСТРОВАНИХ КОРИСТУВАЧІВ</span>
+    </div>
+            <table id="browtable"
+                class="scrolltable users8 transformtable khaki-theme"
+                >
+                <thead>
+                    <tr>
+                    </tr>
+                </thead>
+                <tbody id="tablebody"
+                       style="overflow-Y: scroll; height:200px"
+                     >
+                    <tr id="tr_qwerty">
+                        <td id="td_qwerty">
+                            <a id="a_qwerty" href="/qwerty/"></a>
+                        </td>
+                    </tr>
+                    <tr id="tr_qwerty_s" class="selected">
+                        <td id="td_qwerty_s">
+                            <a id="a_qwerty_s" href="#"></a>
+                        </td>
+                    </tr>
+                    <tr id="tr_qwerty_r" class="selected">
+                        <td id="td_qwerty_r">
+                            <a id="a_qwerty_r" href="#"></a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+    <!-- Обмін даними через AJAX: -->
+    <form method="post"
+        id="selRowIndex_form"
+        class="nodisplay"
+        >
+        {% csrf_token %}
+
+        <input id="csrfmiddlewaretoken" type="text" value="{{ csrf_token }}">
+        <label for="parent_id">parent_folder_id:</label>
+        <input id="parent_id"       type="text" value="{{ folder.id }}">
+        <label for="list_length">list_length:</label>
+        <input id="list_length"     type="text" value="{{ object_list|length }}">
+        <label for="json_arr">json_arr:</label>
+        <input id="json_arr"        type="text"
+               value='{"0":{"0":{"id":"3","model":"user","name":"george"},"1":"george","2":""},"1":{"0":{"id":"1","model":"user","name":"john"},"1":"john","2":""},"2":{"0":{"id":"3","model":"folder","name":"fjohn"},"1":"fjohn","2":""}}'>
+
+        <!-- У ці поля view запише назву таблиці та параметри стартового
+            обраного рядка (індекс рядка, id та тип елемента (ім'я моделі)).
+            Крім того js силоміць перезапише ці параметри (на випадок
+            якщо сторінка кешувалася і не хоче перезавантажуватися): -->
+        <label for="browTabName">browTabName:</label>
+        <input id="browTabName"   type="text" value="{{ browTabName }}">
+        <label for="startRowIndex">startRowIndex:</label>
+        <input id="startRowIndex"   type="text" value="{{ startRowIndex }}">
+        <label for="selRowIndex">selRowIndex:</label>
+        <input id="selRowIndex"     type="text" value="{{ selRowIndex }}">
+        <label for="selElementModel">selected_element_model:</label>
+        <input id="selElementModel" type="text" value="{{ selElementModel }}">
+        <label for="selElementID">selected_element_id:</label>
+        <input id="selElementID"    type="text"   value="{{ selElementID }}">
+        <input id="button"      type="button" value="send to server">
+    </form>
+
+{% endblock qunit-fixture %}
+
+{% block script_library %}
+    <script src="{% static 'js/download.js' %}"          ></script>
+    <script src="{% static 'js/browtab.js' %}"          ></script>
+{% endblock script_library %}
+
+{% block tested_script %}
+    <script src="{% static 'js/browtab_ajax.js' %}"          ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'js/tests_browtab_ajax.js' %}"></script>
+{% endblock test_script %}

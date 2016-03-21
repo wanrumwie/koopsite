@@ -1,0 +1,35 @@
+{% load staticfiles %}
+
+{% block hrefs-main %}
+    <a href="#"></a><br>
+{% endblock hrefs-main %}
+
+{% block hrefs-apps %}
+    Тести аплікацій:
+    <br>
+        project koopsite:
+        <a href="{% url 'js_tests:browtab' %}"      >browtab</a>
+        <a href="{% url 'js_tests:browtab_ajax' %}" >browtab_ajax</a>
+        <a href="{% url 'js_tests:browtab_ui' %}"   >browtab_ui</a>
+        <a href="{% url 'js_tests:browtab_sort' %}" >browtab_sort</a>
+        <a href="{% url 'js_tests:error_hide' %}"   >error_hide</a>
+    <br>
+        app koopsite:
+        <a href="{% url 'js_tests:koopsite_users_browtab' %}"      >users_browtab</a>
+        <a href="{% url 'js_tests:koopsite_users_browtab_ajax' %}" >users_browtab_ajax</a>
+        <a href="{% url 'js_tests:koopsite_users_browtab_ui' %}"   >users_browtab_ui</a>
+        <a href="{% url 'js_tests:koopsite_users_browtab_sort' %}" >users_browtab_sort</a>
+        <a href="{% url 'js_tests:koopsite_users_browtab_filter' %}">users_browtab_filter</a>
+    <br>
+        app folders:
+        <a href="{% url 'js_tests:folders_folder_browtab' %}"     >folder_browtab</a>
+        <a href="{% url 'js_tests:folders_folder_browtab_ajax' %}">folder_browtab_ajax</a>
+        <a href="{% url 'js_tests:folders_folder_browtab_ui' %}"  >folder_browtab_ui</a>
+        <a href="{% url 'js_tests:folders_folder_browtab_sort' %}">folder_browtab_sort</a>
+    <br>
+        examples:
+        <a href="{% url 'js_tests:folders' %}">Folders app</a>
+        <a href="{% url 'js_tests:example' %}">EXAMPLE</a>
+    <br>
+{% endblock hrefs-apps %}
+

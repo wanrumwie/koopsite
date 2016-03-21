@@ -1,0 +1,103 @@
+{% extends "folders/base_folder.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+{# Є одночасно базовим шаблоном для групи шаблонів #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+            {% block page-name %}
+                {# Переозначити тут назву сторінки, наприклад: Створення теки #}
+            {% endblock %}
+        </h3>
+    </div>
+    <div align="center">
+        <form id="body_form" method="post" action=""
+              class="tableform"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                  {{ form }}
+            </table>
+
+            {% block input-submit %}
+                {# Переозначити тут кнопку і її назву #}
+                <input type="submit" value="Створити" />
+            {% endblock %}
+
+            {% if object.get_absolute_url %}
+                <input type="button" value="Скасувати"
+                       onclick="location.href='{{ object.get_absolute_url }}'" />
+            {% else %}
+                {% url 'folders:folder-list-all' as cancel_url %}
+                <input type="button" value="Скасувати"
+                       onclick="location.href='{{ cancel_url }}'" />
+            {% endif %}
+        </form>
+    </div>
+
+{% endblock %}
+
+{% block href-folder-contents %}
+{% endblock %}
+{% block href-folder-list-all %}
+{% endblock %}
+{% block href-folder-list %}
+{% endblock %}
+{% block href-folder-parent %}
+{% endblock %}
+{% block href-report-list %}
+{% endblock %}
+
+{% block href-folder-create %}
+{% endblock %}
+{% block href-report-upload %}
+{% endblock %}
+
+{% block href-folder-create-in %}
+{% endblock %}
+{% block href-folder-update %}
+{% endblock %}
+{% block href-folder-download %}
+{% endblock %}
+{% block href-folder-delete %}
+{% endblock %}
+{% block href-report-upload-in %}
+{% endblock %}
+
+{% block href-report-detail %}
+{% endblock %}
+{% block href-report-preview %}
+{% endblock %}
+{% block href-report-update %}
+{% endblock %}
+{% block href-report-download %}
+{% endblock %}
+{% block href-report-delete %}
+{% endblock %}
+
+{% block href-back %}
+    {% if object.get_absolute_url %}
+        <li><a href="{{ object.get_absolute_url }}">Уверх</a></li>
+    {% else %}
+        <li><a href="{% url 'folders:folder-list-all' %}">Уверх</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block load_js %}
+    {% load staticfiles %}
+    <!-- Спочатку завантажуємо jquery! -->
+    {% include "block_js_jquery.html" %}
+	<!-- Функція для приховування повідомлення про помилку після початку нового вводу в полі з помилкою -->
+    <script src="{% static 'js/errorlist_hide_listeners.js' %}"></script>
+{% endblock %}
+
+{% block document_ready_script %}
+    <script>
+        console.log('start document_ready_script'); 
+        $( document ).ready( set_errorlist_hide_listeners );
+        console.log('finish document_ready_script');
+    </script>
+{% endblock %}
+

@@ -1,0 +1,37 @@
+<ul id="filter_box"
+    class="buttons-y color-negative">
+    <li><input id="id_apply_filters" name="apply_filters" type="checkbox"/>
+        <span> ФІЛЬТРУВАТИ:</span></li>
+    <li><span><strong>Підтверджені акаунти:</strong></span></li>
+    <li><input type="radio" name="is_recognized" value="all" checked="checked"> всі</li>
+    <li><input type="radio" name="is_recognized" value="yes"> підтверджені</li>
+    <li><input type="radio" name="is_recognized" value="no"> відхилені</li>
+    <li><input type="radio" name="is_recognized" value="none"> неопрацьовані</li>
+    <li><span><strong>Активні акаунти:</strong></span></li>
+    <li><input type="radio" name="is_active" value="all" checked="checked"> всі</li>
+    <li><input type="radio" name="is_active" value="yes"> активні</li>
+    <li><input type="radio" name="is_active"  value="no"> неактивні</li>
+    <li><span><strong>Члени кооперативу:</strong></span></li>
+    <li><input type="radio" name="has_members" value="all" checked="checked"> всі</li>
+    <li><input type="radio" name="has_members" value="yes"> так</li>
+    <li><input type="radio" name="has_members" value="no"> ні</li>
+
+    <li><span><strong>Дати створення:</strong></span></li>
+    <li><input type="radio" name="date_joined_all" value="all" checked="checked"> всі дати</li>
+    <li><input type="radio" name="date_joined_all" value="no"> в діапазоні</li>
+    <li class="date-input">
+        <label for="date_joined_from">з</label>
+        <input type="text" id="date_joined_from" name="date_joined_from" placeholder="dd.mm.yyyy" title="Дата повинна мати формат: dd.mm.yyyy">
+        <input type="hidden" id="iso_date_joined_from" name="iso_date_joined_from">
+    </li>
+    <li class="date-input">
+        <label for="date_joined_to">по</label>
+        <input type="text" id="date_joined_to" name="date_joined_to" placeholder="dd.mm.yyyy" title="Дата повинна мати формат: dd.mm.yyyy">
+        <input type="hidden" id="iso_date_joined_to" name="iso_date_joined_to">
+    </li>
+    <li id="records_info_box"
+        style="display: none">
+        <span>Відображено акаунтів:</span>
+        <span id="records_info"></span>
+    </li>
+</ul>

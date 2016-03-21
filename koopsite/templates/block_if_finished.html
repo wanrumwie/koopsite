@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<br>
+<div class="welcome_text">
+    <h2>
+        {% block welcome_text %}
+        {% endblock %}
+    </h2>
+</div><br>
+<div class="message_text">
+        {% block message_text %}
+        {% endblock %}
+</div><br>
+<ul class="navigation-small buttons-y align-items-center" >
+    <li>
+        {% block href_continue %}
+        {% endblock %}
+    </li>
+</ul>

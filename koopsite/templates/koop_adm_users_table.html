@@ -1,0 +1,189 @@
+{% extends "base_koop_adm.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block style %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"
+          href='{% static "css/scrolltable.css" %}'
+          >
+{% endblock %}
+
+{% block body %}
+    {% load koop_template_filters %}
+    {% load folder_template_filters %}
+    {% load staticfiles %}
+<!---------------------------------------->
+    <div id="thisfolder"
+         class="padding-u-05">
+         <span>СПИСОК АКАУНТІВ ЗАРЕЄСТРОВАНИХ КОРИСТУВАЧІВ</span>
+    </div>
+    <div class="wrapper">
+        <div class="header">
+            <div class="wrapper">
+                <!--<div class="header"></div>-->
+                <div class="main padding-0">
+                    <ul class="navigation-small justify-content-left color-negative">
+                        <li>
+                        </li>
+                    </ul>
+                </div>
+                <div class="aside aside-1 align-flex-end aside-empty"></div>
+                <div class="aside aside-2 align-flex-end aside-empty"></div>
+                <!--<div class="footer"></div>-->
+            </div>
+        </div>
+        <div class="main">
+            <table id="browtable"
+                class="scrolltable users8 transformtable khaki-theme"
+                >
+                <thead>
+                    <tr>
+                        {% for j, v in cap.items %}
+                            {% if j != 0 %}
+                                <th id="th{{ j }}"
+                                    data-column-header="{{ v }}">
+                                    <button id="button-sort-{{ j }}"
+                                         title="Сортування">{{ v }}
+                                    </button>
+                                </th>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    {% for i, row in arr.items %}
+                        <tr id="tr-{{ row.0.model }}#{{ row.0.id }}">
+                        {% for j, v in row.items %}
+                            {% if j != 0 %}
+                                <td id="td{{ j }}-{{ row.0.model }}#{{ row.0.id }}"
+                                    headers="th{{ j }}"
+                                    data-column-header="{{ cap|get_at_index:j }}">
+                                    {% if j == 1 %}
+                                        <a href="{% url 'adm-users-profile' row.0.id %}" title="{{ v }}"
+                                            class="flex-container"
+                                            >
+                                            <div class="img-box">
+                                                {% with f=object_list|get_at_index:i %}
+                                                    {% with pic=f.userprofile.picture %}
+                                                        {% if pic and pic != "False"  %}
+                                                            <img src="{% static pic|thumbnail %}"/>
+                                                        {% else %}
+                                                            <div class="instead-img"></div>
+                                                        {% endif %}
+                                                    {% endwith %}
+                                                {% endwith %}
+                                            </div>
+                                            <div class="after-img-box">{{ v }}</div>
+                                        </a>
+                                    {% elif j == 5 %}
+                                        <span title="{{ v|date:'d.m.Y' }}">{{ v|date:'d.m.Y' }}</span>
+                                    {% elif j == 6 or j == 7 or j == 8 %}
+                                        <img class="padding-y-07"
+                                             src="{% static v|icon_yes_no_unknown %}"/>
+                                    {% else %}
+                                        <span title="{{ v }}">{{ v }}</span>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>Навігація по таблиці: &uarr; &darr; PgUp PgDn Home End Enter Click DoubleClick</div>
+        </div>
+        <div class="aside aside-1 align-flex-start">
+
+            {% include "block_adm_users_buttons.html" %}
+
+        </div>
+        <div class="aside aside-2 align-flex-start text-align-left">
+
+            {% include "block_adm_users_filter.html" %}
+
+        </div>
+        <!--<div class="footer"></div>-->
+    </div>
+<!---------------------------------------->
+
+    <!-- Код для віджетів jQuery UI: -->
+    <!-- Контейнер для універсального діалог-повідомлення -->
+    <!-- Контейнер діалог-форма, яка буде оброблятися ф-ціями-->
+    <!-- Код для віджета jsTree: -->
+    <!-- Контейнер для діалог-повідомлення,
+        всередині якого містисься контейнер віджета jsTree -->
+    {% include "block_popup.html" %}
+
+    <!-- Поля, в які можна виводити з js при відлагоджуванні програми -->
+    {% include "block_debug.html" %}
+
+{% endblock %}
+
+{# Переозначуємо тільки непотрібні посилання #}
+{% block href-adm-users-table %}
+{% endblock %}
+
+{% block href-adm-users-perms-update %}
+{% endblock %}
+{% block href-adm-users-profile %}
+{% endblock %}
+{% block href-adm-users-profile-update %}
+{% endblock %}
+
+{% block href-admin %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'adm-index' %}">Уверх</a></li>
+{% endblock %}
+
+
+{% block load_js %}
+
+    {% load staticfiles %}
+
+    <!-- Спочатку завантажуємо jquery! -->
+    {% include "block_js_jquery.html" %}
+    {% include "block_js_jquery_ui.html" %}
+    {% include "block_js_jstree.html" %}
+
+    <script src="{% static 'js/ui/jquery-ui.js' %}"         ></script>
+    <script src="{% static 'js/ui/datepicker-uk.js' %}" ></script>
+    <script src="{% static 'js/download.js' %}"             ></script>
+    <script src="{% static 'js/filesize.js' %}"             ></script>
+    <script src="{% static 'js/browtab.js' %}"              ></script>
+    <script src="{% static 'js/browtab_ui.js' %}"           ></script>
+    <script src="{% static 'js/browtab_sort.js' %}"         ></script>
+    <script src="{% static 'js/users_browtab.js' %}"        ></script>
+    <script src="{% static 'js/users_browtab_ui.js' %}"     ></script>
+    <script src="{% static 'js/users_browtab_sort.js' %}"   ></script>
+    <script src="{% static 'js/users_browtab_filter.js' %}" ></script>
+
+{% endblock %}
+
+{% block ajax_browtab %}
+    <!-- Форма з полями для обміну даними через AJAX: -->
+    {% include "block_ajax_browtab.html" %}
+{% endblock %}
+
+{% block load_ajax %}
+    <!-- AJAX повинен завантажуватися вкінці перед </body>  -->
+    {% load staticfiles %}
+    <script src="{% static 'js/browtab_ajax.js' %}"></script>
+    <script src="{% static 'js/users_browtab_ajax.js' %}"></script>
+{% endblock %}
+
+{% block document_ready_script %}
+    <script>
+        console.log('start document_ready_script'); 
+        $( document ).ready( browtab_document_ready_handler );
+        $( document ).ready( browtab_ajax_document_ready_handler );
+        $( document ).ready( browtab_ui_document_ready_handler );
+        $( document ).ready( users_browtab_ui_document_ready_handler );
+        $( document ).ready( users_browtab_sort_document_ready_handler );
+        $( document ).ready( users_browtab_filter_document_ready_handler );
+        console.log('finish document_ready_script');
+    </script>
+{% endblock %}
+

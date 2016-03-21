@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+{# Шаблон-каркас. Його блоки можуть перевизначатися дочірніми шаблонами #}
+
+{% comment %}
+УВАГА!  PyCharm зберігає у форматі UTF-8-BOM =>
+        => у деяких шаблонах BOM екранує !DOCTYPE =>
+        => неправильно працює CSS
+        Тому після зміни цього файлу його слід  перезберегти
+        в notepad++ з кодуванням  UTF-8 (без BOM)
+		https://github.com/contao/core/issues/6408
+{% endcomment %}
+
+<html xmlns="http://www.w3.org/1999/html">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>ЖК "Пасічний" (Django)</title>
+
+    {% block load_style %}
+        {% load staticfiles %}
+        <link rel="stylesheet" type="text/css"
+              href="{% static 'css/koop_style.css' %}" />
+        <link rel="icon"
+              type="image/x-icon"
+              href="{% static 'favicon/favicon.ico' %}"/>
+        <link rel="shortcut icon"
+              type="image/x-icon"
+              href="{% static 'favicon/favicon.ico' %}"/>
+    {% endblock %}
+
+    {% block style %}
+        {# У дочірньому шаблоні можна переозначити стилі #}
+    {% endblock %}
+
+</head>
+
+<body>
+ <div class="site-container">
+  <div class="site-header">
+    {% block title %}
+        {% include "block_title.html" %}
+    {% endblock %}
+  </div>
+
+  <div class="site-body">
+    <ul id="body-navigation"
+        class="navigation">
+        {# У дочірньому шаблоні переознач тільки самопосилання #}
+        {% block href-index %}
+            <li><a href="{% url 'index' %}">Головна сторінка</a></li>
+        {% endblock %}
+
+        {% block href-group-index %}
+
+            {% block href-flats %}
+                <li><a href="{% url 'flats:flat-scheme' %}">Квартири</a></li>
+            {% endblock %}
+            {% block href-folders %}
+                <li><a href="{% url 'folders:folder-contents' 1 %}">Картотека</a></li>
+            {% endblock %}
+            {% block href-login %}
+                {% if not user.is_authenticated %}
+                <li><a href="{% url 'login' %}" title="Login">Увійти</a></li>
+                {% endif %}
+            {% endblock %}
+            {% block href-register %}
+                {% if not user.is_authenticated %}
+                    <li><a href="{% url 'register' %}">Зареєструватися</a></li>
+                {% endif %}
+            {% endblock %}
+            {% block href-own-profile %}
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'own-profile' %}">Мій профіль</a></li>
+                {% endif %}
+            {% endblock %}
+            {% block href-adm-index %}
+                {% if perms.koopsite.activate_account %}
+                    <li><a href="{% url 'adm-index' %}">Адміністрування</a></li>
+                {% endif %}
+            {% endblock %}
+
+        {% endblock href-group-index %}
+
+        {% block href-group-adm-index %}
+        {% endblock href-group-adm-index %}
+
+        {% block href-group-own-index %}
+        {% endblock href-group-own-index %}
+
+        {% block href-group-flats-index %}
+        {% endblock href-group-flats-index %}
+
+        {% block href-group-folders-index %}
+        {% endblock href-group-folders-index %}
+
+        {% block href-back %}
+            <li><a href="javascript:history.back()">Назад</a></li>
+        {% endblock %}
+    </ul>
+
+    {% block body %}
+        {# У дочірньому шаблоні можна переозначити основне тіло шаблону #}
+    {% endblock %}
+
+    {% block under-paginator %}
+        {# У дочірньому шаблоні можна переозначити основне тіло шаблону #}
+    {% endblock %}
+
+    {% block load_js %}
+        {# У дочірньому шаблоні можна переозначити script #}
+    {% endblock %}
+
+    {% block ajax_browtab %}
+        {# У дочірньому шаблоні можна переозначити код #}
+    {% endblock %}
+
+    {% block load_ajax %}
+        {# У дочірньому шаблоні можна переозначити script #}
+    {% endblock %}
+
+    {% block document_ready_script %}
+        {# У дочірньому шаблоні можна переозначити script #}
+    {% endblock %}
+
+  </div>
+
+  <div class="site-footer">
+    {% block bottom %}
+        {% include "block_bottom.html" %}
+    {% endblock %}
+  </div>
+ </div>
+</body>
+</html>
+
+{% comment %}
+<!------------------------------------------------>
+{% block href-index %}
+{% endblock %}
+
+{% block href-flats %}
+{% endblock %}
+
+{% block href-folders %}
+{% endblock %}
+
+{% block href-login %}
+{% endblock %}
+
+{% block href-register %}
+{% endblock %}
+
+{% block href-own-profile %}
+{% endblock %}
+
+{% block href-adm-index %}
+{% endblock %}
+
+{% block href-back %}
+{% endblock %}
+<!------------------------------------------------>
+{% endcomment %}

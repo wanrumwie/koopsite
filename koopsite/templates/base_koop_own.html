@@ -1,0 +1,58 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+
+{# У дочірньому шаблоні переознач тільки самопосилання #}
+
+{% block href-group-index %}
+{% endblock href-group-index %}
+
+{% block href-group-own-index %}
+
+    {% block href-own-profile %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'own-profile' %}">Мій профіль</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-own-profile-update %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'own-profile-update' %}">Редагувати профіль</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-change-password %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'change-password' %}">Змінити пароль</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-logout %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'logout' %}" title="Logout">Вийти</a></li>
+        {% endif %}
+    {% endblock %}
+
+{% endblock href-group-own-index %}
+
+{% comment %}
+<!------------------------------------------------>
+
+{% block href-index %}
+{% endblock %}
+
+{% block href-own-profile %}
+{% endblock %}
+
+{% block href-own-profile-update %}
+{% endblock %}
+
+{% block href-change-password %}
+{% endblock %}
+
+{% block href-logout %}
+{% endblock %}
+
+{% block href-back %}
+{% endblock %}
+
+<!------------------------------------------------>
+{% endcomment %}

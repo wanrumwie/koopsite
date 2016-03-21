@@ -1,0 +1,40 @@
+/*
+CSS for pop-up form for all app of koopsite
+*/
+
+.popup-form table {
+    width:      100%; 
+    border:     0 solid blue;
+}
+/* table has no th, only td */
+.popup-form table tr td:nth-child(1) { text-align: right; width:  25%; overflow-x: hidden; }
+.popup-form table tr td:nth-child(2) { text-align: left;  width:  75%; overflow-x: hidden; }
+
+.popup-form table tr td { padding: 0.3em; }
+
+.popup-form table label  {
+    width:      100%; 
+    color:      black;
+}
+.popup-form table input  {
+    width:              100%; 
+    color:              black;
+    background-color:   #FDFAEB;
+    border:             0px solid blue;
+    padding:            0.3em; 
+}
+.popup-form table td input[type="checkbox"] {
+    width:              2em;
+}
+.popup-form table select {width: 100%;}
+
+#progressbar {
+    height:     0.6em;
+    border:     1px solid blue;
+}
+/*Hiding the close button: */
+.no-close .ui-dialog-titlebar-close { display: none; }
+
+#dialog-message {
+    white-space:    pre-wrap;
+}

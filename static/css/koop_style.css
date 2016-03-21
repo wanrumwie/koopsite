@@ -1,0 +1,775 @@
+/*
+CSS for koopsite
+common for all app
+*/
+
+* { margin: 0; padding: 0; border: 0 none; position: relative; }
+*, *:before, *:after    { box-sizing: inherit; }
+html                    { box-sizing: border-box; }
+
+/*
+ * CSS trick to force site footer down 
+ */
+html,
+body {
+    margin      : 0;
+    padding     : 0;
+    height      : 100%;
+}
+.site-container {
+    min-height  : 100%;
+    position    : relative;
+}
+.site-header {
+}
+.site-body {
+    padding-bottom : 3em;   /* Height of the footer */
+}
+.site-footer {
+    position    : absolute;
+    bottom      : 0;
+    left        : 0;
+    width       : 100%;
+    height      : 3em;   /* Height of the footer */
+}
+
+/******************************************************************/
+body {
+    color:              #F0E68C;  /* khaki */
+    background-color:   #8FBC8F;  /* DarkSeaGreen */
+    background-image:   none;
+    text-align:         center;
+    }
+
+@media all and (max-width: 700px) {
+  body {
+    word-wrap:  break-word;
+  }
+}
+
+img.fill-space {
+    max-width:      100%;
+    max-height:     100%;
+    padding:        0.5em;
+}
+img.fill-space-change-padding {
+    max-width:      100%;
+    max-height:     calc(100vh - 8em);
+    padding:        0.5em;
+}
+.max-width-75pc {
+    max-width:      75%;
+    padding:        0.5em;
+}
+
+@media all and (max-width: 600px) {
+  img.fill-space-change-padding {
+    padding:  0;
+  }
+  .max-width-75pc {
+    max-width:      100%;
+    padding:        0;
+  }
+}
+@media all and (max-height: 400px) {
+  img.fill-space-change-padding {
+    max-height:     calc(400px - 8em);
+  }
+}
+
+hr {
+    border:     1px solid #F0E68C;  /* khaki */
+    margin:     0.5em 0;
+    padding:    0;
+}
+
+caption {
+    background-image:   none;
+    }
+table {
+    color:              black;
+    caption-side:       top;
+    background-color:   #F0E68C;  /* khaki */
+    background-image:   none;
+    border-color:       black;
+    border-style:       solid;
+    border-width:       thin;
+    border-collapse:    collapse;
+    border-spacing:     0;
+    empty-cells:        show;
+    padding:            0;
+    margin-left:        auto;
+    margin-right:       auto;
+    text-align:         center;
+    }
+ul,
+li  {
+    color:              black;
+    background-color:   #F0E68C;  /* khaki */
+    background-image:   none;
+    text-align:         left;
+    margin-left:        10px;
+    margin-right:       10px;
+    /* next lines are copied from "user agent stylesheet" in Chrome
+    for ul, menu, dir, because Firefox shows li incorrectly */
+/*
+    list-style-type:        disc;
+    display:                block;
+    -webkit-margin-before:  1em;
+    -webkit-margin-after:   1em;
+    -webkit-margin-start:   0px;
+    -webkit-margin-end:     0px;
+    -webkit-padding-start:  40px;
+*/
+}
+    
+a:link      {color: blue; text-decoration: none}
+a:visited   {color: blue}
+a:hover     {color: #00008B; /* DarkBlue */ /*border-bottom: 2px dotted red*/ }
+a:active    {color: blue; font-style: normal}
+a:focus     {outline-style: none;}
+
+.pre-line {
+    white-space: pre-line;
+}
+.preview-box * {
+    background-color:   white;
+}
+
+.welcome_text {
+    line-height: 1;
+/*    font-size: 1.5em;*/
+    color:    green;
+}
+
+.message_text {
+/*    font-size: 1.5em;*/
+    line-height: 1;
+}
+
+/*=======================================================================*/
+.tabledetail {
+    border:             1px solid black;
+/*    border-collapse:    separate;*/
+/*    border-spacing:     1px;*/
+    }
+.tabledetail th, 
+.tabledetail td {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+       -moz-box-sizing: border-box; /* Firefox, other Gecko */
+            box-sizing: border-box; /* Opera/IE 8+ */
+    border:             1px solid black;
+    min-width:          12em;
+    padding:            0 0.5em;
+    }
+.tabledetail th {
+    text-align:         center;
+    }
+.tabledetail td {
+    text-align:         right;
+    }
+
+/*=======================================================================*/
+.tablescheme {
+    border-collapse:    separate;
+    border-spacing:     5px;
+            }
+.tablescheme th, 
+.tablescheme td { 
+    min-width:          3em;
+    text-align:         center;
+    padding:            0.3em 0.5em;
+}
+
+/*=======================================================================*/
+
+.flat-has-users {
+    background-color:   #FFE600;  /* yellow */
+    background-image:   none;
+}
+.flat-has-member {
+    background-color:   #FFB200;  /* hot yellow */
+    background-image:   none;
+}
+
+.inline-blocks {
+    display:        inline-block;
+}
+.inline-blocks * {
+    display:        inline-block;
+}
+.legend-box {
+    vertical-align:     bottom;
+    border:             1px solid black;
+    width:              0.75em;
+    height:             0.75em;
+    padding:            0 0.5em;
+    }
+.legend {
+    vertical-align: middle;
+    height:             1em;
+    padding:            0 0 0.5em 0;
+    }
+/*=======================================================================*/
+
+.max-width-4em { 
+    max-width:          100%;
+}
+.max-width-4em th, 
+.max-width-4em td {
+    max-width:          4.7em;
+    min-width:          1em;
+    overflow:           hidden;
+    font-weight:        normal;
+    padding:            0 1px;
+    text-align:         center;
+    }
+@media all and (max-width: 700px) {
+  .max-width-4em th {
+    max-width:          2em;
+    word-wrap:          break-word;
+  }
+  .max-width-4em td {
+    max-width:          2em;
+    word-wrap:          normal;
+  }
+}
+
+/*=======================================================================*/
+.tableform {
+    max-width:          40em;
+}
+.tableform table {
+    width:              100%; 
+    color:              black;
+    background-color:   #F0E68C;  /* khaki */
+    background-image:   none;
+    border-color:       black;
+    border-style:       solid; 
+    border-width:       thin;
+    border-collapse:    separate;
+    border-spacing:     1px;
+    empty-cells:        hide;
+    padding:            0;
+}
+.tableform table tr th {height: 2em; text-align: right; width:  15em; padding: 4px; }
+.tableform table tr td {height: 2em; text-align: left;  width:  25em; padding: 4px; overflow-x: hidden; }
+
+/* Elements in td must fill all space:*/
+.tableform table td label,
+.tableform table td select,
+.tableform table td input  {
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+       -moz-box-sizing: border-box; /* Firefox, other Gecko */
+            box-sizing: border-box; /* Opera/IE 8+ */
+    width:              100%; 
+    height:             100%; 
+    margin:             0;
+    padding:            0 0.5em;
+}
+.tableform table td input[type="text"] ,
+.tableform table td input[type="email"] ,
+.tableform table td input[type="password"] {
+    height:             1.5em    !important;
+}
+.tableform table td input[type="file"],
+.tableform table td input[type="checkbox"] {
+    width:              auto    !important;
+    height:             auto    !important;
+}
+.tableform table td select[multiple="multiple"] {
+    height:             4em    !important;
+}
+.tableform > input {
+    border:             1px solid gray; 
+    height:             2em;
+    padding:            0.1em 0.5em;
+    margin:             0.5em;
+    }
+.tableform > input[type="submit"] ,
+.tableform > input[type="button"] {
+    min-width:          5em; 
+    background-color:   #F0E68C;  /* khaki */
+}
+.tableform > input:hover {
+    border:             1px solid black; 
+    cursor:             pointer;
+    color:              #00008B; /* DarkBlue */
+    }
+
+.red_button > input[type="submit"]:hover {
+    border:             1px solid red; 
+    cursor:             pointer;
+    color:              red;
+    }
+.break_after_a table td a::after {
+    content:"\a";           /* end of line after <a> in order to place next <input> & <label> in one line */
+    white-space: pre;
+}
+    
+.required label:after { 
+    content:    '*'; 
+    color:      red;
+}
+.striped tbody tr:nth-child(odd) {
+    background:     rgba(0,0,0,.05) !important;
+}
+
+/*=======================================================================*/
+/* Classes added to the tags in form in case of error values: 
+    required_css_class  = 'required'
+    error_css_class     = 'error'
+ */
+.error input {
+    color:              red;
+}
+.error ul {
+    margin:             0           !important;
+    padding:            0 0 0 1em   !important;
+}
+.error ul, li {
+    background-color:   rgba(0,0,0,0) !important;
+}
+.required input {
+    color:              darkred;
+}
+/*class for error input field, e.g. in datepicker */
+input.error {
+    color:              red;
+}
+
+/*=======================================================================*/
+.flex-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+/*  -webkit-flex-flow: column nowrap;*/
+  justify-content: flex-start;
+  align-items:  stretch;
+}
+
+/* from https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+.flex-container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items:  stretch;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 0.5em;
+  min-width: 2em;
+  height: 2em;
+  margin-top: 0.5em;
+  line-height: 30px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+*/
+/*=======================================================================*/
+.navigation {
+    display:            -webkit-box;
+    display:            -moz-box;
+    display:            -ms-flexbox;
+    display:            -webkit-flex;
+    display:            flex;
+    -webkit-flex-flow:  row wrap;
+    flex-flow:          row wrap;
+    justify-content:    center;
+    list-style:         none;
+    margin:             0;
+    padding:            0;
+    color:   			#8FBC8F;  /* DarkSeaGreen */
+    background:         #F0E68C;  /* khaki */
+}
+.navigation li {
+    color:              inherit;
+    background:         inherit;
+    margin:             0;
+}
+.navigation a, 
+.navigation span {
+    color:              inherit;
+    background:         inherit;
+    text-decoration:    none;
+    display:            block;
+    padding:            0.5em 1em;
+}
+.navigation a:hover {
+    background-color:   #D8CF7E;  /* khaki dark */
+}
+.navigation img {
+    height:             1.4em;
+    margin:             0;
+    padding:            0;
+    vertical-align:     text-bottom;
+    }
+
+@media all and (max-width: 600px) {
+  .navigation {
+    -webkit-flex-flow:  column wrap;
+    flex-flow:          column wrap;
+  }
+  .navigation a {
+    text-align:     center;
+    border-top:     1px solid rgba(255, 255, 255, 0.3);
+    border-bottom:  1px solid rgba(0, 0, 0, 0.1);
+  }
+  .navigation li:last-of-type a {
+    border-bottom:  none;
+  }
+}
+
+/*=======================================================================*/
+.navigation-small {
+    display:            -webkit-box;
+    display:            -moz-box;
+    display:            -ms-flexbox;
+    display:            -webkit-flex;
+    display:            flex;
+    -webkit-flex-flow:  row wrap;
+    flex-flow:          row wrap;
+    justify-content:    flex-end;
+    align-items:        baseline;
+    list-style:         none;
+    margin:             0;
+    padding:            0;
+
+    color:              inherit;
+    background:         inherit;
+
+}
+.navigation-small li {
+    color:              inherit;
+    background:         inherit;
+    margin:             0;
+}
+.navigation-small a, 
+.navigation-small span {
+    color:              inherit;
+    background:         inherit;
+    text-decoration:    none;
+    display:            inline-block;
+    padding:            0.2em;
+}
+.navigation-small a:hover {
+    color:              #D8CF7E;  /* khaki dark */
+}
+.navigation-small img {
+    height:             1.4em;
+    margin:             0;
+    padding:            0;
+    vertical-align:     text-bottom;
+    }
+
+/*=======================================================================*/
+.column-list {
+    list-style-type:        none; /* because Mozilla break line after mark*/
+    -webkit-column-width:   10em; /* Chrome, Safari, Opera */
+       -moz-column-width:   10em; /* Firefox */
+            column-width:   10em;
+    -webkit-column-gap:     3px; /* Chrome, Safari, Opera */
+       -moz-column-gap:     3px; /* Firefox */
+            column-gap:     3px;
+    -webkit-column-rule:    1px dotted; /* Chrome, Safari, Opera */
+       -moz-column-rule:    1px dotted; /* Firefox */
+            column-rule:    1px dotted;
+    min-height:             20em; overflow-y: auto;
+}
+.column-count-5 {
+    -webkit-column-width:   7em; /* Chrome, Safari, Opera */
+       -moz-column-width:   7em; /* Firefox */
+            column-width:   7em;
+    -webkit-column-count:   5; /* Chrome, Safari, Opera */
+       -moz-column-count:   5; /* Firefox */
+            column-count:   5;
+}
+.column-count-3 {
+    -webkit-column-width:   12em; /* Chrome, Safari, Opera */
+       -moz-column-width:   12em; /* Firefox */
+            column-width:   12em;
+    -webkit-column-count:   3; /* Chrome, Safari, Opera */
+       -moz-column-count:   3; /* Firefox */
+            column-count:   3;
+}
+.column-count-1 {
+    -webkit-column-width:   100%; /* Chrome, Safari, Opera */
+       -moz-column-width:   100%; /* Firefox */
+            column-width:   100%;
+    -webkit-column-count:   1; /* Chrome, Safari, Opera */
+       -moz-column-count:   1; /* Firefox */
+            column-count:   1;
+}
+ul.column-list {
+    list-style-position:    inside;
+    -webkit-padding-start:  0;
+       -moz-padding-start:  0;
+            padding-start:  0;
+    padding:                0;
+}
+.column-list li {
+    color:              inherit;
+    background:         inherit;
+    margin:             0;
+    display:            list-item;
+}
+.column-list a,
+.column-list span {
+    -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
+            column-break-inside: avoid;
+              page-break-inside: avoid;
+                   break-inside: avoid;
+    color:              inherit;
+    background:         inherit;
+    text-decoration:    none;
+    display:            block;
+    padding:            0.5em 1em;
+    word-wrap:          break-word;
+}
+.column-list a:hover {
+    background-color:   #D8CF7E;  /* khaki dark */
+}
+
+/*=======================================================================*/
+.wrapper {
+    display:            -webkit-box;
+    display:            -moz-box;
+    display:            -ms-flexbox;
+    display:            -webkit-flex;
+    display:            flex;
+    -webkit-flex-flow:  row wrap;
+    flex-flow:          row wrap;
+    justify-content:    flex-start;
+    text-align:         center;
+}
+/*
+    The element>element selector is used to select elements with a specific parent.
+    Note: Elements that are not directly a child of the specified parent, are not selected.
+*/
+.wrapper > * {
+    flex:       1 100%;
+}
+.header {
+}
+.footer {
+}
+.main {
+}
+.aside-1 {
+    padding:    0.25em;
+    text-align: left;
+/*  background: gold;*/
+}
+.aside-2 {
+    padding:    0.25em;
+    text-align: right;
+}
+.aside-1-5 {
+    padding:    0.25em;
+    text-align: left;
+}
+.aside-2-5 {
+    padding:    0.25em;
+    text-align: right;
+}
+
+@media all and (min-width: 400px) {
+  .aside {
+    flex-grow:  1;
+    flex-basis: auto;
+/*    flex:   1 auto;*/
+  }
+}
+@media all and (min-width: 600px) {
+  .main {
+    flex:       3 0px;
+  }
+  .aside-1 {
+    order:      1;
+    max-width:  20%;
+  }
+  .main {
+    order:      2;
+  }
+  .aside-2 {
+    order:      3;
+    max-width:  20%;
+  }
+  .footer {
+    order:      4;
+  }
+  .aside-1-5 {
+    order:      1;
+    max-width:  5%;
+  }
+  .aside-2-5 {
+    order:      3;
+    max-width:  5%;
+  }
+}
+@media all and (min-width: 800px) {
+  .aside-1 {
+    max-width:      20%;
+  }
+  .aside-2 {
+    max-width:      20%;
+  }
+  .aside-1-5 {
+    max-width:      5%;
+  }
+  .aside-2-5 {
+    max-width:      5%;
+  }
+}
+/* Trick for correct calculating of width for EMPTY floating element.
+   The max-width property overrides the width property,
+   but the existence of small width property tells to browser to calculate
+   real width equal for both empty and non-empty elements. 
+   Left & rigth padding leave its values, top & bottom ones are set to 0 
+   in order to set all height to 0.
+ */
+.aside-empty {
+    width:              15em;
+    padding-top:        0;
+    padding-bottom:     0;
+    min-height:         1px;
+}
+.aside-empty-5 {
+    width:              5em;
+    padding-top:        0;
+    padding-bottom:     0;
+    min-height:         1px;
+}
+
+
+/*=======================================================================*/
+/* Mixins for changing some parameters of style: */
+/*=======================================================================*/
+.buttons-y {
+    -webkit-flex-flow:  column wrap;
+            flex-flow:  column wrap;
+    list-style:         none;
+}
+.buttons-y li {
+    color:              inherit;
+    background:         inherit;
+    margin:             0;
+}
+.buttons-y button {
+    width:              100%;
+}
+
+.align-flex-start {
+    align-self:         flex-start;
+}
+.align-flex-end {
+    align-self:         flex-end;
+}
+
+.justify-content-center {
+    justify-content:    center;
+}
+.justify-content-left {
+    justify-content:    flex-start;
+}
+.justify-content-right {
+    justify-content:    flex-end;
+}
+
+.align-items-center {
+    align-items:        center;
+}
+.align-items-left {
+    align-items:        flex-start;
+}
+.align-items-right {
+    align-items:        flex-end;
+}
+.align-items-stretch {
+    align-items:        stretch;
+}
+
+.text-align-center {
+    text-align:         center;
+}
+.text-align-left {
+    text-align:         left    !important;
+}
+
+.text-align-right {
+    text-align:         right   !important;
+}
+
+.padding-0 {
+    padding:            0;
+}
+.padding-02 {
+    padding:            0.2em !important;
+}
+.padding-y-0 {
+    padding-top:        0 !important;
+    padding-bottom:     0 !important;
+}
+.padding-y-05 {
+    padding-top:        0.5em !important;
+    padding-bottom:     0.5em !important;
+}
+.padding-u-05 {
+    padding-top:        0.5em !important;
+    padding-bottom:     0 !important;
+}
+.padding-y-07 {
+    padding-top:        0.7em !important;
+    padding-bottom:     0.7em !important;
+}
+
+.cell-height-1em5 table tr th, 
+.cell-height-1em5 table tr td {
+    height:             1.5em; 
+}
+
+.height-20em {
+    height:             20em;
+}
+
+.display-block a, 
+.display-block span {
+    display:            block;
+}
+.color-negative {
+    color:              #F0E68C;  /* khaki */
+    background-color:	#8FBC8F;  /* DarkSeaGreen */
+    text-align:         center;
+}
+.color-positive {
+    color:   			#8FBC8F;  /* DarkSeaGreen */
+    background-color:   #F0E68C;  /* khaki */
+}
+.color-positive a:hover {
+    color:   			#8FBC8F;  /* DarkSeaGreen */
+    background-color:   #D8CF7E;  /* khaki dark */
+}
+/*=======================================================================*/
+.marked {
+    background-color: pink;
+    border: 3px red solid;
+}
+
+#accordion div {
+    padding:        0.5em;
+}
+#accordion * {
+    color:          #000;
+}
+#accordion h3 {
+    background-color:   rgba(240,230,140,.9);
+}

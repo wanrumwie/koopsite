@@ -1,0 +1,168 @@
+Порядок створення проекту Django
+---------------------------------
+Команда:
+$ django-admin startproject mysite
+
+Результат: створено папки і файли:
+mysite/
+    manage.py
+    mysite/
+        __init__.py
+        settings.py
+        urls.py
+        wsgi.py
+
+---------------------------------
+При потребі редагуємо настройки у файлі:
+mysite/settings.py
+
+Напр. NAME для бази даних, TIME_ZONE
+
+---------------------------------
+Команда:
+$ python manage.py migrate
+
+Створюються таблиці, необхідні для застосунків,
+вказаних в INSTALLED_APPS в mysite/settings.py
+
+---------------------------------
+Команда:
+$ python manage.py runserver
+
+Запущено сервер для розробки Django
+Після цього можна в браузері піти на сторінку
+http://127.0.0.1:8000/
+
+---------------------------------
+Команда:
+$ python manage.py startapp polls
+
+Створено файли і каталоги власного застосунку polls
+polls/
+    __init__.py
+    admin.py
+    migrations/
+        __init__.py
+    models.py
+    tests.py
+    views.py
+
+---------------------------------
+Створюємо власні моделі Question, Choice:
+Для цього у файл
+polls/models.py
+додаємо нові класи:
+class Question(models.Model):
+    question_text = models.CharField(max_length=200)
+    ...
+class Choice(models.Model):
+    question = models.ForeignKey(Question)
+    ...
+
+---------------------------------
+Доповнюємо список застосунків у файлі:
+mysite/settings.py
+INSTALLED_APPS = (
+    'django.contrib.admin',
+    ...
+    'polls',
+)
+
+---------------------------------
+Внесені в моделі зміни зберігаємо в міграціях
+Команда:
+$ python manage.py makemigrations polls
+
+---------------------------------
+При потребі можна переглянути зроблену міграцію
+Команда:
+$ python manage.py sqlmigrate polls 0001
+
+---------------------------------
+При потребі можна перевірити проект, не застосовуючи міграцій
+Команда:
+$ python manage.py check
+
+---------------------------------
+Створюємо таблиці для наших моделей в базі даних
+Команда:
+$ python manage.py migrate
+
+Команда migrate виконує всі міграції, які ще не виконувались
+
+==================================
+Порядок внесення змін в моделі:
+    models.py - внести зміни в моделі в файлі
+    python manage.py makemigrations - створити міграцію
+    python manage.py migrate - застосувати зміни до бази даних
+Робочим каталогом пов.бути каталог, в якому є файл manage.py
+==================================
+Запуск сервера для сторінки http://127.0.0.1:8000/
+$ python manage.py runserver
+Але краще запускати з PyCharm спец.файл manage-runserver.py
+==================================
+
+
+==================================
+==================================
+Створення інтерфейсу адміністратора
+---------------------------------
+Команда:
+$ python manage.py createsuperuser
+
+Результат: буде створено файл адміністратора (напр. admin.py)
+з можливістю герувати Urups i Users
+
+---------------------------------
+Зареєструвати моделі в сайті адміністратора: у файлі admin.py
+from .models import Question
+admin.site.register(Question)
+
+---------------------------------
+Можна створити проміжний клас для представлення моделі: у файлі admin.py
+class QuestionAdmin(admin.ModelAdmin):
+    fields = ['pub_date', 'question_text']
+admin.site.register(Question, QuestionAdmin)
+
+---------------------------------
+Для одночасного відображення звязаних таблиць: у файлі admin.py
+from .models import Choice, Question
+class ChoiceInline(admin.StackedInline):
+    model = Choice
+    extra = 3
+class QuestionAdmin(admin.ModelAdmin):
+    fieldsets = ...
+    inlines = [ChoiceInline]
+admin.site.register(Question, QuestionAdmin)
+
+---------------------------------
+Настройка шаблонів проекту:
+    створити каталог templates в каталозі проекту (де є manage.py)
+    в settings.py згадати templates в полі 'DIRS' словника TEMPLATES
+    Створити папку admin в папці templates
+    скопіювати шаблон  admin/base_site.html з вбудованих
+        шаблонів Django (django/contrib/admin/templates)
+    Тепер можна керувати шаблоном сайту адміністратора.
+
+---------------------------------
+Настройка шаблонів застосунку:
+    Користувач повинен ввести адресу URL в полі браузера.
+    Django буде шукати відповідний файл *.html у такому порядку:
+        в модулі koopsite.settings знайде змінну:
+            ROOT_URLCONF = 'koopsite.urls'
+        в модулі koopsite.urls перебиратиме шаблони в змінній urlpatterns:
+            urlpatterns = [
+                url(r'^flats/', include('flats.urls')),
+                url(r'^admin/', include(admin.site.urls)),
+            ]
+        при співпадінні URL з flats/ шукатиме далі в flats.urls
+            urlpatterns = [
+                url(r'^$'                    , FlatList.as_view()   ),
+                url(r'^(?P<flat_id>[0-9]+)/$', views.oneflat        ),
+            ]
+
+    Введений URL    Представлення (view)отримає аргументи
+    .../flats/      FlatList.as_view()
+    .../flats/43/   views.oneflat           flat_id = 43
+
+

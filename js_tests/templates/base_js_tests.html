@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>
+    </title>
+    {% load staticfiles %}
+
+    {% block link_qunit %}
+        <link rel="stylesheet" href="{% static 'qunit/qunit.css' %}"
+              type="text/css" media="screen">
+    {% endblock link_qunit %}
+
+</head>
+
+<body>
+
+    <h1 id="qunit-header">
+        QUnit/Sinon.JS Test --- {% block title %}{% endblock title %}
+        {% include "block_href_js_tests.html" %}
+    </h1>
+    <div id="qunit"></div>
+    <ol id="qunit-tests"></ol>
+
+    <div id="qunit-fixture">
+
+        {% block qunit-fixture %}
+        {% endblock qunit-fixture %}
+
+    </div>
+
+    {% block script_jquery %}
+        {% include "block_js_jquery.html" %}
+    {% endblock script_jquery %}
+
+    {% block script_jquery_ui %}
+        {% include "block_js_jquery_ui.html" %}
+    {% endblock script_jquery_ui %}
+
+    {% block script_qunit %}
+        <script src="{% static 'qunit/qunit.js' %}"       ></script>
+    {% endblock script_qunit %}
+
+    {% block script_sinon %}
+        <script src="{% static 'qunit/sinon.js' %}"       ></script>
+    {% endblock script_sinon %}
+
+    {% block script_sinon_qunit %}
+        <script src="{% static 'qunit/sinon-qunit.js' %}" ></script>
+    {% endblock script_sinon_qunit %}
+
+    {% block script_library %}
+    {% endblock script_library %}
+
+    {% block tested_script %}
+    {% endblock tested_script %}
+
+    {% block test_script %}
+    {% endblock test_script %}
+
+</body>
+</html>
+

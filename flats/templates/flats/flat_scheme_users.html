@@ -1,0 +1,37 @@
+{% extends "flats/base_flat_scheme.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% load koop_template_filters %}
+{% load staticfiles %}
+
+{% block page-name %}
+    Зареєстровані користувачі сайту
+{% endblock %}
+
+{% block flat-td-a-href %}
+    <td class="{{ f|flat_user_CSS_class }}"
+            ><a href="{% url 'flats:flat-users-list' f.id %}">{{ f.flat_No }}</a></td>
+{% endblock %}
+
+{% block empty-flat-td %}
+    <td></td>
+{% endblock %}
+
+{% block under-table %}
+    <div class="inline-blocks">
+        <div class="legend">Клацніть мишкою по номеру квартири, щоб побачити список користувачів:</div>
+    </div>
+    <div class="inline-blocks">
+        <div class="legend-box flat-has-member"></div>
+        <div class="legend">- зареєстровані користувачі-члени кооперативу</div>
+    </div>
+    <div class="inline-blocks">
+        <div class="legend-box flat-has-users"></div>
+        <div class="legend">- прості користувачі</div>
+    </div>
+
+{% endblock %}
+
+{% block href-flat-scheme-users %}
+{% endblock %}

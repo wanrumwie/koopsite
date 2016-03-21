@@ -1,0 +1,29 @@
+{% extends "folders/base_folder_detail.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block page-name %}
+    Деталі файла: {{ report }}
+{% endblock %}
+
+{% block href-report-reload %}
+    {% comment %}
+    <li><a href="{% url 'folders:report-reload' report.id %}">Переладувати файл</a></li>
+    {% endcomment %}
+{% endblock %}
+
+{% block href-folder-list %}
+{% endblock %}
+
+{% block href-folder-create-in %}
+{% endblock %}
+
+{% block href-folder-update %}
+{% endblock %}
+{% block href-folder-download %}
+{% endblock %}
+{% block href-folder-delete %}
+{% endblock %}
+{% block href-report-upload-in %}
+{% endblock %}
+

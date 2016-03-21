@@ -1,0 +1,19 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    Javascript tests - KoopSite - Folders app
+{% endblock title %}
+
+{% block qunit-fixture %}
+{% endblock qunit-fixture %}
+
+{% block tested_script %}
+    <script src="{% static 'js/folder_browtab.js' %}"    ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'folders/test_folders.js' %}" ></script>
+{% endblock test_script %}
+

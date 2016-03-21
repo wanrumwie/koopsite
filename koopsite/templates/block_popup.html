@@ -1,0 +1,81 @@
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"
+          href='{% static "css/koop_popup.css" %}'
+          >
+
+    <!-- Код для віджетів jQuery UI: -->
+
+    <!-- Контейнер для універсального діалог-повідомлення: -->
+    <div  id="dialog-message"
+          class="nodisplay"
+          >
+    </div>
+
+    <!-- Контейнер для універсального діалог-підтвердження: -->
+    <div  id="dialog-confirm"
+          class="nodisplay"
+          >
+    </div>
+
+    <!-- Контейнер діалог-форма, яка буде оброблятися ф-ціями:
+        ajax_folderCreate
+        ajax_folderRename
+        ajax_reportCreate
+        ajax_reportRename
+    -->
+    <div  id="dialog-box-form"
+          class="nodisplay"
+          >
+        <form id="dialog-form" method="post"
+             class="popup-form"
+             onsubmit="return false;"
+             enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="id_name"></label>
+                        </td>
+                        <td>
+                            <input id="id_name" maxlength="256"
+                                   name="name" type="text" autofocus/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <!-- Контейнер для progressbar: -->
+                            <div id="progressbar"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Код для віджета jsTree: -->
+
+    <!-- Контейнер для діалог-повідомлення,
+        всередині якого містисься контейнер віджета jsTree: -->
+    <div  id="dialog-box-tree"
+          title="Перемістити елемент до теки..."
+          class="nodisplay"
+          >
+        <div  id="folders-tree-container"
+              title="{{ folder }}"
+              >
+            <!--Наприклад:-->
+            <ul><li id="1">teka01 Root
+                    <ul><li id="2">teka02 Статутні документи    </li>
+                        <li id="3">teka03                       </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        console.log("block_popup.html is loaded");
+    </script>

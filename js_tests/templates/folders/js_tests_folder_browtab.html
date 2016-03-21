@@ -1,0 +1,27 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    KoopSite - folders - folder_browtab.js
+{% endblock title %}
+
+{% block qunit-fixture %}
+
+    {% include "folders/block_dummy_folder_browtab.html" %}
+
+    {% include "block_ajax_browtab.html" %}
+
+{% endblock qunit-fixture %}
+
+{% block script_library %}
+    <script src="{% static 'js/browtab.js' %}"          ></script>
+{% endblock script_library %}
+
+{% block tested_script %}
+    <script src="{% static 'js/folder_browtab.js' %}"          ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'folders/tests_folder_browtab.js' %}"></script>
+{% endblock test_script %}

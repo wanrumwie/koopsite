@@ -1,0 +1,54 @@
+{% extends "base_koop_change.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block page-name %}
+    Реєстрація нового користувача
+{% endblock %}
+
+{% block welcome_text %}
+    {% if user.is_authenticated %}
+        Вітаємо, {{ user }}!
+    {% else %}
+        Вітаємо, {{ one }}!
+    {% endif %}
+{% endblock %}
+
+{% block message_text %}
+    {% if user.is_authenticated %}
+        Ви зареєстрували нового користувача: {{ one }}
+    {% else %}
+        Дякуємо, що зареєструвались на сайті!
+    {% endif %}
+        <br><br>
+        Просимо звернутися до адміністратора сайту<br>
+        або до керівництва кооперативу,<br>
+        щоб активувати новий обліковий запис.
+
+{% endblock %}
+
+{% block href_continue %}
+    {% if user.is_authenticated %}
+        Зараз Ви можете <a href="{% url 'index' %}">продовжити роботу</a>
+        або <a href="{% url 'logout' %}">вийти з облікового запису</a>
+    {% else %}
+        Зараз Ви можете <a href="{% url 'index' %}">
+        повернутися на головну сторінку без аутентифікації</a>
+    {% endif %}
+{% endblock %}
+
+{% block one_two_forms %}
+    <strong>Заповніть форму реєстрації:</strong><br />
+    <p>
+    Після реєстрації Вам потрібно буде звернутися
+    до адміністратора сайту або до керівництва кооперативу
+    щоб активувати новий обліковий запис.
+    </p>
+    {% include "block_one_two_forms.html" %}
+
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}
+

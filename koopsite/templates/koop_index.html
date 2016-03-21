@@ -1,0 +1,44 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+
+    {% load staticfiles %}
+
+    <div class="wrapper">
+        <!--<div class="header">Header</div>-->
+        <div class="main">
+            <img class="fill-space-change-padding"
+                 src="{% static 'img/koop_building_450x600.jpg' %}"
+                 alt="Будинок кооперативу" />
+        </div>
+        <div class="aside aside-1">
+            <h2 id="page-name">Головна сторінка</h2>
+            {% if user.is_authenticated %}
+                <h2>Вітаємо, {{ user.username }}!</h2>
+            {% else %}
+                <ul id="body-aside-1-navigation"
+                    class="navigation-small buttons-y" >
+                    <li>
+                        <a href="{% url 'login' %}">Увійти</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register' %}">Зареєструватися</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="aside aside-2">
+            {% include "block_aside_info.html" %}
+        </div>
+        <!--<footer class="footer">Footer</footer>-->
+    </div>
+{% endblock %}
+
+{% block href-index %}
+{% endblock %}
+
+{% block href-back %}
+{% endblock %}
+

@@ -1,0 +1,200 @@
+Результати тестування
+Посилання листів користувачу
+
+2015 01 18 15:35 не пройшов лист з pythoneverywhere від adm.koop@gmail.com
+
+2015 01 18 15:55 не пройшов лист з pythoneverywhere від wanrumwie@gmail.com
+2015 01 18 16:11 не пройшов лист з pythoneverywhere від wanrumwie@gmail.com
+pythoneverywhere = True
+if pythoneverywhere:
+    EMAIL_HOST = "smtp.gmail.com"
+    EMAIL_HOST_USER = "wanrumwie@gmail.com"
+    EMAIL_HOST_PASSWORD = "Jkzs>hrj314"
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
+SMTPAuthenticationError ... Please log in via your web browser and then try again
+
+2015 01 18 16:06 не пройшов лист з pythoneverywhere від wanrumwie@gmail.com
+Змінено пароль на пароль для акаунту в pythoneverywhere
+    EMAIL_HOST_PASSWORD = "Hopak1898pyth"
+SMTPAuthenticationError Username and Password not accepted
+
+
+2015 01 19 12:30 не пройшов лист з pythoneverywhere від adm.koop@gmail.com
+xhrErrorAlert:
+ xhr.status=500
+ xhr.statusText=INTERNAL SERVER ERROR
+ xhr.responseText=SMTPRecipientsRefused at /adm/users/ajax-activate-account
+{'': (555, b'5.5.2 Syntax error. b34sm11868312qgb.31 - gsmtp')}
+
+Request Method: POST
+Request URL: http://wanrumwie.pythonanywhere.com/adm/users/ajax-activate-account
+Django Version: 1.8.7
+Python Executable: /usr/local/bin/uwsgi
+Python Version: 3.4.3
+Python Path: ['/var/www', '.', '', '/var/www', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/plat-x86_64-linux-gnu', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/lib-dynload', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-x86_64-linux-gnu', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages', '/home/wanrumwie/koopsite']
+Server time: Вт, 19 Січ 2016 10:27:50 +0000
+Installed Applications:
+('django.contrib.admin',
+ 'django.contrib.auth',
+ 'django.contrib.contenttypes',
+ 'django.contrib.sessions',
+ 'django.contrib.messages',
+ 'django.contrib.staticfiles',
+ 'django.contrib.sites',
+ 'koopsite',
+ 'flats',
+ 'folders',
+ 'lists')
+Installed Middleware:
+('django.contrib.sessions.middleware.SessionMiddleware',
+ 'django.middleware.locale.LocaleMiddleware',
+ 'django.middleware.common.CommonMiddleware',
+ 'django.middleware.csrf.CsrfViewMiddleware',
+ 'django.contrib.auth.middleware.AuthenticationMiddleware',
+ 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+ 'django.contrib.messages.middleware.MessageMiddleware',
+ 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ 'django.middleware.security.SecurityMiddleware')
+
+Traceback:
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/handlers/base.py" in get_response
+  132.                     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/views/generic/base.py" in view
+  71.             return self.dispatch(request, *args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/utils/decorators.py" in _wrapper
+  34.             return bound_func(*args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/contrib/auth/decorators.py" in _wrapped_view
+  22.                 return view_func(request, *args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/utils/decorators.py" in bound_func
+  30.                 return func.__get__(self, type(self))(*args2, **kwargs2)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in dispatch
+  348.         return super(AjaxActivateAccount, self).dispatch(request, *args, **kwargs)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in dispatch
+  196.         return self.handler(request)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in handler
+  212.             user, msg = self.processing(user, profile, self.msg)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in processing
+  368.             self.send_e_mail(user, e_msg_body)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in send_e_mail
+  278.                            message=e_msg)
+File "/home/wanrumwie/koopsite/koopsite/functions.py" in sendMailToUser
+  541.     send_mail(subject, message, EMAIL_HOST_USER, [email])
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/__init__.py" in send_mail
+  62.     return mail.send()
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/message.py" in send
+  303.         return self.get_connection(fail_silently).send_messages([self])
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/backends/smtp.py" in send_messages
+  107.                 sent = self._send(message)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/backends/smtp.py" in _send
+  123.             self.connection.sendmail(from_email, recipients, message.as_bytes(linesep='\r\n'))
+File "/usr/lib/python3.4/smtplib.py" in sendmail
+  792.             raise SMTPRecipientsRefused(senderrs)
+
+Exception Type: SMTPRecipientsRefused at /adm/users/ajax-activate-account
+Exception Value: {'': (555, b'5.5.2 Syntax error. b34sm11868312qgb.31 - gsmtp')}
+Request information:
+GET: No GET data
+
+POST:
+csrfmiddlewaretoken = 'gBYn6ZOV87M5F3QjSoi3gduuiqknlzsf'
+client_request = '{"browTabName":"users_table","parent_id":"","sendMail":true,"selRowIndex":"2","model":"user","id":"24","name":"Orest"}'
+
+FILES: No FILES data
+
+COOKIES:
+sessionid = '5yyup7s3gtm5j1ar3wmf1jiq6vzm2cxo'
+_ga = 'GA1.2.1987690878.1448728218'
+csrftoken = 'gBYn6ZOV87M5F3QjSoi3gduuiqknlzsf'
+
+
+
+2015 01 19 12:35 пройшов лист з Django від adm.koop@gmail.com на termokosyno
+
+2015 01 19 13:15 не пройшов лист з pythoneverywhere від <adm.koop@gmail.com> на termokosyno
+xhrErrorAlert:
+ xhr.status=500
+ xhr.statusText=INTERNAL SERVER ERROR
+ xhr.responseText=SMTPAuthenticationError at /adm/users/ajax-activate-account
+(535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/answer/14257 w140sm11879181qhb.37 - gsmtp')
+
+Request Method: POST
+Request URL: http://wanrumwie.pythonanywhere.com/adm/users/ajax-activate-account
+Django Version: 1.8.7
+Python Executable: /usr/local/bin/uwsgi
+Python Version: 3.4.3
+Python Path: ['/var/www', '.', '', '/var/www', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/plat-x86_64-linux-gnu', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/lib-dynload', '/usr/lib/python3.4', '/usr/lib/python3.4/plat-x86_64-linux-gnu', '/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages', '/home/wanrumwie/koopsite']
+Server time: Вт, 19 Січ 2016 11:16:06 +0000
+Installed Applications:
+('django.contrib.admin',
+ 'django.contrib.auth',
+ 'django.contrib.contenttypes',
+ 'django.contrib.sessions',
+ 'django.contrib.messages',
+ 'django.contrib.staticfiles',
+ 'django.contrib.sites',
+ 'koopsite',
+ 'flats',
+ 'folders',
+ 'lists')
+Installed Middleware:
+('django.contrib.sessions.middleware.SessionMiddleware',
+ 'django.middleware.locale.LocaleMiddleware',
+ 'django.middleware.common.CommonMiddleware',
+ 'django.middleware.csrf.CsrfViewMiddleware',
+ 'django.contrib.auth.middleware.AuthenticationMiddleware',
+ 'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+ 'django.contrib.messages.middleware.MessageMiddleware',
+ 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ 'django.middleware.security.SecurityMiddleware')
+
+Traceback:
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/handlers/base.py" in get_response
+  132.                     response = wrapped_callback(request, *callback_args, **callback_kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/views/generic/base.py" in view
+  71.             return self.dispatch(request, *args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/utils/decorators.py" in _wrapper
+  34.             return bound_func(*args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/contrib/auth/decorators.py" in _wrapped_view
+  22.                 return view_func(request, *args, **kwargs)
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/utils/decorators.py" in bound_func
+  30.                 return func.__get__(self, type(self))(*args2, **kwargs2)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in dispatch
+  348.         return super(AjaxActivateAccount, self).dispatch(request, *args, **kwargs)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in dispatch
+  196.         return self.handler(request)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in handler
+  212.             user, msg = self.processing(user, profile, self.msg)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in processing
+  368.             self.send_e_mail(user, e_msg_body)
+File "/home/wanrumwie/koopsite/koopsite/viewsajaxuser.py" in send_e_mail
+  278.                            message=e_msg)
+File "/home/wanrumwie/koopsite/koopsite/functions.py" in sendMailToUser
+  541.     send_mail(subject, message, EMAIL_HOST_USER, [email])
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/__init__.py" in send_mail
+  62.     return mail.send()
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/message.py" in send
+  303.         return self.get_connection(fail_silently).send_messages([self])
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/backends/smtp.py" in send_messages
+  100.             new_conn_created = self.open()
+File "/home/wanrumwie/.virtualenvs/django18/lib/python3.4/site-packages/django/core/mail/backends/smtp.py" in open
+  67.                 self.connection.login(self.username, self.password)
+File "/usr/lib/python3.4/smtplib.py" in login
+  652.         raise SMTPAuthenticationError(code, resp)
+
+Exception Type: SMTPAuthenticationError at /adm/users/ajax-activate-account
+Exception Value: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8  https://support.google.com/mail/answer/14257 w140sm11879181qhb.37 - gsmtp')
+Request information:
+GET: No GET data
+
+POST:
+csrfmiddlewaretoken = 'gBYn6ZOV87M5F3QjSoi3gduuiqknlzsf'
+client_request = '{"browTabName":"users_table","parent_id":"","sendMail":true,"selRowIndex":"7","model":"user","id":"20","name":"Termo"}'
+
+FILES: No FILES data
+
+COOKIES:
+sessionid = '5yyup7s3gtm5j1ar3wmf1jiq6vzm2cxo'
+_ga = 'GA1.2.1987690878.1448728218'
+csrftoken = 'gBYn6ZOV87M5F3QjSoi3gduuiqknlzsf'
+_gat = '1'

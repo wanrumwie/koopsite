@@ -1,0 +1,48 @@
+{% extends "folders/base_folder.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+{# Є одночасно базовим шаблоном для групи шаблонів #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+        {% block page-name %}
+            {# Переозначити тут назву сторінки, наприклад: Деталі теки: {{ folder }} #}
+        {% endblock %}
+        </h3>
+    </div>
+    <table id="body-table"
+        class="tabledetail">
+        <tr>
+            <th>Параметр</th>
+            <th>Значення</th>
+        </tr>
+        {% for k, v in obj_details %}
+            <tr>
+                <td>{{ k }}</td>
+                <td class="text-align-left">{{ v }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% include "block_paginator.html" %}
+
+{% endblock %}
+
+{% block href-folder-contents %}
+{% endblock %}
+{% block href-folder-parent %}
+{% endblock %}
+
+{% block href-folder-create %}
+{% endblock %}
+{% block href-report-upload %}
+{% endblock %}
+
+{% block href-report-detail %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'folders:folder-list-all' %}">Уверх</a></li>
+{% endblock %}

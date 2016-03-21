@@ -1,0 +1,1710 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/koopsite/tests/test_viewsajaxuser.py" line="214" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a6a7824a-5729-4316-8075-18bce779bc56" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" afterPath="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/koopsite/settings.py" afterPath="$PROJECT_DIR$/koopsite/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="koopsite.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored mask="*.pyc" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="koopsite" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="ft_base.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.3313253" vertical-offset="4102" max-vertical-offset="11414">
+              <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="true" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Push.Settings">
+    <option name="myUpdateMethod" value="REBASE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitLogSettings">
+    <option name="myStructureFilterPaths" />
+    <option name="myDateState">
+      <MyDateState />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/folders/static/js/folder_browtab_ui.js" />
+        <option value="$PROJECT_DIR$/koopsite/templates/block_js_jquery_ui.html" />
+        <option value="$PROJECT_DIR$/koopsite/templates/block_js_jquery.html" />
+        <option value="$PROJECT_DIR$/koopsite/templates/block_js_jstree.html" />
+        <option value="$PROJECT_DIR$/js_tests/js/tests_browtab.js" />
+        <option value="$PROJECT_DIR$/js_tests/templates/base_js_tests.html" />
+        <option value="$PROJECT_DIR$/js_tests/js/tests_browtab_ui.js" />
+        <option value="$PROJECT_DIR$/koopsite/static/js/users_browtab_ui.js" />
+        <option value="$PROJECT_DIR$/js_tests/templates/js_tests_browtab_ajax.html" />
+        <option value="$PROJECT_DIR$/js_tests/koopsite/tests_users_browtab_ui.js" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_ajax.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/folders/block_dummy_folder_browtab.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/folders/js_tests_folder_browtab_ajax.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/folders/js_tests_folder_browtab.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/js_tests_browtab_ui.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/js_tests_browtab_sort.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/folders/js_tests_folder_browtab_sort.html" />
+        <option value="$PROJECT_DIR$/koopsite/tests/test_urls.py" />
+        <option value="$PROJECT_DIR$/functional_tests/koopsite/tests_all_js.py" />
+        <option value="$PROJECT_DIR$/manage-test-JS.py" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_sort.html" />
+        <option value="$PROJECT_DIR$/html_in.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/block_dummy_users_browtab.html" />
+        <option value="$PROJECT_DIR$/static/js/functions.js" />
+        <option value="$PROJECT_DIR$/static_root/js/functions.js" />
+        <option value="$PROJECT_DIR$/koopsite/templates/block_adm_users_buttons.html" />
+        <option value="$PROJECT_DIR$/koopsite/templates/koop_adm_users_table.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_ui.html" />
+        <option value="$PROJECT_DIR$/folders/templates/folders/block_folder_contents_buttons.html" />
+        <option value="$PROJECT_DIR$/folders/templates/folders/folder_contents.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/folders/js_tests_folder_browtab_ui.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/block_href_js_tests.html" />
+        <option value="$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_filter.html" />
+        <option value="$PROJECT_DIR$/js_tests/koopsite/tests_users_browtab_filter.js" />
+        <option value="$PROJECT_DIR$/koopsite/templates/block_adm_users_filter.html" />
+        <option value="$PROJECT_DIR$/static/css/koop_style.css" />
+        <option value="$PROJECT_DIR$/koopsite/viewsajaxuser.py" />
+        <option value="$PROJECT_DIR$/koopsite/tests/test_functions.py" />
+        <option value="$PROJECT_DIR$/koopsite/models.py" />
+        <option value="$PROJECT_DIR$/koopsite/functions.py" />
+        <option value="$PROJECT_DIR$/koopsite/views.py" />
+        <option value="$PROJECT_DIR$/koopsite/tests/test_models.py" />
+        <option value="$PROJECT_DIR$/koopsite/tests/test_views.py" />
+        <option value="$PROJECT_DIR$/functional_tests/koopsite/tests_register.py" />
+        <option value="$PROJECT_DIR$/js_tests/urls.py" />
+        <option value="$PROJECT_DIR$/js_tests/tests_all_js_by_selenium.py" />
+        <option value="$PROJECT_DIR$/folders/tests/test_functions.py" />
+        <option value="$PROJECT_DIR$/folders/tests/test_models.py" />
+        <option value="$PROJECT_DIR$/koopsite/settings.py" />
+        <option value="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>HTML</id>
+          </State>
+          <State>
+            <id>Portability issues</id>
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Buildout</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="uploads" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="folders" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="0" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="koopsite" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="media" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="recentsLimit" value="5" />
+    <property name="FullScreen" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://C:/PyPrograms/Django/koopsite/koopsite/viewsajax.py" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="164" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="166" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="166" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="827" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="165" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="165" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="166" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="827" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings />
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests\koopsite" />
+      <recent name="C:\PyPrograms\Django\koopsite\folders\templates\folders" />
+      <recent name="C:\PyPrograms\Django\koopsite\koopsite\templates" />
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests\templates\koopsite" />
+      <recent name="C:\PyPrograms\Django\koopsite" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\PyPrograms\Django\koopsite\functional_tests\files" />
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests" />
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests\templates" />
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests\js" />
+      <recent name="C:\PyPrograms\Django\koopsite\js_tests\templates\koopsite" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.manage-0-runserver">
+    <configuration default="false" name="manage-test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-test.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-collectstatic-clear" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-collectstatic-clear.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-2-migrate" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-2-migrate.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-test-JS" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-test-JS.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-test-FT-folders" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-test-FT-folders.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-0-runserver" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-0-runserver.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-1-makemigrations" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-1-makemigrations.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <list size="7">
+      <item index="0" class="java.lang.String" itemvalue="Python.manage-0-runserver" />
+      <item index="1" class="java.lang.String" itemvalue="Python.manage-1-makemigrations" />
+      <item index="2" class="java.lang.String" itemvalue="Python.manage-test" />
+      <item index="3" class="java.lang.String" itemvalue="Python.manage-collectstatic-clear" />
+      <item index="4" class="java.lang.String" itemvalue="Python.manage-2-migrate" />
+      <item index="5" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+      <item index="6" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+        <item index="1" class="java.lang.String" itemvalue="Python.manage-test" />
+        <item index="2" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+        <item index="3" class="java.lang.String" itemvalue="Python.manage-collectstatic-clear" />
+        <item index="4" class="java.lang.String" itemvalue="Python.manage-2-migrate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",SHOW_INHERITED,ALPHA_COMPARATOR" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a6a7824a-5729-4316-8075-18bce779bc56" name="Default" comment="" />
+      <created>1440839632080</created>
+      <updated>1440839632080</updated>
+    </task>
+    <task id="LOCAL-00001" summary="lists app appended with basic html home_page">
+      <created>1448451752062</created>
+      <updated>1448451752062</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Refactor lists home page to use a template">
+      <created>1448457447972</created>
+      <updated>1448457447972</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Refactor lists views to work with request.POST">
+      <created>1448476645924</created>
+      <updated>1448476645924</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Move functional tests to subfolder; using LiveServerTestCase for working test with dummy DB.">
+      <created>1448535426312</created>
+      <updated>1448535426312</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Уник помилки ConnectionResetError: [WinError 10054] в LiveServerTestCase. Стор.92 TDD with Python">
+      <created>1448558738056</created>
+      <updated>1448558738056</updated>
+    </task>
+    <task id="LOCAL-00007" summary="URLs for forms x2, moved code in views + tests, new URL">
+      <created>1448560497148</created>
+      <updated>1448560497148</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Відновлено db після помилки з foreignkey">
+      <created>1448565586564</created>
+      <updated>1448565586564</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Створено модель List">
+      <created>1448568218768</created>
+      <updated>1448568218768</updated>
+    </task>
+    <task id="LOCAL-00010" summary="new URL + view for adding to existing lists. FT passes :-)">
+      <created>1448615158351</created>
+      <updated>1448615158351</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Koopsite: працюють кілька перших тестів">
+      <created>1448629179994</created>
+      <updated>1448629179994</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Koopsite: працює test_unauthorized_user_can_go_to_links крім /folders/1/contents/">
+      <created>1448651496109</created>
+      <updated>1448651496109</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Koopsite: працює перевірка кількості лінків на сторінці">
+      <created>1448709696286</created>
+      <updated>1448709696286</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Lists: add bootstrap static files">
+      <created>1448716459847</created>
+      <updated>1448716459847</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Lists: changed html for bootstrap">
+      <created>1448722609014</created>
+      <updated>1448722609014</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Зроблено collectstatic">
+      <created>1448724151311</created>
+      <updated>1448724151311</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Зроблено collectstatic">
+      <created>1448811373058</created>
+      <updated>1448811373058</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Перенесено шаблони з koopsite/templates/ в koopsite/koopsite/templates; закоментовано кілька middlware - бо PythonEverywhere не сприймає.">
+      <created>1448872177405</created>
+      <updated>1448872177405</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Замінено JsonResponse на звичайний Httpresponse  + json.dump">
+      <created>1448876932640</created>
+      <updated>1448876932640</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Замінено JsonResponse на звичайний Httpresponse  + json.dump">
+      <created>1449215663488</created>
+      <updated>1449215663488</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Розбито функціональні тести на окремі файли з одним спільним base.py">
+      <created>1449242290373</created>
+      <updated>1449242290373</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Lists: unittests розбито на окремі файли і спущено в окремий каталог tests&#10;">
+      <created>1449245738721</created>
+      <updated>1449245738721</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Lists: unittests для ValidationError&#10;">
+      <created>1449248517750</created>
+      <updated>1449248517750</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Lists: enforce model validation in list view&#10;">
+      <created>1449250869839</created>
+      <updated>1449250869839</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Lists: Use get_absolute_url on List model to DRY urls in views&#10;">
+      <created>1449252396103</created>
+      <updated>1449252396103</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Lists: new form for list items&#10;">
+      <created>1449318941087</created>
+      <updated>1449318941087</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Lists: use new form in home_page, simplify tests. NB breaks stuff&#10;">
+      <created>1449321409017</created>
+      <updated>1449321409017</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Lists: use form in all views, back to working state&#10;">
+      <created>1449326105252</created>
+      <updated>1449326105252</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Lists: use form in all views">
+      <created>1449328435064</created>
+      <updated>1449328435064</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Lists: Implement duplicate item validation at model layer">
+      <created>1449333621695</created>
+      <updated>1449333621695</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Lists: Усунуто database integrity error (видалив кілька Items)">
+      <created>1449339622994</created>
+      <updated>1449339622994</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Lists: Оновлено static_root">
+      <created>1449391528150</created>
+      <updated>1449391528150</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Lists: Додано js test">
+      <created>1449407119166</created>
+      <updated>1449407119166</updated>
+    </task>
+    <task id="LOCAL-00034" summary="KoopSite: перенесено файли і koopsite/static/folders/*.* в /folders/static/*.*">
+      <created>1449424532256</created>
+      <updated>1449424532256</updated>
+    </task>
+    <task id="LOCAL-00035" summary="KoopSite: успішно перенесено файли і koopsite/static/folders/*.* в koopsite/folders/static/*.*">
+      <created>1449427185259</created>
+      <updated>1449427185259</updated>
+    </task>
+    <task id="LOCAL-00036" summary="KoopSite: додано перші кілька тестів js_tests на основі Qunit">
+      <created>1449502317532</created>
+      <updated>1449502317532</updated>
+    </task>
+    <task id="LOCAL-00037" summary="KoopSite: запрацював FT для аутентифікованого користувача">
+      <created>1449515262610</created>
+      <updated>1449515262610</updated>
+    </task>
+    <task id="LOCAL-00038" summary="KoopSite: ліквідовано hard-code в template url. Однак Flat app дає кілька помилок із reverse.">
+      <created>1449604234992</created>
+      <updated>1449604234992</updated>
+    </task>
+    <task id="LOCAL-00039" summary="KoopSite: AllDetailView(DetailView) замінено на AllFieldsView(ListView). В FT використано reverse">
+      <created>1449688682428</created>
+      <updated>1449688682428</updated>
+    </task>
+    <task id="LOCAL-00040" summary="KoopSite: Майже закінчив FT VisitIndexPage for authentic user">
+      <created>1449862538889</created>
+      <updated>1449862538889</updated>
+    </task>
+    <task id="LOCAL-00041" summary="KoopSite: Майже закінчив FT VisitIndexPage for authentic user">
+      <created>1449919359325</created>
+      <updated>1449919359325</updated>
+    </task>
+    <task id="LOCAL-00042" summary="KoopSite: Працює FT IndexPageVisitTest">
+      <created>1449937087940</created>
+      <updated>1449937087940</updated>
+    </task>
+    <task id="LOCAL-00043" summary="KoopSite: Почав FT для Flats">
+      <created>1449941499473</created>
+      <updated>1449941499473</updated>
+    </task>
+    <task id="LOCAL-00044" summary="KoopSite: Працюють FT для Flats. Почав test_views для FlatScheme.">
+      <created>1450034644896</created>
+      <updated>1450034644896</updated>
+    </task>
+    <task id="LOCAL-00045" summary="KoopSite: Працюють test_views для FlatScheme.">
+      <created>1450087342569</created>
+      <updated>1450087342569</updated>
+    </task>
+    <task id="LOCAL-00046" summary="KoopSite: Готовий test_views для FlatScheme.">
+      <created>1450092170946</created>
+      <updated>1450092170946</updated>
+    </task>
+    <task id="LOCAL-00047" summary="KoopSite: Готовий FT &amp; test_views для FlatScheme.">
+      <created>1450117374356</created>
+      <updated>1450117374362</updated>
+    </task>
+    <task id="LOCAL-00048" summary="KoopSite: FT упорядкував пари setUp і tearDown для методів і класів ==&gt; зникла помилка WinError 10053!">
+      <created>1450183883590</created>
+      <updated>1450183883590</updated>
+    </task>
+    <task id="LOCAL-00049" summary="KoopSite: UT for AllFieldsView + FT for FlatDetail">
+      <created>1450276454738</created>
+      <updated>1450276454738</updated>
+    </task>
+    <task id="LOCAL-00050" summary="KoopSite: UT for AllFieldsView + FT for FlatDetail">
+      <created>1450292364790</created>
+      <updated>1450292364790</updated>
+    </task>
+    <task id="LOCAL-00051" summary="KoopSite: Принципово змінив AllFieldsView(MultipleObjectMixin, DetailView). Працює, але в контексті треба розібратися з іменем flat. І, очевидно, що UT треба буде переробити">
+      <created>1450295659298</created>
+      <updated>1450295659299</updated>
+    </task>
+    <task id="LOCAL-00052" summary="KoopSite: Працює AllFieldsView(MultipleObjectMixin, DetailView).">
+      <created>1450346310670</created>
+      <updated>1450346310670</updated>
+    </task>
+    <task id="LOCAL-00053" summary="KoopSite: Працює AllFieldsView(MultipleObjectMixin, DetailView), FlatDetail, FlatdetailHoriz + UT">
+      <created>1450352259404</created>
+      <updated>1450352259404</updated>
+    </task>
+    <task id="LOCAL-00054" summary="KoopSite: Черговий раз змінив AllFieldsView(MultipleObjectMixin, DetailView) з перспективою використання його у FlatTable.">
+      <created>1450380121326</created>
+      <updated>1450380121326</updated>
+    </task>
+    <task id="LOCAL-00055" summary="KoopSite: Створено AllFieldsMixin для  AllFieldsView та AllRecordsAllFieldsView. Закінчено FT та UT для Flat.">
+      <created>1450441039342</created>
+      <updated>1450441039342</updated>
+    </task>
+    <task id="LOCAL-00056" summary="KoopSite: Створено AllFieldsMixin для  AllFieldsView та AllRecordsAllFieldsView. Закінчено FT та UT для Flat.">
+      <created>1450448685087</created>
+      <updated>1450448685087</updated>
+    </task>
+    <task id="LOCAL-00057" summary="KoopSite: Пишу UT for koopsite.functtions">
+      <created>1450466218870</created>
+      <updated>1450466218870</updated>
+    </task>
+    <task id="LOCAL-00058" summary="KoopSite: Пишу UT for koopsite.functtions">
+      <created>1450473092584</created>
+      <updated>1450473092584</updated>
+    </task>
+    <task id="LOCAL-00059" summary="KoopSite: Готові всі UT for koopsite.functions">
+      <created>1450527370950</created>
+      <updated>1450527370950</updated>
+    </task>
+    <task id="LOCAL-00060" summary="KoopSite: Почав UT for folder">
+      <created>1450545466881</created>
+      <updated>1450545466881</updated>
+    </task>
+    <task id="LOCAL-00061" summary="KoopSite: Почав UT for folder: готово для functions i models">
+      <created>1450552836723</created>
+      <updated>1450552836723</updated>
+    </task>
+    <task id="LOCAL-00062" summary="KoopSite: Готово UT for folder functions">
+      <created>1450619248446</created>
+      <updated>1450619248446</updated>
+    </task>
+    <task id="LOCAL-00063" summary="KoopSite: Готова половина UT for folder views">
+      <created>1450640097723</created>
+      <updated>1450640097723</updated>
+    </task>
+    <task id="LOCAL-00064" summary="KoopSite: Готова половина UT for folder views">
+      <created>1450696953662</created>
+      <updated>1450696953662</updated>
+    </task>
+    <task id="LOCAL-00065" summary="KoopSite: UT for folder views: CreateFolderIn ready">
+      <created>1450698765670</created>
+      <updated>1450698765671</updated>
+    </task>
+    <task id="LOCAL-00066" summary="KoopSite: UT for folder views: готово все крім ReportUploadTest.test_post  і ReportUploadInFolderTest.test_post">
+      <created>1450718272162</created>
+      <updated>1450718272162</updated>
+    </task>
+    <task id="LOCAL-00067" summary="KoopSite: UT for folder forms: почав FolderForm">
+      <created>1450769702370</created>
+      <updated>1450769702370</updated>
+    </task>
+    <task id="LOCAL-00068" summary="KoopSite: UT for Folders: готові всі">
+      <created>1450890604778</created>
+      <updated>1450890604778</updated>
+    </task>
+    <task id="LOCAL-00069" summary="KoopSite: FT for Folders: FolderReportList">
+      <created>1451142087499</created>
+      <updated>1451142087499</updated>
+    </task>
+    <task id="LOCAL-00070" summary="KoopSite: FT for Folders: FolderReportList, FolderList, ParentList, ReportList">
+      <created>1451154569084</created>
+      <updated>1451154569085</updated>
+    </task>
+    <task id="LOCAL-00071" summary="KoopSite: FT for Folders: FolderCreate">
+      <created>1451224896521</created>
+      <updated>1451224896521</updated>
+    </task>
+    <task id="LOCAL-00072" summary="KoopSite: FT for Folders: FolderCreate">
+      <created>1451237857249</created>
+      <updated>1451237857249</updated>
+    </task>
+    <task id="LOCAL-00073" summary="KoopSite: Подолав js_test for .on(keypress...)">
+      <created>1451327762655</created>
+      <updated>1451327762655</updated>
+    </task>
+    <task id="LOCAL-00074" summary="KoopSite: FT for FolderCreate ready">
+      <created>1451401210302</created>
+      <updated>1451401210303</updated>
+    </task>
+    <task id="LOCAL-00075" summary="KoopSite: FT for ReportUpload - almost ready">
+      <created>1451409208893</created>
+      <updated>1451409208893</updated>
+    </task>
+    <task id="LOCAL-00076" summary="KoopSite: FT for ReportUpload - ready">
+      <created>1451414755966</created>
+      <updated>1451414755966</updated>
+    </task>
+    <task id="LOCAL-00077" summary="KoopSite: FT for FolderDetail - ready">
+      <created>1451418704288</created>
+      <updated>1451418704288</updated>
+    </task>
+    <task id="LOCAL-00078" summary="KoopSite: FolderReportList - start new page design">
+      <created>1451467018822</created>
+      <updated>1451467018822</updated>
+    </task>
+    <task id="LOCAL-00079" summary="KoopSite: refactoring Folder List Base templates. But: error 6228 in selenium.">
+      <created>1451510025767</created>
+      <updated>1451510025767</updated>
+    </task>
+    <task id="LOCAL-00080" summary="KoopSite:  error 6228 in selenium зникла, коли зменшив к-ть dummy_reports in FT Report List">
+      <created>1451558037198</created>
+      <updated>1451558037198</updated>
+    </task>
+    <task id="LOCAL-00081" summary="KoopSite:  transliterate function &amp; test">
+      <created>1451984200528</created>
+      <updated>1451984200528</updated>
+    </task>
+    <task id="LOCAL-00082" summary="KoopSite:  всі готові на даний момент тести проходять.">
+      <created>1451995072600</created>
+      <updated>1451995072600</updated>
+    </task>
+    <task id="LOCAL-00083" summary="KoopSite:  впорядковано Folder success_url">
+      <created>1452177196858</created>
+      <updated>1452177196859</updated>
+    </task>
+    <task id="LOCAL-00084" summary="KoopSite:  впорядковано Folder success_url, перевірено всі тести">
+      <created>1452352757869</created>
+      <updated>1452352757869</updated>
+    </task>
+    <task id="LOCAL-00085" summary="KoopSite:  Folder model test for name=&quot;&quot;">
+      <created>1452416879147</created>
+      <updated>1452416879147</updated>
+    </task>
+    <task id="LOCAL-00086" summary="KoopSite:  Почав DRY для шаблонів folders">
+      <created>1452670319450</created>
+      <updated>1452670319451</updated>
+    </task>
+    <task id="LOCAL-00087" summary="KoopSite:  DRY для шаблонів folders">
+      <created>1452684482235</created>
+      <updated>1452684482236</updated>
+    </task>
+    <task id="LOCAL-00088" summary="KoopSite:  DRY для шаблонів folders ==&gt; FT">
+      <created>1452686578978</created>
+      <updated>1452686578978</updated>
+    </task>
+    <task id="LOCAL-00089" summary="KoopSite:  продовжую писати FT for Folder">
+      <created>1452800430536</created>
+      <updated>1452800430536</updated>
+    </task>
+    <task id="LOCAL-00090" summary="KoopSite:  продовжую писати FT for Folder: folder-delete">
+      <created>1452855803068</created>
+      <updated>1452855803068</updated>
+    </task>
+    <task id="LOCAL-00091" summary="KoopSite:  продовжую писати FT for Folder: report-download">
+      <created>1452878325492</created>
+      <updated>1452878325492</updated>
+    </task>
+    <task id="LOCAL-00092" summary="KoopSite:  продовжую писати FT for Folder: folder-download">
+      <created>1452882320437</created>
+      <updated>1452882320437</updated>
+    </task>
+    <task id="LOCAL-00093" summary="KoopSite:  продовжую писати FT for Folder:report-preview&#10;Змінено Report.get_absolute_url()">
+      <created>1452954636815</created>
+      <updated>1452954636815</updated>
+    </task>
+    <task id="LOCAL-00094" summary="KoopSite:  push to PythonEveryWhere&#10;">
+      <created>1452961029833</created>
+      <updated>1452961029834</updated>
+    </task>
+    <task id="LOCAL-00095" summary="KoopSite:  preview pdf problem">
+      <created>1453050818248</created>
+      <updated>1453050818248</updated>
+    </task>
+    <task id="LOCAL-00096" summary="KoopSite:  Впорядковано CSS. Беруся за preview">
+      <created>1453109622427</created>
+      <updated>1453109622427</updated>
+    </task>
+    <task id="LOCAL-00097" summary="KoopSite:  Завантажую на pythoneverywhere">
+      <created>1453120006152</created>
+      <updated>1453120006152</updated>
+    </task>
+    <task id="LOCAL-00098" summary="KoopSite:  Завантажую на pythoneverywhere">
+      <created>1453120093287</created>
+      <updated>1453120093287</updated>
+    </task>
+    <task id="LOCAL-00099" summary="KoopSite:  push to GIT =&gt; pythonanywhere">
+      <created>1453193388111</created>
+      <updated>1453193388111</updated>
+    </task>
+    <task id="LOCAL-00100" summary="KoopSite:  push to GIT =&gt; pythonanywhere">
+      <created>1453193886727</created>
+      <updated>1453193886727</updated>
+    </task>
+    <task id="LOCAL-00101" summary="KoopSite:  before refactoring: new field Owner in Report model">
+      <created>1453295420894</created>
+      <updated>1453295420895</updated>
+    </task>
+    <task id="LOCAL-00102" summary="KoopSite:  new field Author in Report model">
+      <created>1453318938624</created>
+      <updated>1453318938624</updated>
+    </task>
+    <task id="LOCAL-00103" summary="KoopSite:  Author decorator to Report view &amp; UserProfile view">
+      <created>1453374286508</created>
+      <updated>1453374286508</updated>
+    </task>
+    <task id="LOCAL-00104" summary="KoopSite:  DRY koopsite.view OneToOne">
+      <created>1453401526162</created>
+      <updated>1453401526162</updated>
+    </task>
+    <task id="LOCAL-00105" summary="KoopSite:  koopsite test forms ready!">
+      <created>1453474075922</created>
+      <updated>1453474075922</updated>
+    </task>
+    <task id="LOCAL-00106" summary="KoopSite:  koopsite test views - дійшов до половини">
+      <created>1453655250463</created>
+      <updated>1453655250463</updated>
+    </task>
+    <task id="LOCAL-00107" summary="KoopSite:  koopsite test views - дійшов майже до кінця ))">
+      <created>1453661245630</created>
+      <updated>1453661245630</updated>
+    </task>
+    <task id="LOCAL-00108" summary="KoopSite:  koopsite test views - завершив всі CBV, зробив DRY в koop_base_change,html">
+      <created>1453751256820</created>
+      <updated>1453751256820</updated>
+    </task>
+    <task id="LOCAL-00109" summary="KoopSite:  koopsite test views - ready">
+      <created>1453825916432</created>
+      <updated>1453825916432</updated>
+    </task>
+    <task id="LOCAL-00110" summary="KoopSite:  koopsite Використав стандартну UserCreationForm і поправив всю структуру відповідних Forms, Views &amp; Tests">
+      <created>1453903519773</created>
+      <updated>1453903519773</updated>
+    </task>
+    <task id="LOCAL-00111" summary="KoopSite:  koopsite test ajaxviews ready! Почав test ajaxviewsuser - добрався до AjaxAccountView.">
+      <created>1453993715639</created>
+      <updated>1453993715639</updated>
+    </task>
+    <task id="LOCAL-00112" summary="KoopSite:  koopsite test ajaxviews - готовий тест першого робочого дочірнього класу Ajax...">
+      <created>1454092371932</created>
+      <updated>1454092371933</updated>
+    </task>
+    <task id="LOCAL-00113" summary="KoopSite:  koopsite test ajaxviews - ready for all single account ajax views">
+      <created>1454178383376</created>
+      <updated>1454178383376</updated>
+    </task>
+    <task id="LOCAL-00114" summary="KoopSite:  koopsite test ajaxviews - ready for all single account ajax views">
+      <created>1454182814445</created>
+      <updated>1454182814445</updated>
+    </task>
+    <task id="LOCAL-00115" summary="KoopSite:  koopsite viewsajaxuser - хочу зробити DRY&#10;">
+      <created>1454314185834</created>
+      <updated>1454314185834</updated>
+    </task>
+    <task id="LOCAL-00116" summary="KoopSite:  koopsite unittest повністю готові!&#10;Починаю koopsite FT.">
+      <created>1454357064112</created>
+      <updated>1454357064113</updated>
+    </task>
+    <task id="LOCAL-00117" summary="KoopSite:  Всі тести проходять без помилок. Працюю над FT для koopsite">
+      <created>1454411180757</created>
+      <updated>1454411180757</updated>
+    </task>
+    <task id="LOCAL-00118" summary="KoopSite:  Всі тести проходять без помилок. Готові FT для register, login.&#10;Почав FlatSchemeUsers">
+      <created>1454444199678</created>
+      <updated>1454444199678</updated>
+    </task>
+    <task id="LOCAL-00119" summary="KoopSite:  Готове FlatSchemeUsers. Якась помилка з DOCTYPE-HTML у деяких шаблонах: own-prof, own-prof-update, adm-user-prof, але adm-user-prof-update - помилки нема!">
+      <created>1454582884065</created>
+      <updated>1454582884065</updated>
+    </task>
+    <task id="LOCAL-00120" summary="KoopSite:  Виправлено помилку з DOCTYPE-HTML. DRY template base. Всі тести проходять.">
+      <created>1454707602679</created>
+      <updated>1454707602680</updated>
+    </task>
+    <task id="LOCAL-00121" summary="KoopSite:  Додано і протестовано flat-scheme-users і flat-users-list">
+      <created>1454912995177</created>
+      <updated>1454912995177</updated>
+    </task>
+    <task id="LOCAL-00122" summary="KoopSite:  Всі тести проходять. Готові UT для AjaxElementMove включно.">
+      <created>1455037953729</created>
+      <updated>1455037953729</updated>
+    </task>
+    <task id="LOCAL-00123" summary="KoopSite:  Почав UT для XHR views.">
+      <created>1455305979127</created>
+      <updated>1455305979127</updated>
+    </task>
+    <task id="LOCAL-00124" summary="KoopSite:  Завершено всі UT для *.py">
+      <created>1455379076580</created>
+      <updated>1455379076580</updated>
+    </task>
+    <task id="LOCAL-00125" summary="KoopSite:  Перенесено superlists в окремий проект">
+      <created>1455477095944</created>
+      <updated>1455477095944</updated>
+    </task>
+    <task id="LOCAL-00126" summary="KoopSite:  Почав упорядковувати js_tests">
+      <created>1455537272415</created>
+      <updated>1455537272415</updated>
+    </task>
+    <task id="LOCAL-00127" summary="KoopSite:  Упорядкував js_tests">
+      <created>1455542760018</created>
+      <updated>1455542760018</updated>
+    </task>
+    <task id="LOCAL-00128" summary="KoopSite:  js_tests: on click handler test bug fixed!">
+      <created>1455906715329</created>
+      <updated>1455906715329</updated>
+    </task>
+    <task id="LOCAL-00129" summary="KoopSite:  js_tests: continue ...">
+      <created>1455909282604</created>
+      <updated>1455909282605</updated>
+    </task>
+    <task id="LOCAL-00130" summary="KoopSite:  js_tests: continue ... function onKeyDown( k )">
+      <created>1455995558214</created>
+      <updated>1455995558214</updated>
+    </task>
+    <task id="LOCAL-00131" summary="KoopSite:  js_tests: function onKeyDown( k ) - ready. Continue the rest ...">
+      <created>1456051142735</created>
+      <updated>1456051142735</updated>
+    </task>
+    <task id="LOCAL-00132" summary="KoopSite:  js_tests: function onKeyDown( k ) - ready. Continue the rest ...">
+      <created>1456054923653</created>
+      <updated>1456054923653</updated>
+    </task>
+    <task id="LOCAL-00133" summary="KoopSite:  js_tests: Continue .....">
+      <created>1456058006274</created>
+      <updated>1456058006274</updated>
+    </task>
+    <task id="LOCAL-00134" summary="KoopSite:  js_tests: Continue ..... ......">
+      <created>1456075156701</created>
+      <updated>1456075156701</updated>
+    </task>
+    <task id="LOCAL-00135" summary="KoopSite:  js_tests: Continue ..... ...... ...">
+      <created>1456133778451</created>
+      <updated>1456133778451</updated>
+    </task>
+    <task id="LOCAL-00136" summary="KoopSite:  js_tests: Continue ..... ...... ... ...">
+      <created>1456152233552</created>
+      <updated>1456152233552</updated>
+    </task>
+    <task id="LOCAL-00137" summary="KoopSite:  js_tests: Continue ..... ...... ... ... ... before the last func. in browtab.js">
+      <created>1456166513896</created>
+      <updated>1456166513897</updated>
+    </task>
+    <task id="LOCAL-00138" summary="KoopSite:  js_tests for browtab.js ready">
+      <created>1456226162614</created>
+      <updated>1456226162615</updated>
+    </task>
+    <task id="LOCAL-00139" summary="KoopSite:  js_tests for browtab_ajax.js: before...">
+      <created>1456296089140</created>
+      <updated>1456296089140</updated>
+    </task>
+    <task id="LOCAL-00140" summary="KoopSite:  js_tests for browtab_ajax.js: .... first ajax test pass">
+      <created>1456339233927</created>
+      <updated>1456339233927</updated>
+    </task>
+    <task id="LOCAL-00141" summary="KoopSite:  js_tests for browtab_ajax.js: .... three ajax test pass, but with deprecated testAsync">
+      <created>1456409433088</created>
+      <updated>1456409433089</updated>
+    </task>
+    <task id="LOCAL-00142" summary="KoopSite:  js_tests for browtab_ajax.js: ready!">
+      <created>1456412911292</created>
+      <updated>1456412911293</updated>
+    </task>
+    <task id="LOCAL-00143" summary="KoopSite:  js_tests for users_browtab_ajax.js: the last function ...">
+      <created>1456425961814</created>
+      <updated>1456425961814</updated>
+    </task>
+    <task id="LOCAL-00144" summary="KoopSite:  js_tests for users_browtab_ajax.js: ready!">
+      <created>1456482176001</created>
+      <updated>1456482176001</updated>
+    </task>
+    <task id="LOCAL-00145" summary="KoopSite:  js_tests for folder_browtab.js: ready!">
+      <created>1456495880419</created>
+      <updated>1456495880419</updated>
+    </task>
+    <task id="LOCAL-00146" summary="KoopSite:  js_tests for folder_browtab_ajax.js: ajax folder create ready! ....">
+      <created>1456514078320</created>
+      <updated>1456514078320</updated>
+    </task>
+    <task id="LOCAL-00147" summary="KoopSite:  js_tests for folder_browtab_ajax.js:  all ajax functions ready! Now xhr....">
+      <created>1456582702241</created>
+      <updated>1456582702241</updated>
+    </task>
+    <task id="LOCAL-00148" summary="KoopSite:  js_tests for folder_browtab_ajax.js:   xhr: transferSuccess ready. ...">
+      <created>1456684169929</created>
+      <updated>1456684169929</updated>
+    </task>
+    <task id="LOCAL-00149" summary="KoopSite:  js_tests: &#10;move som functions from folder_browtab_ajax.js to  browtab_ajax">
+      <created>1456772626742</created>
+      <updated>1456772626742</updated>
+    </task>
+    <task id="LOCAL-00150" summary="KoopSite:  js_tests: ready for folder_browtab_ajax.js and  browtab_ajax.">
+      <created>1456858694889</created>
+      <updated>1456858694889</updated>
+    </task>
+    <task id="LOCAL-00151" summary="KoopSite:  js_tests: ready for users_browtab_ajax !">
+      <created>1456914432418</created>
+      <updated>1456914432418</updated>
+    </task>
+    <task id="LOCAL-00152" summary="KoopSite:  js_tests: ready for browtab_ui">
+      <created>1457117367792</created>
+      <updated>1457117367792</updated>
+    </task>
+    <task id="LOCAL-00153" summary="KoopSite:  js_tests: ready for browtab_ui, including buttonClickHandler()">
+      <created>1457284816581</created>
+      <updated>1457284816581</updated>
+    </task>
+    <task id="LOCAL-00154" summary="KoopSite:  js_tests: ready for users_browtab_ui">
+      <created>1457344315308</created>
+      <updated>1457344315308</updated>
+    </task>
+    <task id="LOCAL-00155" summary="KoopSite:  before refactoring folder_browtab_ui">
+      <created>1457378691197</created>
+      <updated>1457378691197</updated>
+    </task>
+    <task id="LOCAL-00156" summary="KoopSite:  folder_browtab_ui refactored (DRY) and tested!">
+      <created>1457808752594</created>
+      <updated>1457808752594</updated>
+    </task>
+    <task id="LOCAL-00157" summary="KoopSite:  js tests with selenium added!">
+      <created>1457972048465</created>
+      <updated>1457972048465</updated>
+    </task>
+    <task id="LOCAL-00158" summary="KoopSite:  js tests for folder_browtab_sort ready!">
+      <created>1457982355865</created>
+      <updated>1457982355865</updated>
+    </task>
+    <task id="LOCAL-00159" summary="KoopSite:  js tests for users_browtab_sort ready!">
+      <created>1458040312055</created>
+      <updated>1458040312055</updated>
+    </task>
+    <task id="LOCAL-00160" summary="KoopSite:  js tests for users_browtab_filter almost ready (except of last 2 func">
+      <created>1458153962226</created>
+      <updated>1458153962226</updated>
+    </task>
+    <task id="LOCAL-00161" summary="KoopSite:  js tests for users_browtab_filter ready!">
+      <created>1458225221962</created>
+      <updated>1458225221962</updated>
+    </task>
+    <task id="LOCAL-00162" summary="KoopSite: all js tests ready!">
+      <created>1458296986715</created>
+      <updated>1458296986715</updated>
+    </task>
+    <task id="LOCAL-00163" summary="KoopSite: before continuating FT">
+      <created>1458316869975</created>
+      <updated>1458316869975</updated>
+    </task>
+    <task id="LOCAL-00164" summary="KoopSite: saving resize upload image - solution founded!">
+      <created>1458330621188</created>
+      <updated>1458330621188</updated>
+    </task>
+    <task id="LOCAL-00165" summary="KoopSite: saving resize upload image - ready!">
+      <created>1458416268661</created>
+      <updated>1458416268662</updated>
+    </task>
+    <task id="LOCAL-00166" summary="KoopSite: before Selenium on PythonAnywhere">
+      <created>1458488294366</created>
+      <updated>1458488294366</updated>
+    </task>
+    <task id="LOCAL-00167" summary="KoopSite: before Selenium on PythonAnywhere">
+      <created>1458490592007</created>
+      <updated>1458490592008</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7862372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9648609" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56661785" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19765739" sideWeight="0.49926794" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2672035" sideWeight="0.4966216" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20790629" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.49341142" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-3" y="122" width="1366" height="510" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4172767" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="KoopSite:  js_tests for browtab_ajax.js: ready!" />
+    <MESSAGE value="KoopSite:  js_tests for users_browtab_ajax.js: the last function ..." />
+    <MESSAGE value="KoopSite:  js_tests for users_browtab_ajax.js: ready!" />
+    <MESSAGE value="KoopSite:  js_tests for folder_browtab.js: ready!" />
+    <MESSAGE value="KoopSite:  js_tests for folder_browtab_ajax.js: ajax folder create ready! ...." />
+    <MESSAGE value="KoopSite:  js_tests for folder_browtab_ajax.js:  all ajax functions ready! Now xhr...." />
+    <MESSAGE value="KoopSite:  js_tests for folder_browtab_ajax.js:   xhr: transferSuccess ready. ..." />
+    <MESSAGE value="KoopSite:  js_tests: &#10;move som functions from folder_browtab_ajax.js to  browtab_ajax" />
+    <MESSAGE value="KoopSite:  js_tests: ready for folder_browtab_ajax.js and  browtab_ajax." />
+    <MESSAGE value="KoopSite:  js_tests: ready for users_browtab_ajax !" />
+    <MESSAGE value="KoopSite:  js_tests: ready for browtab_ui" />
+    <MESSAGE value="KoopSite:  js_tests: ready for browtab_ui, including buttonClickHandler()" />
+    <MESSAGE value="KoopSite:  js_tests: ready for users_browtab_ui" />
+    <MESSAGE value="KoopSite:  before refactoring folder_browtab_ui" />
+    <MESSAGE value="KoopSite:  folder_browtab_ui refactored (DRY) and tested!" />
+    <MESSAGE value="KoopSite:  js tests with selenium added!" />
+    <MESSAGE value="KoopSite:  js tests for folder_browtab_sort ready!" />
+    <MESSAGE value="KoopSite:  js tests for users_browtab_sort ready!" />
+    <MESSAGE value="KoopSite:  js tests for users_browtab_filter almost ready (except of last 2 func" />
+    <MESSAGE value="KoopSite:  js tests for users_browtab_filter ready!" />
+    <MESSAGE value="KoopSite: all js tests ready!" />
+    <MESSAGE value="KoopSite: before continuating FT" />
+    <MESSAGE value="KoopSite: saving resize upload image - solution founded!" />
+    <MESSAGE value="KoopSite: saving resize upload image - ready!" />
+    <MESSAGE value="KoopSite: before Selenium on PythonAnywhere" />
+    <option name="LAST_COMMIT_MESSAGE" value="KoopSite: before Selenium on PythonAnywhere" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/manage-findstatic.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/core/management/__init__.py</url>
+          <line>329</line>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/core/management/base.py</url>
+          <line>389</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="34" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_viewsajax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="936" max-vertical-offset="8684">
+          <caret line="46" column="2" selection-start-line="36" selection-start-column="2" selection-end-line="36" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templates/block_aside_info.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1222">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templates/block_adm_users_buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="832">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/browtab_ui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58295965" vertical-offset="4810" max-vertical-offset="9594">
+          <caret line="200" column="0" selection-start-line="200" selection-start-column="0" selection-end-line="200" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_ui.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49760765" vertical-offset="0" max-vertical-offset="1040">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/templates/folders/block_folders4_thead.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="624">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/templates/folders/block_folder_contents_buttons.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="682">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/templates/folders/folder_contents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21212122" vertical-offset="3403" max-vertical-offset="5356">
+          <caret line="136" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/templates/folders/js_tests_folder_browtab_ui.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24880382" vertical-offset="156" max-vertical-offset="1066">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/templates/js_tests_browtab.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.041467305" vertical-offset="156" max-vertical-offset="2288">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/templates/block_href_js_tests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44657096" vertical-offset="292" max-vertical-offset="1066">
+          <caret line="22" column="8" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/templates/koopsite/js_tests_users_browtab_filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54385966" vertical-offset="283" max-vertical-offset="1040">
+          <caret line="24" column="49" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templates/koop_adm_users_table.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.58532697" vertical-offset="4443" max-vertical-offset="5070">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/koopsite/tests_users_browtab_filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.07536232" vertical-offset="10868" max-vertical-offset="25844">
+          <caret line="419" column="18" selection-start-line="419" selection-start-column="18" selection-end-line="419" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templates/block_popup.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41467306" vertical-offset="988" max-vertical-offset="2262">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/koop_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6218236" vertical-offset="676" max-vertical-offset="20306">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templates/block_adm_users_filter.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32057416" vertical-offset="449" max-vertical-offset="1118">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/viewsajax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.038863976" vertical-offset="2574" max-vertical-offset="6344">
+          <caret line="105" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/templatetags/koop_template_filters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6218236" vertical-offset="1170" max-vertical-offset="2574">
+          <caret line="63" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_viewsajaxuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7772795" vertical-offset="47086" max-vertical-offset="48412">
+          <caret line="1831" column="0" selection-start-line="1831" selection-start-column="0" selection-end-line="1831" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/viewsajaxuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="7826" max-vertical-offset="19890">
+          <caret line="323" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.922272" vertical-offset="4245" max-vertical-offset="6864">
+          <caret line="194" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1586" max-vertical-offset="2444">
+          <caret line="67" column="0" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1442825926/_io.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="23946" max-vertical-offset="39598">
+          <caret line="921" column="8" selection-start-line="921" selection-start-column="8" selection-end-line="921" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/db/models/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.038863976" vertical-offset="11414" max-vertical-offset="43342">
+          <caret line="480" column="4" selection-start-line="440" selection-start-column="4" selection-end-line="440" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/test/testcases.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.4666667" vertical-offset="390" max-vertical-offset="32240">
+          <caret line="61" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="46" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/fnmatch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.06615776" vertical-offset="1326" max-vertical-offset="2912">
+          <caret line="55" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/core/files/uploadedfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2184" max-vertical-offset="3302">
+          <caret line="91" column="8" selection-start-line="84" selection-start-column="8" selection-end-line="84" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.038863976" vertical-offset="182" max-vertical-offset="2834">
+          <caret line="16" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.675507" vertical-offset="17585" max-vertical-offset="18226">
+          <caret line="705" column="0" selection-start-line="693" selection-start-column="0" selection-end-line="693" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7772795" vertical-offset="18564" max-vertical-offset="21190">
+          <caret line="760" column="0" selection-start-line="734" selection-start-column="0" selection-end-line="734" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8433735" vertical-offset="7624" max-vertical-offset="15496">
+          <caret line="304" column="0" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage-test-FT-koopsite.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="6812" max-vertical-offset="42640">
+          <caret line="294" column="0" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6218236" vertical-offset="2678" max-vertical-offset="3744">
+          <caret line="130" column="0" selection-start-line="111" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/tests_register.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4185351" vertical-offset="2242" max-vertical-offset="12038">
+          <caret line="109" column="20" selection-start-line="97" selection-start-column="20" selection-end-line="97" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38863975" vertical-offset="104" max-vertical-offset="1872">
+          <caret line="15" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/tests_all_js_by_selenium.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="52" max-vertical-offset="2652">
+          <caret line="10" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/tests/test_functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3313253" vertical-offset="4440" max-vertical-offset="6240">
+          <caret line="188" column="57" selection-start-line="175" selection-start-column="57" selection-end-line="175" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.57249624" vertical-offset="969" max-vertical-offset="3536">
+          <caret line="52" column="0" selection-start-line="47" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/tests/test_models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.76681614" vertical-offset="3829" max-vertical-offset="4498">
+          <caret line="176" column="0" selection-start-line="167" selection-start-column="0" selection-end-line="167" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/tests/test_views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23026316" vertical-offset="22524" max-vertical-offset="30706">
+          <caret line="869" column="16" selection-start-line="869" selection-start-column="16" selection-end-line="869" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/tests_index_page_visit.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4185351" vertical-offset="1644" max-vertical-offset="2600">
+          <caret line="82" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4784">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3120">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/js/ui/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2689655" vertical-offset="0" max-vertical-offset="13494">
+          <caret line="3" column="22" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage-test-JS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39156628" vertical-offset="0" max-vertical-offset="416">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js_tests/js/tests_errorlist_hide_listeners.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6240">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="657">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2951807" vertical-offset="5674" max-vertical-offset="6006">
+          <caret line="223" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3313253" vertical-offset="4102" max-vertical-offset="11414">
+          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+

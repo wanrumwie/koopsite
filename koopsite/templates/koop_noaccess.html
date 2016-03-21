@@ -1,0 +1,40 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block style %}
+    <style type="text/css">
+        .red { color:    red;}
+    </style>
+{% endblock %}
+
+{% block body %}
+    <h2 class="red">У Вас немає доступу до цієї сторінки.</h2>
+    <ul class="navigation-small buttons-y align-items-center" >
+        <li>
+            Будь-ласка, <a href="{% url 'login' %}">увійдіть під своїм іменем</a>
+        </li>
+        <li>
+            або <a href="{% url 'register' %}">зареєструйтесь</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block href-flats %}
+{% endblock %}
+
+{% block href-folders %}
+{% endblock %}
+
+{% block href-login %}
+{% endblock %}
+
+{% block href-register %}
+{% endblock %}
+
+{% block href-own-profile %}
+{% endblock %}
+
+{% block href-adm-index %}
+{% endblock %}
+

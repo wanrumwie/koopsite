@@ -1,0 +1,57 @@
+{% extends "base_koop_adm.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div class="wrapper">
+        <!--<div class="header">Header</div>-->
+        <div class="main">
+            <div id="page-name"
+                 class="padding-y-05">
+
+                {% block page-name %}
+                    <h2>Сторінка персоналу сайта</h2>
+                {% endblock %}
+
+            </div>
+            {% if user.is_staff or perms.koopsite.activate_account %}
+                <h2>Вітаємо, {{ user.username }}!</h2>
+                <div class="pre-line">Оскільки Ви належите до персоналу сайта
+                    (або маєте відповідний доступ),
+                    у Вас є можливість виконувати наступні дії:</div><br>
+                <ul class="navigation-small buttons-y align-items-center" >
+                    <li>перегляд списків користувачів;</li>
+                    <li>перегляд і редагування профілю користувача;</li>
+                    <li><a href="/adm/users/table/">перегляд і редагування прав доступу користувача;</a></li>
+                    <li>активація і деактивація акаунту користувача.</li>
+                </ul>
+            {% else %}
+                <ul class="navigation-small buttons-y align-items-center" >
+                    <li>
+                        <p>Ви не маєте доступу до цієї сторінки!</p>
+                    </li>
+                    <li>
+                        <a href="{% url 'index' %}">Перейти на головну сторінку</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </div>
+        <div class="aside aside-1"></div>
+        <div class="aside aside-2"></div>
+        <!--<footer class="footer">Footer</footer>-->
+    </div>
+{% endblock %}
+
+{% block href-adm-index %}
+{% endblock %}
+
+{% block href-adm-users-perms-update %}
+{% endblock %}
+{% block href-adm-users-profile %}
+{% endblock %}
+{% block href-adm-users-profile-update %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}

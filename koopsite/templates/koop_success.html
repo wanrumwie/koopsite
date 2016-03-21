@@ -1,0 +1,127 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block style %}
+    <style type="text/css">
+        .green {color:    green;}
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% load staticfiles %}
+
+    <div class="wrapper">
+        <!--<div class="header">Header</div>-->
+        <div class="main">
+            <br>
+            <div class="welcome_text">
+                <h2>{{ welcome_text }}</h2>
+            </div>
+            <br>
+            <div class="message_text">
+                {{ message_text }}
+            </div>
+            <br>
+            <ul class="navigation-small buttons-y align-items-center" >
+                <li>
+                    <a href="{{ href_url }}">{{ href_text }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="aside aside-1 align-flex-end aside-empty"></div>
+        <div class="aside aside-2 align-flex-end aside-empty"></div>
+        <!--<footer class="footer">Footer</footer>-->
+    </div>
+{% endblock %}
+
+{% block href-group-index %}
+{% endblock href-group-index %}
+
+{% block href-group-adm-index %}
+{% endblock href-group-adm-index %}
+
+{% block href-group-own-index %}
+{% endblock href-group-own-index %}
+
+{% block href-back %}
+    {% if object.get_absolute_url %}
+        <li><a href="{{ object.get_absolute_url }}">Уверх</a></li>
+    {% else %}
+        <li><a href="{% url 'index' %}">Уверх</a></li>
+    {% endif %}
+{% endblock %}
+
+
+
+{% comment %}
+
+    {% if finished %}
+        <h2>Вітаємо, {{ user.username }}!</h2>
+        <p>Ваш пароль успішно змінено!</p>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'own-profile' %}">Продовжити роботу</a>
+            </li>
+        </ul>
+
+
+    {% if finished %}
+        <h2>Вітаємо, {{ user.username }}!</h2>
+        <p>Ви успішно авторизувались!</p>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'index' %}">Продовжити роботу</a>
+            </li>
+        </ul>
+
+
+    {% if finished %}
+        <p>Доступ користувача збережено!</p>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'adm-users-table' %}">Продовжити роботу</a>
+            </li>
+        </ul>
+
+
+    {% if finished %}
+        <div align="center">
+            <h2>Вітаємо, {{ user.username }}!</h2>
+            <p>Ваш профіль збережено!</p>
+        </div>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'own-profile' %}">Продовжити роботу</a>
+            </li>
+        </ul>
+
+
+    {% if finished %}
+        <h2>Вітаємо!</h2>
+        <p>Профіль користувача {{ capital }} збережено!</p>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'adm-users-list' %}">Продовжити роботу</a>
+            </li>
+        </ul>
+
+
+    {% if finished %}
+        <div align="center">
+            <p>Дякуємо, що зареєструвались на сайті!</p>
+            <p>
+                Зверніться до адміністратора сайту або
+                до керівництва кооперативу
+                щоб активувати Ваш обліковий запис.
+            </p>
+        </div>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+                <a href="{% url 'index' %}">Повернутися на головну сторінку
+                                  без аутентифікації</a>
+            </li>
+        </ul>
+
+{% endcomment %}

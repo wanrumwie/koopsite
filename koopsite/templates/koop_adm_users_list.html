@@ -1,0 +1,36 @@
+{% extends "base_koop_adm.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+            {% block page-name %}
+                Список користувачів
+            {% endblock %}
+        </h3>
+    </div>
+    <div class="wrapper">
+        <div class="main">
+            <ul class="column-list column-count-3">
+                {% for f in object_list %}
+                    <li><a href="{% url 'adm-users-profile' f.id %}">{{ f }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="aside aside-1 align-flex-end aside-empty"></div>
+        <div class="aside aside-2 align-flex-end aside-empty"></div>
+    </div>
+{% endblock %}
+
+{% block href-adm-users-list %}
+{% endblock %}
+
+{% block href-adm-users-profile %}
+{% endblock %}
+{% block href-adm-users-profile-update %}
+{% endblock %}
+
+{% block href-admin %}
+{% endblock %}

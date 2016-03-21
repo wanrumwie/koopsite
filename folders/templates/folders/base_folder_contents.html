@@ -1,0 +1,48 @@
+{% extends "folders/base_folder.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+{# Є одночасно базовим шаблоном для групи шаблонів #}
+
+{% block href-folder-list-all %}
+    <li><a href="{% url 'folders:folder-list-all' %}">Картотека (ст.)</a></li>
+{% endblock %}
+{% block href-folder-list %}
+{% endblock %}
+{% block href-folder-parent %}
+{% endblock %}
+{% block href-report-list %}
+{% endblock %}
+
+{% block href-folder-create %}
+{% endblock %}
+{% block href-report-upload %}
+{% endblock %}
+
+{% block href-folder-create-in %}
+{% endblock %}
+{% block href-folder-update %}
+{% endblock %}
+{% block href-folder-download %}
+{% endblock %}
+{% block href-folder-delete %}
+{% endblock %}
+{% block href-report-upload-in %}
+{% endblock %}
+
+{% block href-report-detail %}
+{% endblock %}
+{% block href-report-preview %}
+{% endblock %}
+{% block href-report-update %}
+{% endblock %}
+{% block href-report-download %}
+{% endblock %}
+{% block href-report-delete %}
+{% endblock %}
+
+{% block href-folder-contents %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}

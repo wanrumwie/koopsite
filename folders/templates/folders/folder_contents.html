@@ -1,0 +1,200 @@
+{% extends "folders/base_folder_contents.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block style %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"
+          href='{% static "css/scrolltable.css" %}'
+          >
+{% endblock %}
+
+{% block body %}
+    {% load koop_template_filters %}
+    {% load folder_template_filters %}
+    {% load staticfiles %}
+<!---------------------------------------->
+    <div class="padding-y-05">
+        <h3>
+        КАРТОТЕКА ФАЙЛІВ
+        </h3>
+    </div>
+    <div class="wrapper">
+        <div class="header">
+            <div class="wrapper">
+                <!--<div class="header"></div>-->
+                <div class="main padding-0">
+                    <ul class="navigation-small justify-content-left color-negative">
+                        {% for f in parents %}
+                            <li>
+                            <a  id="parent#{{ f.id }}"
+                                href="{% url 'folders:folder-contents' f.id %}">
+                                <img src="{% static 'img/folder.png' %}" alt="Тека" />
+                                {{ f }}
+                            </a>
+                            </li>
+                        {% endfor %}
+                        <li>
+                        <a  id="thisfolder"
+                            href="{% url 'folders:folder-contents' folder.id %}">
+                            <img src="{% static 'img/open_folder.png' %}" alt="Тека" />
+                            <span>{{ folder }}</span>
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="aside aside-1 align-flex-end aside-empty"></div>
+                <div class="aside aside-2 align-flex-end aside-empty"></div>
+                <!--<div class="footer"></div>-->
+            </div>
+        </div>
+        <div class="main">
+            <table id="browtable"
+                class="scrolltable tbody-height-55vh folders4 transformtable khaki-theme"
+                >
+                <thead>
+                    <tr>
+                        {% for j, v in cap.items %}
+                            {% if j != 0 %}
+                                {% if j = 1 %}
+                                    <th id="th{{ 1 }}"
+                                        data-column-header="{{ v }}">
+                                        <button id="button-sort-{{ 1 }}"
+                                            title="Групування (теки-файли) при сортуванні">
+                                            {{ v }}
+                                        </button>
+                                    </th>
+                                {% else %}
+                                    <th id="th{{ j }}"
+                                        data-column-header="{{ v }}">
+                                        <button id="button-sort-{{ j }}"
+                                            title="Сортування">
+                                            {{ v }}
+                                        </button>
+                                    </th>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody id="tablebody">
+                    {% for f in object_list %}
+                        <tr id="tr-{{ f|model_name }}#{{ f.id }}"
+                            >
+                            <td id="td1-{{ f|model_name }}#{{ f.id }}"
+                                data-column-header="Тип"
+                                >
+                                {% if f|iconpath %}
+                                    <img src="{% static f|iconpath %}" alt={{f|model_name}} />
+                                {% else %}
+                                    <span>    </span>
+                                {% endif %}
+                            </td>
+                            <td id="td2-{{ f|model_name }}#{{ f.id }}"
+                                data-column-header="Найменування"
+                                >
+                                {% if f|model_name == 'folder' %}
+                                    <a id="folder#{{ f.id }}"
+                                       href="{% url 'folders:folder-contents' f.id %}"
+                                       title="{{ f }}">{{ f }}</a>
+                                {% else %}
+                                    <a id="report#{{ f.id }}"
+                                       href="{% url 'folders:report-view' f.id %}"
+                                       title="{{ f }}">{{ f }}</a>
+                                {% endif %}
+                            </td>
+                            <td id="td3-{{ f|model_name }}#{{ f.id }}"
+                                data-column-header="Дата"
+                                >
+                                {% if f|model_name == 'folder' %}
+                                    <span title="{{ f.created_on|date:'d.m.Y' }}">{{ f.created_on|date:'d.m.Y' }}</span>
+                                {% elif f.file %}
+                                    <span title="{{ f.uploaded_on|date:'d.m.Y' }}">{{ f.uploaded_on|date:'d.m.Y' }}</span>
+                                {% else %}
+                                    <span> </span>
+                                {% endif %}
+                            </td>
+                            <td id="td4-{{ f|model_name }}#{{ f.id }}"
+                                    data-column-header="Розмір"
+                                >
+                                {% if f|model_name == 'folder' %}
+                                    <span> </span>
+                                {% elif f.file %}
+                                    <span title="{{ f.file.size|filesizeformat }}">{{ f.file.size|filesizeformat }}</span>
+                                {% else %}
+                                    <span> </span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div>Навігація по таблиці: &uarr; &darr; PgUp PgDn Home End Enter Click DoubleClick</div>
+        </div>
+        <div class="aside aside-1 align-flex-start">
+
+            {% include "folders/block_folder_contents_buttons.html" %}
+
+        </div>
+        <div class="aside aside-2 align-flex-start aside-empty">
+            ПРАВА СТОРОНА
+        </div>
+        <!--<div class="footer"></div>-->
+    </div>
+<!---------------------------------------->
+
+    <!-- Код для віджетів jQuery UI: -->
+    <!-- Контейнер для універсального діалог-повідомлення -->
+    <!-- Контейнер діалог-форма, яка буде оброблятися ф-ціями-->
+    <!-- Код для віджета jsTree: -->
+    <!-- Контейнер для діалог-повідомлення,
+        всередині якого містисься контейнер віджета jsTree -->
+    {% include "block_popup.html" %}
+
+    <!-- Поля, в які можна виводити з js при відлагоджуванні програми -->
+    {% include "block_debug.html" %}
+
+{% endblock %}
+
+
+{% block load_js %}
+
+    {% load staticfiles %}
+    <!-- Спочатку завантажуємо jquery! -->
+    {% include "block_js_jquery.html" %}
+    {% include "block_js_jquery_ui.html" %}
+    {% include "block_js_jstree.html" %}
+
+    <script src="{% static 'js/download.js' %}"             ></script>
+    <script src="{% static 'js/filesize.js' %}"             ></script>
+    <script src="{% static 'js/browtab.js' %}"              ></script>
+    <script src="{% static 'js/browtab_ui.js' %}"           ></script>
+    <script src="{% static 'js/browtab_sort.js' %}"         ></script>
+    <script src="{% static 'js/folder_browtab.js' %}"       ></script>
+    <script src="{% static 'js/folder_browtab_ui.js' %}"    ></script>
+    <script src="{% static 'js/folder_browtab_sort.js' %}"  ></script>
+
+{% endblock %}
+
+{% block ajax_browtab %}
+    <!-- Форма з полями для обміну даними через AJAX: -->
+    {% include "block_ajax_browtab.html" %}
+{% endblock %}
+
+{% block load_ajax %}
+    <!-- AJAX повинен завантажуватися вкінці перед </body>  -->
+    {% load staticfiles %}
+    <script src="{% static 'js/browtab_ajax.js' %}"></script>
+    <script src="{% static 'js/folder_browtab_ajax.js' %}"></script>
+{% endblock %}
+
+{% block document_ready_script %}
+    <script>
+        console.log('start document_ready_script'); 
+        $( document ).ready( browtab_document_ready_handler );
+        $( document ).ready( browtab_ajax_document_ready_handler );
+        $( document ).ready( browtab_ui_document_ready_handler );
+        $( document ).ready( folder_browtab_ui_document_ready_handler );
+        $( document ).ready( folder_browtab_sort_document_ready_handler );
+    </script>
+{% endblock %}

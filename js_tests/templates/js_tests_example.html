@@ -1,0 +1,19 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    EXAMPLE
+{% endblock title %}
+
+{% block qunit-fixture %}
+{% endblock qunit-fixture %}
+
+{% block tested_script %}
+    <!--<script src="{% static 'js/browtab.js' %}"          ></script>-->
+    <script src="{% static 'js/example.js' %}"></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'js/tests_example.js' %}"></script>
+{% endblock test_script %}

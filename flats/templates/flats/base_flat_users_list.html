@@ -1,0 +1,54 @@
+{% extends "flats/base_flat.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+{# Є одночасно базовим шаблоном для групи шаблонів #}
+
+{% block style %}
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css"
+          href='{% static "css/scrolltable.css" %}'
+          >
+{% endblock %}
+
+{% block body %}
+
+    {% load koop_template_filters %}
+    {% load folder_template_filters %}
+    {% load staticfiles %}
+
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+        {% block page-name %}
+            {# Переозначити тут назву сторінки, наприклад: Список файлів #}
+        {% endblock %}
+        </h3>
+    </div>
+    <div class="wrapper">
+        <div class="main">
+            <table id="body-table"
+                class="scrolltable tbody-height-55vh flat-users4 transformtable khaki-theme"
+                >
+                <thead>
+
+                    {% include "flats/block_flat_users4_thead.html" %}
+
+                </thead>
+                <tbody id="tablebody">
+
+                    {% include "flats/block_flat_users4_tbody.html" %}
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="aside aside-1 align-flex-end aside-empty"></div>
+        <div class="aside aside-2 align-flex-end aside-empty"></div>
+    </div>
+
+{% endblock %}
+
+
+{% block href-back %}
+    <li><a href="{% url 'flats:flat-users-list' %}">Уверх</a></li>
+{% endblock %}

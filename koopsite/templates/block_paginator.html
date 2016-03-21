@@ -1,0 +1,23 @@
+{% block paginator %}
+    {# Для CBV з вбудованим paginator'ом навігація: "?page=3" #}
+    {% if paginator.num_pages > 1 %}
+        <ul id="paginator"
+            class="navigation-small justify-content-center" >
+            {% if page_obj.has_previous %}
+                {% if page_obj.previous_page_number != 1 %}
+                    <li><a href="{{ url_prefix|default:'?page=' }}1">&Lt;</a></li>
+                {% endif %}
+                <li><a href="{{ url_prefix|default:'?page=' }}{{ page_obj.previous_page_number }}">&larr;</a></li>
+            {% endif %}
+            <li><span>
+                Сторінка {{ page_obj.number }} з {{ paginator.num_pages}}.
+            </span></li>
+            {% if page_obj.has_next %}
+                <li><a href="{{ url_prefix|default:'?page=' }}{{ page_obj.next_page_number }}">&rarr;</a></li>
+                {% if page_obj.next_page_number != paginator.num_pages %}
+                    <li><a href="{{ url_prefix|default:'?page=' }}{{ paginator.num_pages }}">&Gt;</a></li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    {% endif %}
+{% endblock %}

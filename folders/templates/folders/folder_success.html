@@ -1,0 +1,52 @@
+{% extends "folders/base_folder.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону folder_base.html #}
+
+{% block style %}
+    <style type="text/css">
+        .green {
+            color:    green;
+            }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div>
+        <h2 class="green">
+            Вітаємо, {{ user.username }}!
+        </h2>
+            <p>
+            Ви успішно створили теку!
+            </p>
+            <p>
+            <a href="{% url 'index' %}">Продовжити роботу</a>
+            </p>
+    </div>
+{% endblock %}
+
+<!-- Всі href з батьківського шаблону: -->
+{% block href-register %}
+{% endblock %}
+{% block href-index %}
+{% endblock %}
+{% block href-folder-contents %}
+{% endblock %}
+{% block href-folder-create %}
+{% endblock %}
+{% block href-folder-update %}
+{% endblock %}
+{% block href-folder-delete %}
+{% endblock %}
+{% block href-report-upload %}
+{% endblock %}
+{% block href-report-update %}
+{% endblock %}
+{% block href-report-delete %}
+{% endblock %}
+{% block href-folder-list %}
+{% endblock %}
+{% block href-report-list %}
+{% endblock %}
+{% block href-folder-parent %}
+{% endblock %}
+

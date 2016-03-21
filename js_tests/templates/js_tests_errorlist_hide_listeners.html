@@ -1,0 +1,38 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    KoopSite - errorlist_hide_listeners.js.js
+{% endblock title %}
+
+{% block qunit-fixture %}
+    <table>
+        <tr id="tr1" class="required">
+            <td><input id="id_name1" /></td>
+        </tr>
+        <tr id="tr2">
+            <td><input id="id_name2" /></td>
+        </tr>
+        <tr id="trb1">
+            <td><input id="id_file1" type="file" /></td>
+        </tr>
+        <tr id="trb2">
+            <td><input id="id_file2" type="file" /></td>
+        </tr>
+        <tr id="trs1">
+            <td><select id="id_flat1" name="flat1" /></td>
+        </tr>
+        <tr id="trs2">
+            <td><select id="id_flat2" name="flat2" /></td>
+        </tr>
+    </table>
+{% endblock qunit-fixture %}
+
+{% block tested_script %}
+    <script src="{% static 'js/errorlist_hide_listeners.js' %}"      ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'js/tests_errorlist_hide_listeners.js' %}"></script>
+{% endblock test_script %}

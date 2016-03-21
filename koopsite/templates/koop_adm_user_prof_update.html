@@ -1,0 +1,33 @@
+{% extends "base_koop_change.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+
+{% block page-name %}
+    Редагування профілю користувача {{ one }}
+{% endblock %}
+
+{% block welcome_text %}
+    Вітаємо!
+{% endblock %}
+
+{% block message_text %}
+    Профіль користувача {{ one }} збережено!
+{% endblock %}
+
+{% block href_continue %}
+    <a href="{% url 'adm-users-table' %}">Продовжити роботу</a>
+{% endblock %}
+
+{% block one_two_forms %}
+    {% include "block_one_two_forms.html" %}
+{% endblock %}
+
+{% block href-back %}
+    {% if two.get_absolute_url %}
+        <li><a href="{{ two.get_absolute_url }}">Уверх</a></li>
+    {% else %}
+        <li><a href="{% url 'adm-users-table' %}">Уверх</a></li>
+    {% endif %}
+{% endblock %}
+

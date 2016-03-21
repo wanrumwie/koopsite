@@ -1,0 +1,29 @@
+{% block one-two-detail_show %}
+    {% load koop_template_filters %}
+    {% load staticfiles %}
+    <table class="tabledetail">
+        {% for k, n, v in obj_one %}
+            <tr>
+                <td>{{ n }}</td>
+                <td class="text-align-left">{{ v }}</td>
+            </tr>
+        {% endfor %}
+        {% for k, n, v in obj_two %}
+            <tr>
+                <td>{{ n }}</td>
+                <td class="text-align-left">
+                    {% if k in two_img_fields %}
+                        {% if v %}
+                            <img
+                                class="fill-space"
+                                src="{% static v %}"
+                            />
+                        {% endif %}
+                    {% else %}
+                        {{ v }}
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

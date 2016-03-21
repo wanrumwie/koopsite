@@ -1,0 +1,27 @@
+﻿{% extends "base_koop_own.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+            {% block page-name %}
+                Мій профіль
+            {% endblock %}
+        </h3>
+    </div>
+    {% block one_two_detail_show %}
+        {% include "block_one_two_detail_show.html" %}
+    {% endblock %}
+{% endblock %}
+
+{% block href-own-profile %}
+{% endblock %}
+
+{% block href-logout %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}

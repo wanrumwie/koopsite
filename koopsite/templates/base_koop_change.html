@@ -1,0 +1,75 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block body %}
+    <div id="page-name"
+         class="padding-y-05">
+        <h3>
+            {% block page-name %}
+                Редагування профілю користувача {{ one }}
+            {% endblock %}
+        </h3>
+    </div>
+    {% if finished %}
+        <br>
+        <div class="welcome_text">
+            <h2>
+            {% block welcome_text %}
+                Вітаємо!
+            {% endblock %}
+            </h2>
+        </div><br>
+        <div class="message_text">
+            {% block message_text %}
+                Профіль користувача {{ one }} збережено!
+            {% endblock %}
+        </div><br>
+        <ul class="navigation-small buttons-y align-items-center" >
+            <li>
+            {% block href_continue %}
+                <a href="{% url 'adm-users-table' %}">Продовжити роботу</a>
+            {% endblock %}
+            </li>
+        </ul>
+    {% else %}
+        {% block one_two_forms %}
+            {% include "block_one_two_forms.html" %}
+        {% endblock %}
+    {% endif %}
+{% endblock %}
+
+{% block href-group-index %}
+{% endblock href-group-index %}
+
+{% block href-group-adm-index %}
+{% endblock href-group-adm-index %}
+
+{% block href-group-own-index %}
+{% endblock href-group-own-index %}
+
+
+{% block href-back %}
+    {% if two.get_absolute_url %}
+        <li><a href="{{ two.get_absolute_url }}">Уверх</a></li>
+    {% else %}
+        <li><a href="{% url 'adm-users-table' %}">Уверх</a></li>
+    {% endif %}
+{% endblock %}
+
+{% block load_js %}
+    {% load staticfiles %}
+    <!-- Спочатку завантажуємо jquery! -->
+    {% include "block_js_jquery.html" %}
+	<!-- Функція для приховування повідомлення про помилку після початку нового вводу в полі з помилкою -->
+    <script src="{% static 'js/errorlist_hide_listeners.js' %}"></script>
+{% endblock %}
+
+{% block document_ready_script %}
+    <script>
+        console.log('start document_ready_script'); 
+        $( document ).ready( set_errorlist_hide_listeners );
+        console.log('finish document_ready_script');
+    </script>
+{% endblock %}
+

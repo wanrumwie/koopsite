@@ -1,0 +1,42 @@
+{% load koop_template_filters %}
+{% load folder_template_filters %}
+{% load staticfiles %}
+
+{% for f in object_list %}
+    <tr id="tr-{{ f|model_name }}#{{ f.id }}"
+        >
+        <td id="td1-{{ f|model_name }}#{{ f.id }}"
+            data-column-header="Користувач"
+            >
+            <a href="{% url 'adm-users-profile' f.id %}" title="{{ f }}"
+                class="flex-container"
+                >
+                <span class="img-box">
+                    {% with pic=f.userprofile.picture %}
+                        {% if pic and pic != "False"  %}
+                            <img src="{% static pic|thumbnail %}"/>
+                        {% endif %}
+                    {% endwith %}
+                </span>
+                <span class="after-img-box">{{ f.username }}</span>
+            </a>
+        </td>
+        <td id="td2-{{ f|model_name }}#{{ f.id }}"
+            data-column-header="Прізвище та ім'я"
+            title="{{ f|user_full_name }}"
+            >
+            <span>{{ f|user_full_name }}</span>
+        </td>
+        <td id="td3-{{ f|model_name }}#{{ f.id }}"
+            data-column-header="Дата приєднання"
+            >
+            <span>{{ f.date_joined|date:"d.m.Y" }}</span>
+        </td>
+        <td id="td4-{{ f|model_name }}#{{ f.id }}"
+                data-column-header="Доступ чл.кооп."
+            >
+            <img class="padding-y-07"
+                 src="{% static f|has_member_perms|icon_yes_no_unknown %}"/>
+        </td>
+    </tr>
+{% endfor %}

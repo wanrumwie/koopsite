@@ -1,0 +1,42 @@
+{% block title %}
+    {% load koop_template_filters %}
+    {% load staticfiles %}
+    <div class="wrapper">
+        <div class="main">
+            <h2 id="site-header">Житловий кооператив "Пасічний"</h2>
+        </div>
+        <div class="aside aside-1 align-flex-end aside-empty"></div>
+        <div class="aside aside-2 align-flex-end">
+            <ul id="header-aside-2-navigation"
+                class="navigation-small">
+            {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'own-profile' %}" title="Профіль користувача">
+                        {% with pic=user.userprofile.picture %}
+                            {% if pic and pic != "False"  %}
+                                <img src="{% static pic|thumbnail %}"/>
+                            {% endif %}
+                        {% endwith %}
+                        {{ user.username }}
+                    </a>
+                </li>
+                <li>
+                    {% if user.userprofile.flat %}
+                        <a href="{% url 'flats:flat-detail' user.userprofile.flat.id %}"
+                           title="Про квартиру">
+                            Кв.{{ user.userprofile.flat.flat_No }}</a>
+                    {% endif %}
+                </li>
+                <li>
+                    <a href="{% url 'logout' %}" title="Logout">Вийти</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{% url 'login' %}" title="Login">Авторизуватися</a>
+                </li>
+            {% endif %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+

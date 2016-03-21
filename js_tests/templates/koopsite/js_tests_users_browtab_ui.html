@@ -1,0 +1,34 @@
+{% extends "base_js_tests.html" %}
+
+{% load staticfiles %}
+
+{% block title %}
+    KoopSite - users_browtab_ui.js
+{% endblock title %}
+
+{% block qunit-fixture %}
+
+    {% include "koopsite/block_dummy_users_browtab.html" %}
+
+    {% include "block_adm_users_buttons.html" %}
+
+    {% include "block_ajax_browtab.html" %}
+
+    {% include "block_popup.html" %}
+
+{% endblock qunit-fixture %}
+
+{% block script_library %}
+    <script src="{% static 'js/browtab.js' %}"          ></script>
+    <script src="{% static 'js/browtab_ui.js' %}"          ></script>
+    <script src="{% static 'js/users_browtab.js' %}"          ></script>
+    <script src="{% static 'js/users_browtab_ajax.js' %}"          ></script>
+{% endblock script_library %}
+
+{% block tested_script %}
+    <script src="{% static 'js/users_browtab_ui.js' %}"          ></script>
+{% endblock tested_script %}
+
+{% block test_script %}
+    <script src="{% static 'koopsite/tests_users_browtab_ui.js' %}"></script>
+{% endblock test_script %}

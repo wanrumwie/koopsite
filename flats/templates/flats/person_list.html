@@ -1,0 +1,34 @@
+{% extends "flats/base_flat.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% block style %}
+    <style type="text/css">
+        table.tabletab {
+            border-spacing:     1px;
+            }
+        div.visible {
+            width:              54px;
+            overflow:           visible;
+        }
+        div.hidden {
+            width:              54px;
+            overflow:           hidden;
+            font-weight:        normal;
+        }
+    </style>
+    {% include "block_paginator.html" %}
+{% endblock %}
+
+{% block body %}
+                person_list.html
+    {% load render_table from django_tables2 %}
+    {% render_table table %}
+{% endblock %}
+
+{% block href-table %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'flats:flat-scheme' %}">Уверх</a></li>
+{% endblock %}

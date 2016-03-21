@@ -1,0 +1,30 @@
+{% extends "flats/base_flat_scheme.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+{% load koop_template_filters %}
+{% load staticfiles %}
+
+{% block page-name %}
+    Схема будинку
+{% endblock %}
+
+{% block flat-td-a-href %}
+    <td><a href="{% url 'flats:flat-detail' f.id %}">{{ f.flat_No }}</a></td>
+{% endblock %}
+
+{% block empty-flat-td %}
+    <td></td>
+{% endblock %}
+
+{% block under-table %}
+    Клацніть мишкою по номеру квартири, щоб побачити її характеристики
+{% endblock %}
+
+{% block href-flat-scheme %}
+{% endblock %}
+
+{% block href-back %}
+    <li><a href="{% url 'index' %}">Уверх</a></li>
+{% endblock %}
+

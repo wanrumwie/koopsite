@@ -1,0 +1,88 @@
+{% extends "base_koop.html" %}
+
+{# Дочірній шаблон. Переозначає деякі/всі блоки батьківського шаблону #}
+
+
+{# У дочірньому шаблоні переознач тільки самопосилання #}
+
+{% block href-group-index %}
+{% endblock href-group-index %}
+
+{% block href-group-adm-index %}
+
+    {% block href-adm-index %}
+        {% if user.is_staff or perms.koopsite.activate_account %}
+            <li><a href="{% url 'adm-index' %}">Адміністрування</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-adm-users-table %}
+        {% if user.is_staff or perms.koopsite.activate_account %}
+            <li><a href="{% url 'adm-users-table' %}">Список акаунтів</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-adm-users-perms-update %}
+        {% if user.is_staff %}
+            <li><a href="{% url 'all-users-perm-update' one.id %}">Редагувати доступ</a></li>
+        {% else %}
+            <li><a href="{% url 'all-users-perm-activate' one.id %}">Редагувати доступ</a></li>
+        {% endif %}
+    {% endblock %}
+    {% block href-adm-users-profile %}
+            <li><a href="{% url 'adm-users-profile' one.id %}">Переглянути профіль</a></li>
+    {% endblock %}
+    {% block href-adm-users-profile-update %}
+            <li><a href="{% url 'adm-users-profile-update' one.id %}">Редагувати профіль</a></li>
+    {% endblock %}
+
+    {% comment %}
+        {% block href-adm-users-list %}
+            {% if user.is_staff or perms.koopsite.activate_account %}
+                <li><a href="{% url 'adm-users-list' %}">Профілі користувачів</a></li>
+            {% endif %}
+        {% endblock %}
+    {% endcomment %}
+
+    {% block href-admin %}
+        {% if user.is_staff %}
+            <li><a href="{% url 'admin:index' %}">Django Admin</a></li>
+        {% endif %}
+    {% endblock %}
+
+{% endblock href-group-adm-index %}
+
+
+
+<!-------------------------------------->
+{% comment %}
+
+{% block href-index %}
+{% endblock %}
+{% block href-adm-index %}
+{% endblock %}
+{% block href-adm-users-table %}
+{% endblock %}
+
+{% block href-adm-users-perms-update %}
+{% endblock %}
+{% block href-adm-users-profile %}
+{% endblock %}
+{% block href-adm-users-profile-update %}
+{% endblock %}
+
+{% block href-adm-users-list %}
+{% endblock %}
+
+{% block href-admin %}
+{% endblock %}
+{% block href-back %}
+{% endblock %}
+
+{% endcomment %}
+<!-------------------------------------->
+{% comment %}
+    {% if user.is_staff %}
+        <a href="/adm/users/{{ row.0.id }}/perms/update/">{{ v }}</a>
+    {% else %}
+        <a href="/adm/users/{{ row.0.id }}/perms/activate/">{{ v }}</a>
+    {% endif %}
+{% endcomment %}
