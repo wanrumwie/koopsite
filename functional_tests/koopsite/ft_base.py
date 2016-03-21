@@ -17,6 +17,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from koopsite.functions import round_up_division, get_miniature_path
 from koopsite.settings import PYTHON_ANYWHERE
 from koopsite.tests.test_base import DummyUser
+if PYTHON_ANYWHERE:
+    from pyvirtualdisplay import Display
 
 
 def wait_for(condition_function):
@@ -130,22 +132,23 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
     @classmethod
     def setUpClass(cls):
         print('start class: %s' % cls.__name__, end=' >> ')
-
         if PYTHON_ANYWHERE:
-            from pyvirtualdisplay import Display
             cls.display = Display(visible=0, size=(800, 600))
             cls.display.start()
             print('pyvirtualdisplay.display.start()', end=' >> ')
-
+        browser_created = False
         print('webdriver.Firefox()', end=' >> ')
         for i in range(3):
+            print('try Nr%s' % i, end=' >> ')
             try:
                 cls.browser = webdriver.Firefox()
+                print('browser created', end=' >> ')
+                browser_created = True
                 break
             except:
-                print('try Nr%s' % i, end=' >> ')
+                print('except', end=' >> ')
                 sleep(3)
-
+        assert browser_created, 'webdriver.Firefox() browser is not created'
         cls.browser.implicitly_wait(20)
         cls.browser.set_window_position(250, 0)
         for arg in sys.argv:
@@ -163,6 +166,7 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
         cls.browser.quit()
         if PYTHON_ANYWHERE:
             cls.display.stop() # ignore any output from this.
+            print('pyvirtualdisplay.display.stop()', end=' >> ')
         print('finished class: %s' % cls.__name__)
 
     # def setUp(self):

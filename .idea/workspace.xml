@@ -35,8 +35,8 @@
       <file leaf-file-name="ft_base.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3313253" vertical-offset="4102" max-vertical-offset="11414">
-              <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.6084337" vertical-offset="3594" max-vertical-offset="11518">
+              <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -288,7 +288,7 @@
       <recent name="C:\PyPrograms\Django\koopsite\js_tests\templates\koopsite" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.manage-0-runserver">
+  <component name="RunManager" selected="Python.manage-test-FT-flats">
     <configuration default="false" name="manage-test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -325,24 +325,6 @@
       <ConfigurationWrapper RunnerId="PythonRunner" />
       <method />
     </configuration>
-    <configuration default="false" name="manage-2-migrate" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <module name="koopsite" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-2-migrate.py" />
-      <option name="PARAMETERS" value="" />
-      <RunnerSettings RunnerId="PythonRunner" />
-      <ConfigurationWrapper RunnerId="PythonRunner" />
-      <method />
-    </configuration>
     <configuration default="false" name="manage-test-JS" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -374,6 +356,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="koopsite" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-test-FT-folders.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="manage-test-FT-flats" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="koopsite" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage-test-FT-flats.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -541,17 +541,17 @@
       <item index="1" class="java.lang.String" itemvalue="Python.manage-1-makemigrations" />
       <item index="2" class="java.lang.String" itemvalue="Python.manage-test" />
       <item index="3" class="java.lang.String" itemvalue="Python.manage-collectstatic-clear" />
-      <item index="4" class="java.lang.String" itemvalue="Python.manage-2-migrate" />
-      <item index="5" class="java.lang.String" itemvalue="Python.manage-test-JS" />
-      <item index="6" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+      <item index="4" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+      <item index="5" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+      <item index="6" class="java.lang.String" itemvalue="Python.manage-test-FT-flats" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
-        <item index="1" class="java.lang.String" itemvalue="Python.manage-test" />
-        <item index="2" class="java.lang.String" itemvalue="Python.manage-test-JS" />
-        <item index="3" class="java.lang.String" itemvalue="Python.manage-collectstatic-clear" />
-        <item index="4" class="java.lang.String" itemvalue="Python.manage-2-migrate" />
+        <item index="0" class="java.lang.String" itemvalue="Python.manage-test-FT-flats" />
+        <item index="1" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+        <item index="2" class="java.lang.String" itemvalue="Python.manage-test" />
+        <item index="3" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+        <item index="4" class="java.lang.String" itemvalue="Python.manage-collectstatic-clear" />
       </list>
     </recent_temporary>
   </component>
@@ -1257,13 +1257,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.7862372" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.9648609" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.56661785" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19765739" sideWeight="0.49926794" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2672035" sideWeight="0.4966216" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2672035" sideWeight="0.4966216" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20790629" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -1692,13 +1692,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2951807" vertical-offset="5674" max-vertical-offset="6006">
           <caret line="223" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3313253" vertical-offset="4102" max-vertical-offset="11414">
-          <caret line="162" column="12" selection-start-line="162" selection-start-column="12" selection-end-line="162" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.6084337" vertical-offset="3594" max-vertical-offset="11518">
+          <caret line="146" column="18" selection-start-line="146" selection-start-column="18" selection-end-line="146" selection-end-column="18" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
