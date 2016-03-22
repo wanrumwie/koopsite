@@ -94,7 +94,7 @@ function getSelRowIndexLimited( i ){
     return selRowIndex;
 }
 function check_selRowIndex_range(){
-    var bool = selRowIndex >= 0 && selRowIndex < rowsNumber;
+    var bool = +selRowIndex >= 0 && +selRowIndex < +rowsNumber;
 	return bool;
 }
 function get_thisfolder_name(){

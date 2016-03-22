@@ -1,4 +1,6 @@
 import os
+import time
+import sys
 from time import sleep
 from django.conf import settings
 from django.contrib.auth import SESSION_KEY, BACKEND_SESSION_KEY, \
@@ -11,14 +13,25 @@ from PIL import Image
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
-import sys
-import time
-from selenium.webdriver.support.wait import WebDriverWait
-from koopsite.functions import round_up_division, get_miniature_path
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from koopsite.functions import round_up_division, get_miniature_path, dict_print
 from koopsite.settings import PYTHON_ANYWHERE
 from koopsite.tests.test_base import DummyUser
 if PYTHON_ANYWHERE:
     from pyvirtualdisplay import Display
+
+
+def find_elements_by_css_text(parent, css_selector='*', text=''):
+    css_elements = parent.find_elements_by_css_selector(css_selector)
+    elements = []
+    for element in css_elements:
+        if element.text == text:
+            elements.append(element)
+    return elements
+
 
 
 def wait_for(condition_function):
@@ -61,6 +74,7 @@ def find_css(self, css_selector):
 def wait_for_css(self, css_selector, timeout=7):
     """ Shortcut for WebDriverWait"""
     return WebDriverWait(self, timeout).until(lambda driver : driver.find_css(css_selector))
+
 
 
 def create_user_session(user):
@@ -132,6 +146,9 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
     @classmethod
     def setUpClass(cls):
         print('start class: %s' % cls.__name__, end=' >> ')
+        # TODO-Знайти причину помилки NoSuchElementException у ВСІХ FT тестах на pythonanywhere.com
+        # Задавав у bash команду:
+        # xvfb-run python manage.py test functional_tests.flats.tests_flat_list --liveserver=wanrumwie.pythonanywhere.com:8081
         if PYTHON_ANYWHERE:
             cls.display = Display(visible=0, size=(800, 600))
             cls.display.start()
@@ -322,6 +339,136 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
                 option.click()
 
 
+    def check_button_click_popup_appearance(self, this_url,
+                button_parent_selector, button_text,
+                dialog_selector=None, dialog_title=None,
+                okey_text=None, cancel_text=None, close_on_esc=None):
+        """
+        Допоміжна функція для функц.тесту. Викликається в циклі for
+        для кожної кнопки на сторінці.
+        Перевіряє, чи користувач може натиснути на кнопку,
+        побачити спливаюче вікно-діалог,
+        і закрити його кнопкою Cancel і/або клавішею Esc
+        НЕ перевіряє натискання кнопки Ok на спливаючому вікні!
+        :param this_url: сторінка що тестується
+        :param button_parent_selector: CSS-селектор елемента з кнопками
+        :param button_text           : текст на кнопці
+        :param dialog_selector       : CSS-селектор спливаючого діалогового вікна
+        :param dialog_title          : титут спливаючого діалогового вікна
+        :param okey_text             : текст на кнопці Okey спливаючого діалогового вікна
+        :param cancel_text           : текст на кнопці Cancel спливаючого діалогового вікна
+        :param close_on_esc          : умова closeOnEscape спливаючого діалогового вікна
+        :return:
+        """
+        # Користувач відкриває сторінку
+        self.browser.get('%s%s' % (self.server_url, this_url))
+
+        # Знаходить потрібну кнопку і натискає її
+        parent = self.browser.find_element_by_css_selector(button_parent_selector)
+        xpath = "//button[contains(.,'%s')]" % button_text
+        elements = parent.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        button = elements[0]
+
+        actions = ActionChains(self.browser)
+        actions.move_to_element(button)
+        actions.click(button)
+        actions.perform()
+
+        # Чекає на появу спливаючого вікна
+        try:
+            WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
+            )
+        except Exception as exception:
+            print('exception:')
+            print('this_url=', this_url,
+                  '\nCSS_SELECTOR=', dialog_selector,
+                  '\nexception=', exception)
+            return
+        dialog_elements = self.browser.find_elements_by_css_selector(dialog_selector)
+        dialog = None
+        for element in dialog_elements: # нас цікавить видимий діалог. інші ui-dialog's не містять текстів
+            if element.value_of_css_property('display') != "none":
+                dialog = element
+        self.assertIsNotNone(dialog)
+
+        # Бачить правильний заголовок спливаючого вікна
+        xpath = ".//span[contains(.,'%s')]" % dialog_title
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        # Переконується, що спливаюче вікно модальне
+        # self.assertTrue(button.is_displayed())
+        # self.assertFalse(button.is_enabled())
+
+        # Бачить правильні надписи на кнопках спливаючого вікна
+        xpath = ".//button[contains(.,'%s')]" % okey_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        xpath = ".//button[contains(.,'%s')]" % cancel_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        # Натискає кнопку Cancel на спливаючому вікні
+        xpath = ".//button[contains(.,'%s')]" % cancel_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        cancel_button = elements[0]
+
+        actions = ActionChains(self.browser)
+        actions.move_to_element(cancel_button)
+        actions.click(cancel_button)
+        actions.perform()
+
+        # Переконується, що спливаюче вікно закрите
+        self.assertTrue(button.is_displayed())
+        self.assertTrue(button.is_enabled())
+
+        # Ще раз натискає кнопку і чекає на появу спливаючого вікна
+        actions = ActionChains(self.browser)
+        actions.move_to_element(button)
+        actions.click(button)
+        actions.perform()
+        try:
+            WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
+            )
+        except Exception as exception:
+            print('exception:')
+            print('this_url=', this_url,
+                  '\nCSS_SELECTOR=', dialog_selector,
+                  '\nexception=', exception)
+            return
+
+        # Натискає клавішу Esc на клавіатурі
+        actions = ActionChains(self.browser)
+        actions.send_keys(Keys.ESCAPE)
+        actions.perform()
+
+        # Ще раз переконується, що спливаюче вікно закрите
+        self.assertTrue(button.is_displayed())
+        self.assertTrue(button.is_enabled())
+
+    def template_input_values_print(self):
+        f_name = self.browser.find_element_by_css_selector("#thisfolder span").text
+        print('\nf_name =', f_name)
+
+        template_id_list = [
+            "list_length"    ,
+            "json_arr"       ,
+            "browTabName"    ,
+            "startRowIndex"  ,
+            "selRowIndex"    ,
+            "selElementModel",
+            "selElementID"   ,
+        ]
+        for t_id in template_id_list:
+            v = self.browser.find_element_by_id(t_id).get_attribute("value")
+            print('%-20s %s' % (t_id, v))
+
+
 
 class PageVisitTest(DummyUser, FunctionalTest):
     """
@@ -440,4 +587,42 @@ class PageVisitTest(DummyUser, FunctionalTest):
         expected = 512
         self.assertAlmostEqual(real, expected, delta=delta, msg="Не працює CSS.")
 
+    def popup_activation_buttons_in_template(self):
+        assert True == False, 'Клас PageVisitTest: потрібно означити метод: popup_activation_buttons_in_template'
+        return []
 
+    def visitor_can_click_popup_activation_buttons(self):
+        # Кнопки, вказані в шаблоні:
+        buttons = self.popup_activation_buttons_in_template()
+        # Користувач може клацнути по всіх заданих кнопках на сторінці і повернутися назад
+        # Беремо список словників, які описують всі кнопки на цій сторінці.
+        # Ключі словників скорочені до 2-х літер: bs bt ds dt ot ct ce.
+        for d in buttons:
+            button_parent_selector  = d.get('bs')
+            button_text             = d.get('bt')
+            dialog_selector         = d.get('ds')
+            dialog_title            = d.get('dt')
+            okey_text               = d.get('ot')
+            cancel_text             = d.get('ct')
+            close_on_esc            = d.get('ce')
+            self.check_button_click_popup_appearance(self.this_url,
+                        button_parent_selector, button_text,
+                        dialog_selector, dialog_title,
+                        okey_text, cancel_text, close_on_esc)
+
+
+def elements_print(elements):
+    if not isinstance(elements, (list, tuple)):
+        elements = (elements, )
+    print('='*77)
+    print('%-20s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
+          ('text', 'tag_name', 'displ', 'enabl',
+          'id', 'name', 'type', 'display', 'element'))
+    for element in elements:
+        print('%-20s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
+              (element.text, element.tag_name,
+              element.is_displayed(), element.is_enabled(),
+              element.get_attribute('id'), element.get_attribute('name'),
+              element.get_attribute('type'), element.value_of_css_property('display'),
+              element))
+    print('-'*77)

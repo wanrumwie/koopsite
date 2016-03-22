@@ -199,8 +199,8 @@ else:
 TRACE_CONDITION = False
 
 # Умова для декоратора @unittest.skipIf(SKIP_TEST)
-# SKIP_TEST = True    # пропускаємо задекоровані тести
-SKIP_TEST = False   # виконуємо всі тести
+SKIP_TEST = True    # пропускаємо задекоровані тести
+# SKIP_TEST = False   # виконуємо всі тести
 
 if SKIP_TEST:
     print('SKIP_TEST =', SKIP_TEST)

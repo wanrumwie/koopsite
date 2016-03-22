@@ -166,7 +166,7 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
     QUnit.test( 'button_upload_report_handler', function ( assert ) {
         expect( 5 );
         var ajax_Function   = xhr_reportUpload; 
-        var dialogTitle     = "Заладувати файл";
+        var dialogTitle     = "Новий файл";
         var inputLabel      = "Назва файла";
         var disabledInput   = false;
         var inputVal        = "Тека без назви";

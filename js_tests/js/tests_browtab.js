@@ -208,7 +208,7 @@ QUnit.module( "browtab sel row functions", function( hooks ) {
         assert.strictEqual( getSelRowIndexLimited( 10 ), 0, 'sel row index must be 0 if rowsNumber=0');
     });
     QUnit.test('check_selRowIndex_range', function ( assert ) {
-        expect( 8 );
+        expect( 14 );
         rowsNumber = 10;
         selRowIndex = 0;
         assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
@@ -227,7 +227,26 @@ QUnit.module( "browtab sel row functions", function( hooks ) {
         assert.strictEqual( check_selRowIndex_range( ), false, 'sel row index should be in range of 0.. rowsNumber');
         selRowIndex = undefined;
         assert.strictEqual( check_selRowIndex_range( ), false, 'sel row index should be in range of 0.. rowsNumber');
-    });
+
+        rowsNumber = "10";
+        selRowIndex = "0";
+        assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
+        rowsNumber = "10";
+        selRowIndex = "5";
+        assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
+        rowsNumber = "10";
+        selRowIndex = "";
+        assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
+        rowsNumber = 10;
+        selRowIndex = "";
+        assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
+        rowsNumber = "10";
+        selRowIndex = 5;
+        assert.strictEqual( check_selRowIndex_range( ), true, 'sel row index should be in range of 0.. rowsNumber');
+        rowsNumber = "10";
+        selRowIndex = "12";
+        assert.strictEqual( check_selRowIndex_range( ), false, 'sel row index should be in range of 0.. rowsNumber');
+	});
     QUnit.test( 'get_thisfolder_name', function ( assert ) {
         expect( 4 );
 
