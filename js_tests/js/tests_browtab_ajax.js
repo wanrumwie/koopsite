@@ -23,28 +23,30 @@ QUnit.module( "browtab_ajax document ready", function( hooks ) {
         selRowIndex_selector  = "#selRowIndex";
         $selRowIndex          = $( selRowIndex_selector );
         set_browtab_ajax_listeners(); 
-        saved_csrf_token      = $( "#csrfmiddlewaretoken" ).val();
+        // saved_csrf_token      = $( "#csrfmiddlewaretoken" ).val();
+		saved_csrf_token 	  = $( "[name=csrfmiddlewaretoken]" ).val();   // Receiving the csrf_token value from template
     } );
     hooks.afterEach( function( assert ) {
         var meth;
         for ( meth in stub ) {
             stub[meth].restore();
         }
-        $( "#csrfmiddlewaretoken" ).val( saved_csrf_token );
+        // $( "#csrfmiddlewaretoken" ).val( saved_csrf_token );
+		$( "[name=csrfmiddlewaretoken]" ).val( saved_csrf_token );   // restoring the csrf_token value to template
         csrf_token = saved_csrf_token;
     } );
     QUnit.test( 'browtab_ajax_document_ready_handler', function ( assert ) {
         expect( 8 );
-        $( "#csrfmiddlewaretoken" ).val( 'qwerty' );
+        // $( "#csrfmiddlewaretoken" ).val( 'qwerty' );
+		$( "[name=csrfmiddlewaretoken]" ).val( 'qwerty' );
         stub.create_qs_TR_arr = sinon.stub( window, "create_qs_TR_arr" );
-        stub.ajax_startRowIndexFromSession = sinon.stub( window, "ajax_startRowIndexFromSession" );
+        stub.setStartRow = sinon.stub( window, "setStartRow" );
         stub.set_browtab_ajax_listeners = sinon.stub( window, "set_browtab_ajax_listeners" );
         var res = browtab_ajax_document_ready_handler( );
         assert.ok( stub.create_qs_TR_arr.calledOnce, 'create_qs_TR_arr should be called once' );
         assert.ok( stub.create_qs_TR_arr.calledWithExactly( ), 'create_qs_TR_arr should be called with arg' );
-        assert.ok( stub.ajax_startRowIndexFromSession.calledOnce, 'ajax_startRowIndexFromSession should be called once' );
-        assert.ok( stub.ajax_startRowIndexFromSession.calledWithExactly(),
-                                                                'ajax_startRowIndexFromSession should be called with arg');
+        assert.ok( stub.setStartRow.calledOnce, 'setStartRow should be called once' );
+        assert.ok( stub.setStartRow.calledWithExactly(), 'setStartRow should be called with arg');
         assert.ok( stub.set_browtab_ajax_listeners.calledOnce, 'set_browtab_ajax_listeners should be called once' );
         assert.ok( stub.set_browtab_ajax_listeners.calledWithExactly( ), 
                                                                 'set_browtab_ajax_listeners should be called with arg' );
@@ -323,7 +325,8 @@ QUnit.module( "browtab_ajax ajax", function( hooks ) {
     var done;
     hooks.beforeEach( function( assert ) {
         stub = {};
-        csrf_token = $( "#csrfmiddlewaretoken" ).val();
+        // csrf_token = $( "#csrfmiddlewaretoken" ).val();
+		csrf_token = $( "[name=csrfmiddlewaretoken]" ).val();   // Receiving the csrf_token value from template
         this.xhr = sinon.useFakeXMLHttpRequest();
         requests = [];
         this.xhr.onCreate = function ( request ) {
@@ -560,7 +563,8 @@ QUnit.module( "browtab_ajax hxr", function( hooks ) {
     var done;
     hooks.beforeEach( function( assert ) {
         stub = {};
-        csrf_token = $( "#csrfmiddlewaretoken" ).val();
+        // csrf_token = $( "#csrfmiddlewaretoken" ).val();
+		csrf_token = $( "[name=csrfmiddlewaretoken]" ).val();   // Receiving the csrf_token value from template
         this.xhr = sinon.useFakeXMLHttpRequest();
         requests = [];
         this.xhr.onCreate = function ( request ) {

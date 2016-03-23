@@ -52,6 +52,7 @@ class FlatDetailPageVisitTest(PageVisitTest):
         self.data_links_number += 0 # лінк javascript:history.back()
         return self.data_links_number
 
+
 @skipIf(SKIP_TEST, "пропущено для економії часу")
 class FlatDetailPageAuthenticatedVisitorTest(FlatDetailPageVisitTest):
     """

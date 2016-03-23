@@ -11,8 +11,10 @@ var csrf_token;
 function browtab_ajax_document_ready_handler(){
     create_qs_TR_arr();
     // csrf_token = $.cookie('csrftoken');             // Receiving the csrf_token value from cookie
-    csrf_token = $( "#csrfmiddlewaretoken" ).val();   // Receiving the csrf_token value from template
-    ajax_startRowIndexFromSession();                // Receiving start row index from session
+    // csrf_token = $( "#csrfmiddlewaretoken" ).val();   // Receiving the csrf_token value from template
+    csrf_token = $( "[name=csrfmiddlewaretoken]" ).val();   // Receiving the csrf_token value from template
+//    ajax_startRowIndexFromSession();                 Receiving start row index from session
+    setStartRow(); // function from browtab.js, which load earlier
     set_browtab_ajax_listeners(); 
 }
 function set_browtab_ajax_listeners( $selRowIndex ){

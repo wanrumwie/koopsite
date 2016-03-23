@@ -17,7 +17,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from koopsite.functions import round_up_division, get_miniature_path, dict_print
+from koopsite.functions import round_up_division, get_miniature_path
 from koopsite.settings import PYTHON_ANYWHERE
 from koopsite.tests.test_base import DummyUser
 if PYTHON_ANYWHERE:
@@ -137,11 +137,13 @@ def create_dummy_miniature_file(big_file_name):
 
 
 
-class FunctionalTest(StaticLiveServerTestCase): # працює з окремою спеціально
-                                                # створюваною БД для тестів
-                                                # + статичні файли
-    server_url = None       # резервуємо імена, які будуть
-    this_url   = None       # означені в дочірніх класах
+class FunctionalTest(StaticLiveServerTestCase):
+    # працює з окремою спеціально створюваною БД для тестів
+    # + статичні файли
+    browser     = None
+    display     = None
+    server_url  = None       # резервуємо імена, які будуть
+    this_url    = None       # означені в дочірніх класах
 
     @classmethod
     def setUpClass(cls):
@@ -173,6 +175,9 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
         # assert browser_created, 'webdriver.Firefox() browser is not created'
 
         cls.browser.implicitly_wait(20)
+        cls.browser.set_script_timeout(20)
+        cls.browser.set_page_load_timeout(20)
+
         cls.browser.set_window_position(250, 0)
         for arg in sys.argv:
             if 'liveserver' in arg:
@@ -197,6 +202,18 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
 
     def tearDown(self):
         super().tearDown()
+
+
+class PageVisitTest(DummyUser, FunctionalTest):
+    """
+    Допоміжний клас для функціональних тестів.
+    Цей клас буде використовуватися як основа
+    для класів тестування сторінок сайту.
+    """
+    this_url    = '/index/'
+    page_title  = 'Пасічний'
+    page_name   = 'Головна сторінка'
+    data_links_number = 0   # кількість лінків, які приходять в шаблон з даними
 
     def add_user_cookie_to_browser(self, user, url=None):
         session = create_user_session(user)
@@ -339,149 +356,6 @@ class FunctionalTest(StaticLiveServerTestCase): # працює з окремою
                 option.click()
 
 
-    def check_button_click_popup_appearance(self, this_url,
-                button_parent_selector, button_text,
-                dialog_selector=None, dialog_title=None,
-                okey_text=None, cancel_text=None, close_on_esc=None):
-        """
-        Допоміжна функція для функц.тесту. Викликається в циклі for
-        для кожної кнопки на сторінці.
-        Перевіряє, чи користувач може натиснути на кнопку,
-        побачити спливаюче вікно-діалог,
-        і закрити його кнопкою Cancel і/або клавішею Esc
-        НЕ перевіряє натискання кнопки Ok на спливаючому вікні!
-        :param this_url: сторінка що тестується
-        :param button_parent_selector: CSS-селектор елемента з кнопками
-        :param button_text           : текст на кнопці
-        :param dialog_selector       : CSS-селектор спливаючого діалогового вікна
-        :param dialog_title          : титут спливаючого діалогового вікна
-        :param okey_text             : текст на кнопці Okey спливаючого діалогового вікна
-        :param cancel_text           : текст на кнопці Cancel спливаючого діалогового вікна
-        :param close_on_esc          : умова closeOnEscape спливаючого діалогового вікна
-        :return:
-        """
-        # Користувач відкриває сторінку
-        self.browser.get('%s%s' % (self.server_url, this_url))
-
-        # Знаходить потрібну кнопку і натискає її
-        parent = self.browser.find_element_by_css_selector(button_parent_selector)
-        xpath = "//button[contains(.,'%s')]" % button_text
-        elements = parent.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-        button = elements[0]
-
-        actions = ActionChains(self.browser)
-        actions.move_to_element(button)
-        actions.click(button)
-        actions.perform()
-
-        # Чекає на появу спливаючого вікна
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
-            )
-        except Exception as exception:
-            print('exception:')
-            print('this_url=', this_url,
-                  '\nCSS_SELECTOR=', dialog_selector,
-                  '\nexception=', exception)
-            return
-        dialog_elements = self.browser.find_elements_by_css_selector(dialog_selector)
-        dialog = None
-        for element in dialog_elements: # нас цікавить видимий діалог. інші ui-dialog's не містять текстів
-            if element.value_of_css_property('display') != "none":
-                dialog = element
-        self.assertIsNotNone(dialog)
-
-        # Бачить правильний заголовок спливаючого вікна
-        xpath = ".//span[contains(.,'%s')]" % dialog_title
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-
-        # Переконується, що спливаюче вікно модальне
-        # self.assertTrue(button.is_displayed())
-        # self.assertFalse(button.is_enabled())
-
-        # Бачить правильні надписи на кнопках спливаючого вікна
-        xpath = ".//button[contains(.,'%s')]" % okey_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-
-        xpath = ".//button[contains(.,'%s')]" % cancel_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-
-        # Натискає кнопку Cancel на спливаючому вікні
-        xpath = ".//button[contains(.,'%s')]" % cancel_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-        cancel_button = elements[0]
-
-        actions = ActionChains(self.browser)
-        actions.move_to_element(cancel_button)
-        actions.click(cancel_button)
-        actions.perform()
-
-        # Переконується, що спливаюче вікно закрите
-        self.assertTrue(button.is_displayed())
-        self.assertTrue(button.is_enabled())
-
-        # Ще раз натискає кнопку і чекає на появу спливаючого вікна
-        actions = ActionChains(self.browser)
-        actions.move_to_element(button)
-        actions.click(button)
-        actions.perform()
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
-            )
-        except Exception as exception:
-            print('exception:')
-            print('this_url=', this_url,
-                  '\nCSS_SELECTOR=', dialog_selector,
-                  '\nexception=', exception)
-            return
-
-        # Натискає клавішу Esc на клавіатурі
-        actions = ActionChains(self.browser)
-        actions.send_keys(Keys.ESCAPE)
-        actions.perform()
-
-        # Ще раз переконується, що спливаюче вікно закрите
-        self.assertTrue(button.is_displayed())
-        self.assertTrue(button.is_enabled())
-
-    def template_input_values_print(self):
-        f_name = self.browser.find_element_by_css_selector("#thisfolder span").text
-        print('\nf_name =', f_name)
-
-        template_id_list = [
-            "list_length"    ,
-            "json_arr"       ,
-            "browTabName"    ,
-            "startRowIndex"  ,
-            "selRowIndex"    ,
-            "selElementModel",
-            "selElementID"   ,
-        ]
-        for t_id in template_id_list:
-            v = self.browser.find_element_by_id(t_id).get_attribute("value")
-            print('%-20s %s' % (t_id, v))
-
-
-
-class PageVisitTest(DummyUser, FunctionalTest):
-    """
-    Допоміжний клас для функціональних тестів.
-    Описані тут параметри - для перевірки головної сторінки сайту.
-    Цей клас буде використовуватися як основа
-    для класів тестування інших сторінок.
-    """
-    this_url    = '/index/'
-    page_title  = 'Пасічний'
-    page_name   = 'Головна сторінка'
-    data_links_number = 0   # кількість лінків, які приходять в шаблон з даними
-
     def can_visit_page(self):
         # Користувач може відвідати сторінку
         self.browser.get('%s%s' % (self.server_url, self.this_url))
@@ -527,25 +401,8 @@ class PageVisitTest(DummyUser, FunctionalTest):
         #                           sleep_time=0):
         # Ключі словників скорочені до 2-х літер: ls lt er un kw st
         # плюс cd - condition для перевірки видимості лінка (буде аргументом ф-ції eval() ).
-        # Спочатку визначаються деякі параметри:
-        username, flat_id, flat_No = self.get_user_name_flat(user)
-        s = [
-            {'ls':'#body-aside-1-navigation'  , 'lt': 'Увійти'           , 'un': 'login'       , 'cd': "not user.is_authenticated()"},
-            {'ls':'#body-aside-1-navigation'  , 'lt': 'Зареєструватися'  , 'un': 'register'    , 'cd': "not user.is_authenticated()"},
-            # {'ls':'#body-navigation'          , 'lt': 'Головна сторінка' , 'un': 'index'},##########
-            {'ls':'#body-navigation'          , 'lt': 'Квартири'         , 'un': 'flats:flat-scheme'},
-            {'ls':'#body-navigation'          , 'lt': 'Картотека'        , 'un': 'folders:folder-contents', 'kw': {'pk': 1}, 'st': 5},
-            {'ls':'#body-navigation'          , 'lt': 'Увійти'           , 'un': 'login'       , 'cd': "not user.is_authenticated()"},
-            {'ls':'#body-navigation'          , 'lt': 'Зареєструватися'  , 'un': 'register'    , 'cd': "not user.is_authenticated()"},
-            {'ls':'#body-navigation'          , 'lt': 'Мій профіль'      , 'un': 'own-profile' , 'cd': "user.is_authenticated()"},
-            {'ls':'#body-navigation'          , 'lt': 'Адміністрування'  , 'un': 'adm-index'   , 'cd': "user.has_perm('koopsite.activate_account')"},
-            # {'ls':'#body-navigation'          , 'lt': 'Назад           ' , 'un': '"javascript:history.back()"'},#########
-            {'ls':'#header-aside-2-navigation', 'lt': username           , 'un': 'own-profile' , 'cd': "user.is_authenticated()"},
-            {'ls':'#header-aside-2-navigation', 'lt': "Кв." + flat_No    , 'un': "flats:flat-detail", 'kw': {'pk': flat_id}, 'cd': "user.is_authenticated() and user.userprofile.flat"},
-            {'ls':'#header-aside-2-navigation', 'lt': 'Вийти'            , 'un': 'logout'      , 'cd': "user.is_authenticated()", 'er': '/index/'},
-            {'ls':'#header-aside-2-navigation', 'lt': 'Авторизуватися'   , 'un': 'login'       , 'cd': "not user.is_authenticated()"},
-            ]
-        return s
+        assert True == False, 'Клас PageVisitTest: потрібно означити метод: links_in_template'
+        return []
 
     def visitor_can_go_to_links(self):
         # Лінки, вказані в шаблоні (в т.ч. і недоступні через умову if):
@@ -610,18 +467,194 @@ class PageVisitTest(DummyUser, FunctionalTest):
                         dialog_selector, dialog_title,
                         okey_text, cancel_text, close_on_esc)
 
+    def check_button_click_popup_appearance(self, this_url,
+                button_parent_selector, button_text,
+                dialog_selector=None, dialog_title=None,
+                okey_text=None, cancel_text=None, close_on_esc=None):
+        """
+        Допоміжна функція для функц.тесту. Викликається в циклі for
+        для кожної кнопки на сторінці.
+        Перевіряє, чи користувач може натиснути на кнопку,
+        побачити спливаюче вікно-діалог,
+        і закрити його кнопкою Cancel і/або клавішею Esc
+        НЕ перевіряє натискання кнопки Ok на спливаючому вікні!
+        :param this_url: сторінка що тестується
+        :param button_parent_selector: CSS-селектор елемента з кнопками
+        :param button_text           : текст на кнопці
+        :param dialog_selector       : CSS-селектор спливаючого діалогового вікна
+        :param dialog_title          : титут спливаючого діалогового вікна
+        :param okey_text             : текст на кнопці Okey спливаючого діалогового вікна
+        :param cancel_text           : текст на кнопці Cancel спливаючого діалогового вікна
+        :param close_on_esc          : умова closeOnEscape спливаючого діалогового вікна
+        :return:
+        """
+        # Користувач відкриває сторінку
+        self.browser.get('%s%s' % (self.server_url, this_url))
 
-def elements_print(elements):
+        # Знаходить потрібну кнопку і натискає її
+        parent = self.browser.find_element_by_css_selector(button_parent_selector)
+        xpath = "//button[contains(.,'%s')]" % button_text
+        elements = parent.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        button = elements[0]
+
+        actions = ActionChains(self.browser)
+        actions.move_to_element(button)
+        actions.click(button)
+        actions.perform()
+
+        # Чекає на появу спливаючого вікна
+        try:
+            WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
+            )
+        except Exception as exception:
+            print('exception:')
+            print('this_url=', this_url,
+                  '\nCSS_SELECTOR=', dialog_selector,
+                  '\nexception=', exception)
+            return
+        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
+        self.assertIsNotNone(dialog)
+
+        # Бачить правильний заголовок спливаючого вікна
+        xpath = ".//span[contains(.,'%s')]" % dialog_title
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        # Переконується, що спливаюче вікно модальне
+        # self.assertTrue(button.is_displayed())
+        # self.assertFalse(button.is_enabled())
+
+        # Бачить правильні надписи на кнопках спливаючого вікна
+        xpath = ".//button[contains(.,'%s')]" % okey_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        xpath = ".//button[contains(.,'%s')]" % cancel_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        # Натискає кнопку Cancel на спливаючому вікні
+        xpath = ".//button[contains(.,'%s')]" % cancel_text
+        elements = dialog.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        cancel_button = elements[0]
+
+        actions = ActionChains(self.browser)
+        actions.move_to_element(cancel_button)
+        actions.click(cancel_button)
+        actions.perform()
+
+        # Переконується, що спливаюче вікно закрите
+        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
+        self.assertIsNone(dialog)
+
+        # Ще раз натискає кнопку і чекає на появу спливаючого вікна
+        actions = ActionChains(self.browser)
+        actions.move_to_element(button)
+        actions.click(button)
+        actions.perform()
+        try:
+            WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
+            )
+        except Exception as exception:
+            print('exception:')
+            print('this_url=', this_url,
+                  '\nCSS_SELECTOR=', dialog_selector,
+                  '\nexception=', exception)
+            return
+
+        # Натискає клавішу Esc на клавіатурі
+        actions = ActionChains(self.browser)
+        actions.send_keys(Keys.ESCAPE)
+        actions.perform()
+
+        # Ще раз переконується, що спливаюче вікно закрите
+        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
+        self.assertIsNone(dialog)
+
+    def template_input_values_print(self):
+        f_name = self.browser.find_element_by_css_selector("#thisfolder span").text
+        print('\nf_name =', f_name)
+        template_id_list = [
+            "list_length"    ,
+            "json_arr"       ,
+            "browTabName"    ,
+            "selRowIndex"    ,
+            "selElementModel",
+            "selElementID"   ,
+        ]
+        for t_id in template_id_list:
+            v = self.browser.find_element_by_id(t_id).get_attribute("value")
+            print('%-20s %s' % (t_id, v))
+
+    def wait_presence_of_element(self, css_selector):
+        # Чекає на появу спливаючого вікна
+        try:
+            WebDriverWait(self.browser, 10).until(
+                EC.presence_of_element_located((By.CSS_SELECTOR, css_selector))
+            )
+        except Exception as exception:
+            print('exception:')
+            print('CSS_SELECTOR=', css_selector,
+                  '\nexception=', exception)
+            return
+
+    def get_displayed_dialog(self, dialog_selector='.ui-dialog'):
+        # Повертає видимий елемент спливаючого вікна-діалога
+        dialog_elements = self.browser.find_elements_by_css_selector(dialog_selector)
+        dialog_elements_print(dialog_elements, 'dialog_elements')
+        dialog = None
+        for element in dialog_elements: # нас цікавить видимий діалог. інші ui-dialog's не містять текстів
+            if element.value_of_css_property('display') != "none":
+                dialog = element
+        return  dialog
+
+def dialog_elements_print(elements, *args):
+    '''
+    Допоміжна функція для друку UI dialog елементів Selenium
+    :param elements:
+    :return:
+    '''
     if not isinstance(elements, (list, tuple)):
         elements = (elements, )
+    print('\n', *args)
     print('='*77)
-    print('%-20s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
-          ('text', 'tag_name', 'displ', 'enabl',
+    print('%-20s %-10s %-10s %-10s %-20s %s' %
+          ('aria', 'tag_name', 'displayed', 'display','text', 'element'))
+    for element in elements:
+        text = element.text
+        if text:
+            tt = text.split('\n')
+            text = ' & '.join(tt)
+        print('%-20s %-10s %-10s %-10s %-20s %s' %
+              (element.get_attribute('aria-describedby'),
+               element.tag_name,
+               element.is_displayed(),
+               element.value_of_css_property('display'),
+               text,
+               element))
+    print('-'*77)
+
+def elements_print(elements, *args):
+    '''
+    Допоміжна функція для друку елементів Selenium
+    :param elements:
+    :return:
+    '''
+    if not isinstance(elements, (list, tuple)):
+        elements = (elements, )
+    print('\n', *args)
+    print('='*77)
+    print('%-20s %-15s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
+          ('text', 'aria', 'tag_name', 'displ', 'enabl',
           'id', 'name', 'type', 'display', 'element'))
     for element in elements:
-        print('%-20s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
-              (element.text, element.tag_name,
-              element.is_displayed(), element.is_enabled(),
+        print('%-20s %-15s %-10s %-5s %-5s %-10s %-10s %-10s %-10s %s' %
+              (element.text, element.get_attribute('aria-describedby'),
+               element.tag_name, element.is_displayed(), element.is_enabled(),
               element.get_attribute('id'), element.get_attribute('name'),
               element.get_attribute('type'), element.value_of_css_property('display'),
               element))

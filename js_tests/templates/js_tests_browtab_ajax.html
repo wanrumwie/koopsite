@@ -49,7 +49,6 @@
         >
         {% csrf_token %}
 
-        <input id="csrfmiddlewaretoken" type="text" value="{{ csrf_token }}">
         <label for="parent_id">parent_folder_id:</label>
         <input id="parent_id"       type="text" value="{{ folder.id }}">
         <label for="list_length">list_length:</label>
@@ -64,8 +63,6 @@
             якщо сторінка кешувалася і не хоче перезавантажуватися): -->
         <label for="browTabName">browTabName:</label>
         <input id="browTabName"   type="text" value="{{ browTabName }}">
-        <label for="startRowIndex">startRowIndex:</label>
-        <input id="startRowIndex"   type="text" value="{{ startRowIndex }}">
         <label for="selRowIndex">selRowIndex:</label>
         <input id="selRowIndex"     type="text" value="{{ selRowIndex }}">
         <label for="selElementModel">selected_element_model:</label>

@@ -2,6 +2,7 @@ from datetime import timedelta
 import inspect
 from unittest.case import skipIf, skip
 from django.contrib.auth.models import AnonymousUser
+from django.core.urlresolvers import reverse
 from django.utils.timezone import now
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
@@ -12,7 +13,7 @@ from folders.functions import get_full_named_path, get_parents
 from folders.models import Folder, Report
 from folders.tests.test_base import DummyFolder
 from folders.views import FolderReportList
-from functional_tests.koopsite.ft_base import PageVisitTest
+from functional_tests.koopsite.ft_base import PageVisitTest, dialog_elements_print, elements_print
 from koopsite.settings import SKIP_TEST
 
 
@@ -99,25 +100,29 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         DummyFolder().create_dummy_catalogue(report=True)
         self.get_data_links_number()
 
-    # @skip
+    def tearDown(self):
+        self.browser.delete_all_cookies()
+        super().tearDown()
+
+    @skip
     def test_can_visit_page(self):
         # Заголовок і назва сторінки правильні
         self.can_visit_page()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    # @skip
+    @skip
     def test_layout_and_styling_page(self):
         # CSS завантажено і працює
         self.layout_and_styling_page()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    # @skip
+    @skip
     def test_visitor_can_go_to_links(self):
         # Користувач може перейти по всіх лінках на сторінці
         self.visitor_can_go_to_links()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    # @skip
+    @skip
     def test_visitor_can_click_popup_activation_buttons(self):
         # Користувач може клацнути по всіх кнопках на сторінці і повернутися назад
         self.visitor_can_click_popup_activation_buttons()
@@ -126,7 +131,27 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
     # @skip
     def test_visitor_can_create_folder(self):
         # Параметри потрібної кнопки:
-        button_text = "Нова тека"
+        button_text             = "Нова тека"
+        button_parent_selector  = ""
+        dialog_selector         = ""
+        dialog_title            = ""
+        okey_text               = ""
+
+        inputbox_label_val      = "Назва теки"
+        inputbox_default_val    = "Тека без назви"
+        inputbox_new_val        = "New_folder"
+        message_title           = inputbox_new_val
+        message_text            = "Теку створено!"
+        message_okey_text       = "Ok"
+
+        n = 2   # кількість рядків у таблиці
+
+        # CSS-селектори спливаючих діалогів:
+        dialog_box_form_selector = "[aria-describedby=dialog-box-form]"
+        dialog_confirm_selector  = "[aria-describedby=dialog-confirm]"
+        dialog_message_selector  = "[aria-describedby=dialog-message]"
+        dialog_box_tree_selector = "[aria-describedby=dialog-box-tree]"
+
         buttons = self.popup_activation_buttons_in_template()
         for d in buttons:
             if d.get('bt') == button_text:
@@ -142,6 +167,15 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         # Користувач відкриває сторінку
         self.browser.get('%s%s' % (self.server_url, self.this_url))
 
+        # Бачить в таблиці правильну кількість рядків
+        tbody = WebDriverWait(self.browser, 10).until(
+                    EC.visibility_of_element_located((
+                        By.CSS_SELECTOR, "tbody"))
+        )
+        xpath = ".//tr"
+        elements = tbody.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 2)
+
         # Знаходить потрібну кнопку і натискає її
         parent = self.browser.find_element_by_css_selector(button_parent_selector)
         xpath = "//button[contains(.,'%s')]" % button_text
@@ -155,24 +189,12 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         actions.perform()
 
         # Чекає на появу спливаючого вікна
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
-            )
-        except Exception as exception:
-            print('exception:')
-            print('this_url=', self.this_url,
-                  '\nCSS_SELECTOR=', dialog_selector,
-                  '\nexception=', exception)
-            return
-        dialog_elements = self.browser.find_elements_by_css_selector(dialog_selector)
-        dialog = None
-        for element in dialog_elements: # нас цікавить видимий діалог. інші ui-dialog's не містять текстів
-            if element.value_of_css_property('display') != "none":
-                dialog = element
+        dialog = WebDriverWait(self.browser, 10).until(
+                    EC.visibility_of_element_located((
+                        By.CSS_SELECTOR, dialog_box_form_selector))
+        )
+        dialog_elements_print(dialog, '\nvisibility')
         self.assertIsNotNone(dialog)
-
-        dialog_box_form = self.browser.find_element_by_id("dialog-box-form")
 
         # Бачить правильний заголовок спливаючого вікна
         xpath = ".//span[contains(.,'%s')]" % dialog_title
@@ -181,27 +203,28 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
 
         # Бачить правильний підпис поля вводу
         xpath = ".//label[@for='%s']" % "id_name"
-        elements = dialog_box_form.find_elements_by_xpath(xpath)
+        elements = dialog.find_elements_by_xpath(xpath)
         self.assertEqual(len(elements), 1)
-        self.assertEqual(elements[0].text, "Назва теки")
+        self.assertEqual(elements[0].text, inputbox_label_val)
 
         # Бачить правильне початкове значення у полі вводу
         xpath = ".//input[@id='%s']" % "id_name"
-        elements = dialog_box_form.find_elements_by_xpath(xpath)
+        elements = dialog.find_elements_by_xpath(xpath)
         self.assertEqual(len(elements), 1)
         inputbox = elements[0]
-        self.assertEqual(inputbox.get_attribute("value"), "Тека без назви")
+        self.assertEqual(inputbox.get_attribute("value"), inputbox_default_val)
 
-        # Видаляє з поля вводу непотрібну назву
-        # inputbox.clear()
+        # Видаляє з поля вводу непотрібне значення
         ActionChains(self.browser).key_down(Keys.CONTROL).\
             send_keys('a').key_up(Keys.CONTROL).send_keys(Keys.DELETE).perform()
 
         # Вводить дані в полі вводу
-        inputbox.send_keys('New_folder')
+        inputbox.send_keys(inputbox_new_val)
 
+        # TODO-додати перевірку закриття вікна після натискання Enter, Esc
         # Натискає ENTER
         # inputbox.send_keys(Keys.ENTER)
+
         # Натискає кнопку Ok на спливаючому вікні
         xpath = ".//button[contains(.,'%s')]" % okey_text
         elements = dialog.find_elements_by_xpath(xpath)
@@ -210,32 +233,86 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         okey_button.click()
 
         # Переконується, що спливаюче вікно закрите
-        self.assertTrue(button.is_displayed())
-        self.assertTrue(button.is_enabled())
+        dialog = WebDriverWait(self.browser, 10).until(
+                    EC.invisibility_of_element_located(
+                        (By.CSS_SELECTOR, dialog_box_form_selector))
+        )
+        dialog_elements_print(dialog, '\ndialog after popup closed')
+        self.assertFalse(dialog.is_displayed())
+
+        # TODO-помилка очікування на спливаюче повідомлення (часом виникає, хоча візуально вікно з'являється і нова тека створюється)
+        # Traceback: selenium.common.exceptions.TimeoutException: Message:
+
+        # Бачить спливаюче повідомлення
+        message = WebDriverWait(self.browser, 10).until(
+                    EC.visibility_of_element_located((
+                        By.CSS_SELECTOR, dialog_message_selector))
+        )
+        dialog_elements_print(message, '\nmessage')
+        self.assertIsNotNone(message)
+
+        # Бачить правильний заголовок і текст спливаючого повідомлення
+        xpath = ".//span[contains(.,'%s')]" % message_title
+        elements = message.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        xpath = ".//div[contains(.,'%s')]" % message_text
+        elements = message.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+
+        # TODO-додати перевірку закриття вікна після натискання
+        # клавіш Enter, Esc або очікування заданого часу
+
+        # Натискає кнопку Ok на спливаючому повідомленні
+        xpath = ".//button[contains(.,'%s')]" % message_okey_text
+        elements = message.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        okey_button = elements[0]
+        okey_button.click()
+
+        # Переконується, що спливаюче повідомлення закрите
+        message = WebDriverWait(self.browser, 10).until(
+                    EC.invisibility_of_element_located(
+                        (By.CSS_SELECTOR, dialog_box_form_selector))
+        )
+        dialog_elements_print(message, '\nmessage after popup closed')
+        self.assertFalse(message.is_displayed())
 
         # Залишається на тій же сторінці
         self.check_passed_link(expected_regex=self.this_url)
 
         # TODO-додати перевірку появи нового запису в тілі таблиці:
-        # Бачить у кінці таблиці новостворений запис
+        # Бачить новий запис, який є виділеним
+        tr = WebDriverWait(self.browser, 10).until(
+                    EC.visibility_of_element_located((
+                        By.CSS_SELECTOR, ".selected"))
+        )
+        self.assertIsNotNone(tr)
+        xpath = ".//a[contains(.,'%s')]" % inputbox_new_val
+        elements = tr.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        a = elements[0]
 
-        # Бачить, що новий запис є виділеним
+        # Загальна кількість записів у таблиці правильна
+        tbody = self.browser.find_element_by_tag_name('tbody')
+        elements = tbody.find_elements_by_tag_name('tr')
+        self.assertEqual(len(elements), n + 1)
+        self.assertTrue("selected" in elements[n].get_attribute("class"))
 
-        # Новий запис збереджено у базі даних
+        # Новий запис збережено у базі даних
         folder = Folder.objects.last()
-        self.assertEqual(folder.name, 'New_folder')
+        self.assertEqual(folder.name, inputbox_new_val)
         this_folder = Folder.objects.get(id=1)
         self.assertEqual(folder.parent, this_folder)
 
-        # Час створення (до секунди) співпадає з поточним?
+        # Час створення (до хвилини) співпадає з поточним?
         self.assertAlmostEqual(folder.created_on, now(), delta=timedelta(minutes=1))
 
+        # Натискає клавішу Enter і потрапляє на сторінку нової теки
+        a.send_keys(Keys.ENTER)
+        href= reverse('folders:folder-contents', kwargs={'pk': folder.pk})
 
-
-
-
-
-
+        self.check_passed_link(expected_regex=href)
 
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 

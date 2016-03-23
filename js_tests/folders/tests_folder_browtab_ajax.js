@@ -335,7 +335,8 @@ QUnit.module( "folder_browtab_ajax ajax", function( hooks ) {
     var done;
     hooks.beforeEach( function( assert ) {
         stub = {};
-        csrf_token = $( "#csrfmiddlewaretoken" ).val();
+        // csrf_token = $( "#csrfmiddlewaretoken" ).val();
+		csrf_token = $( "[name=csrfmiddlewaretoken]" ).val();   // Receiving the csrf_token value from template
         this.xhr = sinon.useFakeXMLHttpRequest();
         requests = [];
         this.xhr.onCreate = function ( request ) {
