@@ -13,6 +13,24 @@ console.log('start loading folder_browtab_ajax.js');
 function ajaxSuccessHandler( sr ) {
     xhrSuccessHandler( sr );
 }
+// TODO-refactor dialogMessage: include callback function, calling after dialog message is closed
+    // dialogMessage( message, type, title, time, callback );
+// TODO-refactor xhrSuccessHandler: describe in each switch item the callback function for dialogMessage, making e.g. dialog_box_form_close(), addNewElement(...) etc.
+/*  xhrSuccessHandler refactor plan:
+	function xhrSuccessHandler( sr ) {
+		switch ( sr.type ) {
+			case 'IncorrectData':
+				callback = function() {}
+				// dialog remains open, message - red
+				break;
+			case 'NewRow': 
+				callback = function() {
+					dialog_box_form_close();
+					addNewElement( sr.changes, sr.supplement ); // add new element; changes has all values of new element
+				}
+				break;
+		dialogMessage( sr.message, sr.type, sr.title, 2000, callback );
+*/
 function xhrSuccessHandler( sr ) {
     dialogMessage( sr.message, sr.type, sr.title, 2000 );
     switch ( sr.type ) {

@@ -25,7 +25,8 @@
             <div class="wrapper">
                 <!--<div class="header"></div>-->
                 <div class="main padding-0">
-                    <ul class="navigation-small justify-content-left color-negative">
+                    <ul id="parent-folders-navigation"
+						class="navigation-small justify-content-left color-negative">
                         {% for f in parents %}
                             <li>
                             <a  id="parent#{{ f.id }}"
@@ -138,7 +139,7 @@
 
         </div>
         <div class="aside aside-2 align-flex-start aside-empty">
-            ПРАВА СТОРОНА
+            ПОШУК Файлів і тек
         </div>
         <!--<div class="footer"></div>-->
     </div>

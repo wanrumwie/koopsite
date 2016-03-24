@@ -215,6 +215,12 @@ class PageVisitTest(DummyUser, FunctionalTest):
     page_name   = 'Головна сторінка'
     data_links_number = 0   # кількість лінків, які приходять в шаблон з даними
 
+    # CSS-селектори спливаючих діалогів:
+    dialog_box_form_selector = "[aria-describedby=dialog-box-form]"
+    dialog_confirm_selector  = "[aria-describedby=dialog-confirm]"
+    dialog_message_selector  = "[aria-describedby=dialog-message]"
+    dialog_box_tree_selector = "[aria-describedby=dialog-box-tree]"
+
     def add_user_cookie_to_browser(self, user, url=None):
         session = create_user_session(user)
         cookie = create_cookie(session)
@@ -310,10 +316,8 @@ class PageVisitTest(DummyUser, FunctionalTest):
         # print('href.location_once_scrolled_into_view =', href.location_once_scrolled_into_view)
 
         try:
-            actions = ActionChains(self.browser)
-            actions.move_to_element(href)
-            actions.click(href)
-            actions.perform()
+            ActionChains(self.browser).move_to_element(href)\
+                .click(href).perform()
         except Exception as exception:
             print('Attention: Exception in actions caused probably by too long searched link text:')
             print(link_text)
@@ -354,7 +358,6 @@ class PageVisitTest(DummyUser, FunctionalTest):
         for option in all_options:
             if option.get_attribute('value') == val :
                 option.click()
-
 
     def can_visit_page(self):
         # Користувач може відвідати сторінку
@@ -467,6 +470,36 @@ class PageVisitTest(DummyUser, FunctionalTest):
                         dialog_selector, dialog_title,
                         okey_text, cancel_text, close_on_esc)
 
+
+    def get_waited_visible_element(self, css_selector):
+        element = WebDriverWait(self.browser, 10).until(
+                    EC.visibility_of_element_located((
+                        By.CSS_SELECTOR, css_selector))
+        )
+        self.assertIsNotNone(element)
+        return element
+
+    def get_waited_invisible_element(self, css_selector):
+        element = WebDriverWait(self.browser, 10).until(
+                    EC.invisibility_of_element_located((
+                        By.CSS_SELECTOR, css_selector))
+        )
+        self.assertIsNotNone(element)
+        self.assertFalse(element.is_displayed())
+        return element
+
+    def find_single_by_xpath(self, parent, xpath):
+        elements = parent.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), 1)
+        return  elements[0]
+
+    def terminate_dialog_by_button(self, dialog, button_text="Ok"):
+        # Завершує спливаючий діалог натисканням кнопки на ньому з надписом button_text
+        xpath = ".//button[contains(.,'%s')]" % button_text
+        button = self.find_single_by_xpath(dialog, xpath)
+        ActionChains(self.browser).move_to_element(button)\
+            .click(button).perform()
+
     def check_button_click_popup_appearance(self, this_url,
                 button_parent_selector, button_text,
                 dialog_selector=None, dialog_title=None,
@@ -494,86 +527,48 @@ class PageVisitTest(DummyUser, FunctionalTest):
         # Знаходить потрібну кнопку і натискає її
         parent = self.browser.find_element_by_css_selector(button_parent_selector)
         xpath = "//button[contains(.,'%s')]" % button_text
-        elements = parent.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-        button = elements[0]
-
-        actions = ActionChains(self.browser)
-        actions.move_to_element(button)
-        actions.click(button)
-        actions.perform()
+        button = self.find_single_by_xpath(parent, xpath)
+        ActionChains(self.browser).move_to_element(button)\
+            .click(button).perform()
 
         # Чекає на появу спливаючого вікна
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
-            )
-        except Exception as exception:
-            print('exception:')
-            print('this_url=', this_url,
-                  '\nCSS_SELECTOR=', dialog_selector,
-                  '\nexception=', exception)
-            return
-        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
-        self.assertIsNotNone(dialog)
+        dialog = self.get_waited_visible_element(dialog_selector)
 
         # Бачить правильний заголовок спливаючого вікна
         xpath = ".//span[contains(.,'%s')]" % dialog_title
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
+        self.find_single_by_xpath(dialog, xpath)
 
+        # TODO-зробити перевірку модальності спливаючого вікна
         # Переконується, що спливаюче вікно модальне
         # self.assertTrue(button.is_displayed())
         # self.assertFalse(button.is_enabled())
 
         # Бачить правильні надписи на кнопках спливаючого вікна
         xpath = ".//button[contains(.,'%s')]" % okey_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
+        self.find_single_by_xpath(dialog, xpath)
 
         xpath = ".//button[contains(.,'%s')]" % cancel_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
+        self.find_single_by_xpath(dialog, xpath)
 
         # Натискає кнопку Cancel на спливаючому вікні
-        xpath = ".//button[contains(.,'%s')]" % cancel_text
-        elements = dialog.find_elements_by_xpath(xpath)
-        self.assertEqual(len(elements), 1)
-        cancel_button = elements[0]
+        self.terminate_dialog_by_button(dialog, cancel_text)
 
-        actions = ActionChains(self.browser)
-        actions.move_to_element(cancel_button)
-        actions.click(cancel_button)
-        actions.perform()
+        # Переконується, що спливаюче ОСНОВНЕ вікно закрите
+        self.get_waited_invisible_element(dialog_selector)
 
-        # Переконується, що спливаюче вікно закрите
-        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
-        self.assertIsNone(dialog)
+        if close_on_esc:    # перевірка закривання вікна клавішею Esc
 
-        # Ще раз натискає кнопку і чекає на появу спливаючого вікна
-        actions = ActionChains(self.browser)
-        actions.move_to_element(button)
-        actions.click(button)
-        actions.perform()
-        try:
-            WebDriverWait(self.browser, 10).until(
-                EC.presence_of_element_located((By.CSS_SELECTOR, dialog_selector))
-            )
-        except Exception as exception:
-            print('exception:')
-            print('this_url=', this_url,
-                  '\nCSS_SELECTOR=', dialog_selector,
-                  '\nexception=', exception)
-            return
+            # Ще раз натискає кнопку і чекає на появу спливаючого вікна
+            ActionChains(self.browser).move_to_element(button)\
+                .click(button).perform()
+            dialog = self.get_waited_visible_element(dialog_selector)
 
-        # Натискає клавішу Esc на клавіатурі
-        actions = ActionChains(self.browser)
-        actions.send_keys(Keys.ESCAPE)
-        actions.perform()
+            # Натискає клавішу Esc на клавіатурі
+            ActionChains(self.browser).send_keys(Keys.ESCAPE).perform()
 
-        # Ще раз переконується, що спливаюче вікно закрите
-        dialog = self.get_displayed_dialog(dialog_selector=dialog_selector)
-        self.assertIsNone(dialog)
+            # Ще раз переконується, що спливаюче ОСНОВНЕ вікно закрите
+            self.get_waited_invisible_element(dialog_selector)
+
 
     def template_input_values_print(self):
         f_name = self.browser.find_element_by_css_selector("#thisfolder span").text

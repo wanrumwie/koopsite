@@ -69,7 +69,7 @@ function button_create_folder_handler() {
     var condVal         = false;
     var confirmTitle    = "";
     var confirmMsg      = "";
-    var selectionCheck  = check_selRowIndex_range();
+    var selectionCheck  = true;
     buttonClickHandler( ajax_Function, dialogTitle, inputLabel, disabledInput, inputVal, 
                                                 condLabel, condVal, confirmTitle, confirmMsg, selectionCheck );
     return false;
@@ -84,7 +84,7 @@ function button_upload_report_handler() {
     var condVal         = false;
     var confirmTitle    = "";
     var confirmMsg      = "";
-    var selectionCheck  = check_selRowIndex_range();
+    var selectionCheck  = true;
     var inputType       = 'file';
     buttonClickHandler( ajax_Function, dialogTitle, inputLabel, disabledInput, inputVal, 
                                                 condLabel, condVal, confirmTitle, confirmMsg, selectionCheck,

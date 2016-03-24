@@ -6,17 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="a6a7824a-5729-4316-8075-18bce779bc56" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db.sqlite3" afterPath="$PROJECT_DIR$/db.sqlite3" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/koopsite/templates/block_ajax_browtab.html" afterPath="$PROJECT_DIR$/koopsite/templates/block_ajax_browtab.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/js/browtab_ajax.js" afterPath="$PROJECT_DIR$/static/js/browtab_ajax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/koopsite/templates/block_bottom.html" afterPath="$PROJECT_DIR$/koopsite/templates/block_bottom.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/folders/static/js/folder_browtab_ajax.js" afterPath="$PROJECT_DIR$/folders/static/js/folder_browtab_ajax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/folders/static/js/folder_browtab_ui.js" afterPath="$PROJECT_DIR$/folders/static/js/folder_browtab_ui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/folders/templates/folders/folder_contents.html" afterPath="$PROJECT_DIR$/folders/templates/folders/folder_contents.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" afterPath="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/templates/js_tests_browtab.html" afterPath="$PROJECT_DIR$/js_tests/templates/js_tests_browtab.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/templates/js_tests_browtab_ajax.html" afterPath="$PROJECT_DIR$/js_tests/templates/js_tests_browtab_ajax.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/js/tests_browtab_ajax.js" afterPath="$PROJECT_DIR$/js_tests/js/tests_browtab_ajax.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests/flats/tests_flat_detail.py" afterPath="$PROJECT_DIR$/functional_tests/flats/tests_flat_detail.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/folders/tests_folder_browtab_ajax.js" afterPath="$PROJECT_DIR$/js_tests/folders/tests_folder_browtab_ajax.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/folders/tests/test_base.py" afterPath="$PROJECT_DIR$/folders/tests/test_base.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/folders/tests_folder_browtab_ui.js" afterPath="$PROJECT_DIR$/js_tests/folders/tests_folder_browtab_ui.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests/folders/tests_folder_contents.py" afterPath="$PROJECT_DIR$/functional_tests/folders/tests_folder_contents.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/functional_tests/koopsite/tests_index_page_visit.py" afterPath="$PROJECT_DIR$/functional_tests/koopsite/tests_index_page_visit.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js_tests/koopsite/tests_users_browtab_ajax.js" afterPath="$PROJECT_DIR$/js_tests/koopsite/tests_users_browtab_ajax.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="koopsite.iws" />
@@ -44,8 +41,8 @@
       <file leaf-file-name="tests_folder_contents.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/functional_tests/folders/tests_folder_contents.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.35326087" vertical-offset="5772" max-vertical-offset="10582">
-              <caret line="243" column="21" selection-start-line="243" selection-start-column="21" selection-end-line="243" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.57249624" vertical-offset="7677" max-vertical-offset="10920">
+              <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -73,7 +70,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/koopsite/templates/block_js_jstree.html" />
         <option value="$PROJECT_DIR$/js_tests/js/tests_browtab.js" />
         <option value="$PROJECT_DIR$/js_tests/templates/base_js_tests.html" />
         <option value="$PROJECT_DIR$/js_tests/js/tests_browtab_ui.js" />
@@ -122,6 +118,7 @@
         <option value="$PROJECT_DIR$/koopsite/settings.py" />
         <option value="$PROJECT_DIR$/functional_tests/flats/tests_flat_detail.py" />
         <option value="$PROJECT_DIR$/functional_tests/koopsite/tests_index_page_visit.py" />
+        <option value="$PROJECT_DIR$/folders/tests/test_base.py" />
         <option value="$PROJECT_DIR$/functional_tests/koopsite/ft_base.py" />
         <option value="$PROJECT_DIR$/functional_tests/folders/tests_folder_contents.py" />
       </list>
@@ -304,7 +301,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors.Python" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
@@ -610,10 +607,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.manage-test_select" />
-        <item index="1" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
-        <item index="2" class="java.lang.String" itemvalue="Python.manage-test-FT-koopsite" />
-        <item index="3" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+        <item index="0" class="java.lang.String" itemvalue="Python.manage-test-JS" />
+        <item index="1" class="java.lang.String" itemvalue="Python.manage-test_select" />
+        <item index="2" class="java.lang.String" itemvalue="Python.manage-test-FT-folders" />
+        <item index="3" class="java.lang.String" itemvalue="Python.manage-test-FT-koopsite" />
         <item index="4" class="java.lang.String" itemvalue="Python.manage-test-FT-flats" />
       </list>
     </recent_temporary>
@@ -1307,7 +1304,11 @@
       <created>1458670687265</created>
       <updated>1458670687266</updated>
     </task>
-    <option name="localTasksCounter" value="171" />
+    <task id="LOCAL-00171" summary="KoopSite: FT for folder_contents: create folder ready!">
+      <created>1458758042667</created>
+      <updated>1458758042667</updated>
+    </task>
+    <option name="localTasksCounter" value="172" />
     <servers />
   </component>
   <component name="TodoView" selected-index="4">
@@ -1342,7 +1343,7 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39970717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20790629" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4407028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-3" y="122" width="1366" height="510" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4407028" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-3" y="122" width="1366" height="510" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1369,7 +1370,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="KoopSite:  js_tests for users_browtab_ajax.js: ready!" />
     <MESSAGE value="KoopSite:  js_tests for folder_browtab.js: ready!" />
     <MESSAGE value="KoopSite:  js_tests for folder_browtab_ajax.js: ajax folder create ready! ...." />
     <MESSAGE value="KoopSite:  js_tests for folder_browtab_ajax.js:  all ajax functions ready! Now xhr...." />
@@ -1394,7 +1394,8 @@
     <MESSAGE value="KoopSite: before Selenium on PythonAnywhere" />
     <MESSAGE value="KoopSite: first commit after new repo creation." />
     <MESSAGE value="KoopSite: FT for folder_contents: create folder almost ready!" />
-    <option name="LAST_COMMIT_MESSAGE" value="KoopSite: FT for folder_contents: create folder almost ready!" />
+    <MESSAGE value="KoopSite: FT for folder_contents: create folder ready!" />
+    <option name="LAST_COMMIT_MESSAGE" value="KoopSite: FT for folder_contents: create folder ready!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1419,35 +1420,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/koopsite/tests/test_viewsajaxuser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7772795" vertical-offset="47086" max-vertical-offset="48412">
-          <caret line="1831" column="0" selection-start-line="1831" selection-start-column="0" selection-end-line="1831" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koopsite/viewsajaxuser.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="7826" max-vertical-offset="19890">
-          <caret line="323" column="0" selection-start-line="301" selection-start-column="0" selection-end-line="301" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/koopsite/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.922272" vertical-offset="4245" max-vertical-offset="6864">
-          <caret line="194" column="0" selection-start-line="187" selection-start-column="0" selection-end-line="187" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1442825926/_io.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="23946" max-vertical-offset="39598">
-          <caret line="921" column="8" selection-start-line="921" selection-start-column="8" selection-end-line="921" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python34/Lib/site-packages/Django-1.8.2-py3.4.egg/django/db/models/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.038863976" vertical-offset="11414" max-vertical-offset="43342">
@@ -1613,7 +1585,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.07772795" vertical-offset="10738" max-vertical-offset="36218">
           <caret line="428" column="0" selection-start-line="415" selection-start-column="0" selection-end-line="415" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1621,7 +1592,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3721973" vertical-offset="2481" max-vertical-offset="32240">
           <caret line="151" column="41" selection-start-line="105" selection-start-column="41" selection-end-line="105" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1657,13 +1627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4888">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/folders/tests/test_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23853211" vertical-offset="0" max-vertical-offset="1664">
-          <caret line="8" column="32" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1709,19 +1672,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1442825926/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.61136025" vertical-offset="105151" max-vertical-offset="151918">
-          <caret line="4060" column="0" selection-start-line="4060" selection-start-column="0" selection-end-line="4060" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Python34/Lib/site-packages/selenium/webdriver/remote/webdriver.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42750373" vertical-offset="16042" max-vertical-offset="24700">
           <caret line="642" column="26" selection-start-line="628" selection-start-column="8" selection-end-line="628" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1736,7 +1690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20410">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1744,7 +1697,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="728" max-vertical-offset="2444">
           <caret line="34" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,7 +1704,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3432">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1760,30 +1711,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5052317" vertical-offset="3978" max-vertical-offset="7462">
           <caret line="170" column="0" selection-start-line="166" selection-start-column="0" selection-end-line="166" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5694" max-vertical-offset="16796">
-          <caret line="240" column="8" selection-start-line="219" selection-start-column="8" selection-end-line="219" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://C:/Python34/Lib/site-packages/selenium/webdriver/support/wait.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.07065217" vertical-offset="1638" max-vertical-offset="2600">
-          <caret line="66" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.038863976" vertical-offset="1846" max-vertical-offset="2600">
+          <caret line="74" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/viewsajax.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="104" max-vertical-offset="6344">
+          <caret line="9" column="7" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/koopsite/viewsajaxuser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1554559" vertical-offset="0" max-vertical-offset="20462">
+          <caret line="4" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/tests/test_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96467394" vertical-offset="1127" max-vertical-offset="1872">
+          <caret line="59" column="74" selection-start-line="57" selection-start-column="74" selection-end-line="57" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python34/Lib/site-packages/selenium/webdriver/common/keys.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.6535434" vertical-offset="566" max-vertical-offset="2626">
+          <caret line="46" column="0" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/folders/functions.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="3952">
+          <caret line="26" column="4" selection-start-line="18" selection-start-column="4" selection-end-line="18" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1442825926/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77717394" vertical-offset="92508" max-vertical-offset="151918">
+          <caret line="3569" column="0" selection-start-line="3569" selection-start-column="0" selection-end-line="3569" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/functional_tests/koopsite/ft_base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2826087" vertical-offset="12142" max-vertical-offset="16666">
+          <caret line="492" column="0" selection-start-line="471" selection-start-column="0" selection-end-line="471" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/functional_tests/folders/tests_folder_contents.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35326087" vertical-offset="5772" max-vertical-offset="10582">
-          <caret line="243" column="21" selection-start-line="243" selection-start-column="21" selection-end-line="243" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.57249624" vertical-offset="7677" max-vertical-offset="10920">
+          <caret line="324" column="0" selection-start-line="324" selection-start-column="0" selection-end-line="324" selection-end-column="0" />
           <folding />
         </state>
       </provider>

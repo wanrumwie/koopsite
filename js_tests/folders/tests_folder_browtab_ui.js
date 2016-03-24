@@ -137,7 +137,7 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
         }
     } );
     QUnit.test( 'button_create_folder_handler', function ( assert ) {
-        expect( 5 );
+        expect( 4 );
         var ajax_Function   = ajax_folderCreate; 
         var dialogTitle     = "Нова тека";
         var inputLabel      = "Назва теки";
@@ -147,15 +147,14 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
         var condVal         = false;
         var confirmTitle    = "";
         var confirmMsg      = "";
-        var selectionCheck  = "selectionCheck";
+        var selectionCheck  = true;
         
         stub.check_selRowIndex_range = sinon.stub( window, "check_selRowIndex_range" ).returns( selectionCheck );
         stub.buttonClickHandler = sinon.stub( window, "buttonClickHandler" );
    
         var res = button_create_folder_handler( );
         
-        assert.ok( stub.check_selRowIndex_range.calledOnce, 'check_selRowIndex_range should be called once' );
-        assert.ok( stub.check_selRowIndex_range.calledWithExactly( ), 'check_selRowIndex_range should be called with arg' );
+        assert.notOk( stub.check_selRowIndex_range.called, 'check_selRowIndex_range should not be called' );
         assert.ok( stub.buttonClickHandler.calledOnce, 'buttonClickHandler should be called once' );
         assert.ok( stub.buttonClickHandler.calledWithExactly( ajax_Function, dialogTitle, inputLabel, 
                             disabledInput, inputVal, condLabel, condVal, confirmTitle, confirmMsg, selectionCheck ), 
@@ -164,7 +163,7 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
         assert.equal( res, false, 'button_create_folder_handler should return false' );
     });
     QUnit.test( 'button_upload_report_handler', function ( assert ) {
-        expect( 5 );
+        expect( 4 );
         var ajax_Function   = xhr_reportUpload; 
         var dialogTitle     = "Новий файл";
         var inputLabel      = "Назва файла";
@@ -174,7 +173,7 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
         var condVal         = false;
         var confirmTitle    = "";
         var confirmMsg      = "";
-        var selectionCheck  = "selectionCheck";
+        var selectionCheck  = true;
         var inputType       = 'file';
         
         stub.check_selRowIndex_range = sinon.stub( window, "check_selRowIndex_range" ).returns( selectionCheck );
@@ -182,8 +181,7 @@ QUnit.module( "folder_browtab_ui button handlers", function( hooks ) {
    
         var res = button_upload_report_handler( );
         
-        assert.ok( stub.check_selRowIndex_range.calledOnce, 'check_selRowIndex_range should be called once' );
-        assert.ok( stub.check_selRowIndex_range.calledWithExactly( ), 'check_selRowIndex_range should be called with arg' );
+        assert.notOk( stub.check_selRowIndex_range.called, 'check_selRowIndex_range should not be called' );
         assert.ok( stub.buttonClickHandler.calledOnce, 'buttonClickHandler should be called once' );
         assert.ok( stub.buttonClickHandler.calledWithExactly( ajax_Function, dialogTitle, inputLabel, 
                             disabledInput, inputVal, condLabel, condVal, confirmTitle, confirmMsg, selectionCheck,
