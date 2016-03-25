@@ -705,3 +705,38 @@ def CheckPathMatchMediaPattern(path, patt_list=None):
         check = check or fnmatch(path, pattern)
     return check
 
+
+# TODO-написати зручну функцію для перетворення дати в секунди з врахуванням різниці в часі
+'''
+        (mode, ino, dev, nlink, uid, gid, size, atime, modtime, cretime) \
+            = os.stat(new_filename_path)
+        print((mode, ino, dev, nlink, uid, gid, size, atime, modtime, cretime))
+        print('modtime  =', modtime)
+        print('ctime    =', time.ctime(modtime))
+        print('gmtime   =', time.gmtime(modtime))
+        print('localtime=', time.localtime(modtime))
+        t = time.gmtime(modtime)
+        s = datetime.datetime.fromtimestamp(modtime)
+        print('s       =', s)
+        s = datetime.datetime.utcfromtimestamp(modtime)
+        print('s       =', s)
+        t = time.gmtime(modtime)
+        # s = datetime.datetime.utcfromtimestamp(t)
+        # print('s       =', s)
+
+        unixtime = time.mktime(report.uploaded_on.timetuple())
+        print('unixtime =', unixtime)
+        unixtime = calendar.timegm(report.uploaded_on.timetuple())
+        print('unixtime =', unixtime)
+
+        # self.assertEqual(folder.created_on.isoformat(), datetime(2015,12,25,tzinfo=UTC).isoformat())
+
+        #  У параметр uploaded_on записано первинний час створення файла
+        print('report.uploaded_on           =', report.uploaded_on)
+        print('report.uploaded_on.isoformat =', report.uploaded_on.isoformat())
+        print('delta =', unixtime - modtime)
+        self.assertAlmostEqual(unixtime, modtime, delta=1)
+        # self.assertAlmostEqual(report.uploaded_on, s, delta=datetime.timedelta(minutes=1))
+        # self.assertAlmostEqual(report.uploaded_on, now(), delta=timedelta(minutes=1))
+'''
+

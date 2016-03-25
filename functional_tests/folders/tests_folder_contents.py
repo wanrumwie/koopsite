@@ -1,6 +1,9 @@
-from datetime import timedelta
+import calendar
 import inspect
+import os
+import time
 import types
+import datetime
 from unittest.case import skipIf, skip
 from django.contrib.auth.models import AnonymousUser
 from django.core.urlresolvers import reverse
@@ -11,7 +14,7 @@ from folders.functions import get_full_named_path, get_parents
 from folders.models import Folder, Report
 from folders.tests.test_base import DummyFolder
 from folders.views import FolderReportList
-from functional_tests.koopsite.ft_base import PageVisitTest
+from functional_tests.koopsite.ft_base import PageVisitTest, get_test_files_cwd
 from koopsite.settings import SKIP_TEST
 
 
@@ -213,7 +216,7 @@ class FolderContentsPageVisitTest(PageVisitTest):
         self.assertEqual(folder.parent, this_folder)
 
         # Час створення (до хвилини) співпадає з поточним?
-        self.assertAlmostEqual(folder.created_on, now(), delta=timedelta(minutes=1))
+        self.assertAlmostEqual(folder.created_on, now(), delta=datetime.timedelta(minutes=1))
 
         # Бачить новий запис, який є виділеним
         tr = self.get_waited_visible_element(".selected")
@@ -221,6 +224,112 @@ class FolderContentsPageVisitTest(PageVisitTest):
         xpath = ".//a[contains(.,'%s')]" % inputbox_new_val
         a = self.find_single_by_xpath(tr, xpath)
         return folder, a    # new folder & <a> element of new added row
+
+    def report_uploading_by_visitor(self, new_filename="example.jpg", end_dialog_by="button", end_message_by="button"):
+        # Параметри потрібної кнопки:
+        button_text             = "Новий файл"
+        popup = self.get_popup_parameters_by_button_text(button_text)
+
+        cwd_test = get_test_files_cwd()   # каталог з файлами для тестування
+        new_filename_path = os.path.join(cwd_test, new_filename) # повний шлях
+
+        inputbox_label_val      = "Назва файла"
+        inputbox_default_val    = ""
+        inputbox_new_val        = new_filename_path
+        message_title           = new_filename
+        message_text            = "Файл успішно заладовано на сервер!"
+        message_okey_text       = "Ok"
+
+        this_folder = Folder.objects.get(id=self.this_folder_id)
+
+        # Знаходить потрібну кнопку і НАТИСКАЄ кнопку
+        parent = self.browser.find_element_by_css_selector(popup.button_parent_selector)
+        xpath = ".//button[contains(.,'%s')]" % popup.button_text
+        button = self.find_single_by_xpath(parent, xpath)
+
+        ActionChains(self.browser).move_to_element(button)\
+            .click(button).perform()
+
+        # Чекає на появу спливаючого вікна
+        dialog = self.get_waited_visible_element(self.dialog_box_form_selector)
+
+        # Бачить правильний заголовок спливаючого вікна
+        xpath = ".//span[contains(.,'%s')]" % popup.dialog_title
+        self.find_single_by_xpath(dialog, xpath)
+
+        # Бачить правильний підпис поля вводу
+        xpath = ".//label[@for='%s']" % "id_file"
+        label = self.find_single_by_xpath(dialog, xpath)
+        self.assertEqual(label.text, inputbox_label_val)
+
+        # Бачить правильне початкове значення у полі вводу
+        xpath = ".//input[@id='%s']" % "id_file"
+        inputbox = self.find_single_by_xpath(dialog, xpath)
+        self.assertEqual(inputbox.get_attribute("value"), inputbox_default_val)
+
+        # Натискає кнопку Browse - емулюється шляхом посилання в цей елемент шляху до файла.
+        # inputbox = self.browser.find_element_by_css_selector('input[type=file]')
+        inputbox.send_keys(new_filename_path)
+
+        # Завершує ввід натисканням...
+        if end_dialog_by != "button":   # ... натисканням клавіші Enter на клавіатурі
+            ActionChains(self.browser).send_keys(end_dialog_by).perform()
+        else:                           # ... натисканням кнопки на спливаючому вікні
+            self.terminate_dialog_by_button(dialog, popup.okey_text)
+
+        # Бачить спливаюче повідомлення
+        message = self.get_waited_visible_element(self.dialog_message_selector)
+
+        # Бачить правильний заголовок і текст спливаючого повідомлення
+        xpath = ".//span[contains(.,'%s')]" % message_title
+        self.find_single_by_xpath(message, xpath)
+
+        xpath = ".//div[contains(.,'%s')]" % message_text
+        self.find_single_by_xpath(message, xpath)
+
+        # Переконується, що спливаюче ОСНОВНЕ вікно закрите
+        self.get_waited_invisible_element(self.dialog_box_form_selector)
+
+        # Завершує перегляд повідомлення ...
+        if end_message_by == "timer": # ... очікуванням заданого в повідомленні часу
+            pass
+        elif end_message_by != "button":  # ... натисканням клавіші Enter на клавіатурі
+            ActionChains(self.browser).send_keys(end_message_by).perform()
+        else:                   # ... кнопки на спливаючому вікні
+            self.terminate_dialog_by_button(message, message_okey_text)
+
+        # Переконується, що спливаюче повідомлення закрите
+        self.get_waited_invisible_element(self.dialog_message_selector)
+
+        # Залишається на тій же сторінці
+        self.check_passed_link(expected_regex=self.this_url)
+
+        # Новий запис збережено у базі даних
+        report = Report.objects.last()
+        self.assertEqual(report.filename, new_filename)
+        self.assertEqual(report.parent, this_folder)
+        # TODO-перевірити правильність збереження вмісту файла
+
+        (mode, ino, dev, nlink, uid, gid, size, atime, modtime, cretime) \
+            = os.stat(new_filename_path)
+        print((mode, ino, dev, nlink, uid, gid, size, atime, modtime, cretime))
+        print('   modtime  =', modtime)
+        upload_time = calendar.timegm(report.uploaded_on.timetuple())
+        print('upload_time =', upload_time)
+
+        # self.assertEqual(folder.created_on.isoformat(), datetime(2015,12,25,tzinfo=UTC).isoformat())
+
+        #  У параметр uploaded_on записано первинний час створення файла
+        print('report.uploaded_on           =', report.uploaded_on)
+        print('delta =', upload_time - modtime)
+        self.assertAlmostEqual(upload_time, modtime, delta=1)
+
+        # Бачить новий запис, який є виділеним
+        tr = self.get_waited_visible_element(".selected")
+
+        xpath = ".//a[contains(.,'%s')]" % new_filename
+        a = self.find_single_by_xpath(tr, xpath)
+        return report, a    # new report & <a> element of new added row
 
 
 # @skipIf(SKIP_TEST, "пропущено для економії часу")
@@ -233,6 +342,7 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         self.dummy_user = self.create_dummy_user()
         self.add_user_cookie_to_browser(self.dummy_user)
         self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
+        self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
         DummyFolder().create_dummy_alfa_beta_catalogue()
         self.get_data_links_number()
 
@@ -280,7 +390,7 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
     # TODO-зробити тест створення нової теки у ПОРОЖНІЙ теці
-    # @skip
+    @skip
     def test_visitor_can_create_folder(self):
         # Користувач відкриває сторінку
         self.browser.get('%s%s' % (self.server_url, self.this_url))
@@ -323,10 +433,43 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
 
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
+# TODO-зробити тест завантаження нового файла у ПОРОЖНЮ теку
 # TODO-не працює завантаження файла 500Kb у порожню теку
 # ("...probably file too long"). Однак після того як файл
 # був завантаженй синхронним методом (Картотека(ст.)),
 # у цю ж теку він був повторно завантажений аяксом без проблем.
+
+    def test_visitor_can_upload_report(self):
+        # Користувач відкриває сторінку
+        self.browser.get('%s%s' % (self.server_url, self.this_url))
+
+        # Бачить в таблиці правильну кількість рядків
+        n = self.table_data_length   # кількість рядків у таблиці
+        tbody = self.get_waited_visible_element("tbody")
+        xpath = ".//tr"
+        elements = tbody.find_elements_by_xpath(xpath)
+        self.assertEqual(len(elements), n)
+
+        # Заладовує новий файл
+        report, a = self.report_uploading_by_visitor("example.jpg")
+
+        # Загальна кількість записів у таблиці правильна
+        tbody = self.browser.find_element_by_tag_name('tbody')
+        elements = tbody.find_elements_by_tag_name('tr')
+        self.assertEqual(len(elements), n + 1)
+        self.assertTrue("selected" in elements[n].get_attribute("class"))
+
+        # Натискає клавішу Enter і потрапляє на сторінку перегляду нового файла
+        a.send_keys(Keys.ENTER)
+        href= reverse('folders:report-view', kwargs={'pk': report.pk})
+
+        # TODO-перевірити, який href встановлюється для нового запису
+        # AssertionError: Regex didn't match: '/folders/report/3/view/' not found in 'http://localhost:8081/folders/report/3/'
+
+        self.check_passed_link(expected_regex=href)
+
+        print('finished: %s' % inspect.stack()[0][3], end=' >> ')
+
 
 @skipIf(SKIP_TEST, "пропущено для економії часу")
 class FolderContentsPageAnonymousVisitorTest(FolderContentsPageVisitTest):
