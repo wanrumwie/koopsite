@@ -434,11 +434,38 @@ function changeSelElement( changes, supplement ) {
     qs_TR_arr[selRowIndex][0].TR = TR;
     selRowFocus();
 }
+function parse_href_id( href_id, s0, s1 ){
+    // get model name and id from href id in html
+	if ( s0 === undefined ){ s0 = "a_id-"; }
+	if ( s1 === undefined ){ s1 = "#"; }
+	var m0     = href_id.indexOf( s0 ) + s0.length;
+	var m1     = href_id.indexOf( s1 );
+	var i0     = m1 + s1.length;
+	var i1     = href_id.length;
+	var model  = href_id.substring( m0, m1 );
+	var id     = href_id.substring( i0, i1 );
+	var arr    = {};
+	arr.model  = model;
+	arr.id     = id;
+	return arr;
+}
+function parse_href_parent_folder_id( href, s0, s1 ){
+    // get parent id from href in html
+	if ( s0 === undefined ){ s0 = "/folders/"; }
+	if ( s1 === undefined ){ s1 = "/"; }
+	var p0     = href.indexOf( s0 ) + s0.length;
+	var p1     = href.indexOf( s1, p0 );
+	var parent_id = href.substring( p0, p1 );
+	return parent_id;
+}
+
 
 /**********************************************************************
  * END of the code covered by tests
  **********************************************************************/
 
+
+ 
 /*
  *********************************************************************
  * Accessory functions for output debug information:

@@ -650,6 +650,25 @@ ul.column-list {
     min-height:         1px;
 }
 
+.search-style input {
+    display:            inline-block;
+	height:				2em;
+	width:				10em;
+    color:              black;
+    background-color:   #FDFAEB;
+    border:             0px solid blue;
+    padding:            0.3em; 
+}
+.search-style button {
+    display:            inline-block;
+	height:				2em;
+    color:              black;
+    background-color:   #F0E68C;
+    border:             0px solid blue;
+    padding:            0.3em; 
+}
+
+
 
 /*=======================================================================*/
 /* Mixins for changing some parameters of style: */
@@ -666,6 +685,8 @@ ul.column-list {
 }
 .buttons-y button {
     width:              100%;
+	height:				1.75em;
+    background-color:   #F0E68C;
 }
 
 .align-flex-start {

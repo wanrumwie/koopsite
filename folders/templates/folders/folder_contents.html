@@ -139,7 +139,8 @@
 
         </div>
         <div class="aside aside-2 align-flex-start aside-empty">
-            ПОШУК Файлів і тек
+            ПОШУК файлів і тек
+            {% include "folders/block_folder_contents_search.html" %}
         </div>
         <!--<div class="footer"></div>-->
     </div>
@@ -175,6 +176,7 @@
     <script src="{% static 'js/folder_browtab.js' %}"       ></script>
     <script src="{% static 'js/folder_browtab_ui.js' %}"    ></script>
     <script src="{% static 'js/folder_browtab_sort.js' %}"  ></script>
+    <script src="{% static 'js/folder_browtab_search.js' %}"></script>
 
 {% endblock %}
 
@@ -198,5 +200,6 @@
         $( document ).ready( browtab_ui_document_ready_handler );
         $( document ).ready( folder_browtab_ui_document_ready_handler );
         $( document ).ready( folder_browtab_sort_document_ready_handler );
+        $( document ).ready( folder_browtab_search_document_ready_handler );
     </script>
 {% endblock %}

@@ -69,11 +69,15 @@ QUnit.module( "browtab_ajax document ready", function( hooks ) {
         assert.equal( res, undefined, 'set_browtab_ajax_listeners should return undefined' );
     });
     QUnit.test( 'onChange_handler', function ( assert ) {
-        expect( 3 );
-        stub.ajax_selRowIndexToSession = sinon.stub( window, "ajax_selRowIndexToSession" );
+        expect( 5 );
+		var arr = {'0':'0'};
+        stub.getSelElementArr 			= sinon.stub( window, "getSelElementArr" ).returns( arr );
+        stub.ajax_selRowIndexToSession  = sinon.stub( window, "ajax_selRowIndexToSession" );
         var res = onChange_handler( );
+        assert.ok( stub.getSelElementArr.calledOnce, 'getSelElementArr should be called once' );
+        assert.ok( stub.getSelElementArr.calledWithExactly(  ), 'getSelElementArr should be called with arg' );
         assert.ok( stub.ajax_selRowIndexToSession.calledOnce, 'ajax_selRowIndexToSession should be called once' );
-        assert.ok( stub.ajax_selRowIndexToSession.calledWithExactly(  ), 
+        assert.ok( stub.ajax_selRowIndexToSession.calledWithExactly( arr ), 
                                                                 'ajax_selRowIndexToSession should be called with arg' );
         assert.equal( res, false, 'onChange_handler should return false' );
     });
@@ -320,6 +324,10 @@ QUnit.module( "browtab_ajax session handlers", function( hooks ) {
 //=============================================================================
 function ajaxSuccessHandler(){  // function declared in another file
 }
+function success_callback(){  // function as parameter to ajax
+}
+function error_callback(){  // function as parameter to ajax
+}
 QUnit.module( "browtab_ajax ajax", function( hooks ) { 
     var requests = sinon.requests;
     var done;
@@ -341,7 +349,7 @@ QUnit.module( "browtab_ajax ajax", function( hooks ) {
         this.xhr.restore();
     } );
     QUnit.test( 'ajax_selRowIndexToSession', function ( assert ) {
-        expect( 15 );
+        expect( 14 );
         done = assert.async();  // Instruct QUnit to wait for an asynchronous operation. 
         var arr = {'id':55};
         var expected_url = "/ajax-selrowindex-to-session";
@@ -360,10 +368,9 @@ QUnit.module( "browtab_ajax ajax", function( hooks ) {
         stub.getSelElementArr   = sinon.stub( window, "getSelElementArr" ).returns( arr );
         stub.ajax_settings      = sinon.stub( window, "ajax_settings" ).returns( as );
 
-        var res = ajax_selRowIndexToSession( );
+        var res = ajax_selRowIndexToSession( arr );
 
-        assert.ok( stub.getSelElementArr.calledOnce, 'getSelElementArr should be called once' );
-        assert.ok( stub.getSelElementArr.calledWithExactly( ), 'getSelElementArr should be called with arg' );
+        assert.notOk( stub.getSelElementArr.called, 'getSelElementArr should not be called' );
         assert.ok( stub.ajax_settings.calledOnce, 'ajax_settings should be called once' );
         assert.ok( stub.ajax_settings.calledWithExactly( ), 'ajax_settings should be called with arg' );
         assert.ok( stub.ajax.calledOnce, 'ajax should be called once' );
@@ -389,8 +396,104 @@ QUnit.module( "browtab_ajax ajax", function( hooks ) {
         assert.equal( res, false, 'ajax_selRowIndexToSession should return false' );
         done(); // start QUnit runner after it was keep waiting until async operations executed. 
     });
+    QUnit.test( 'ajax_selRowIndexToSession #2', function ( assert ) {
+        expect( 14 );
+        done = assert.async();  // Instruct QUnit to wait for an asynchronous operation. 
+        var arr = {'id':55};
+        var expected_url = "/ajax-selrowindex-to-session";
+        var response_status   = 200; 
+        var response_headers  = { "Content-Type": "application/json" };
+        var response_body     = '[77]';
+
+        var as = ajax_settings();
+        var json_string = JSON.stringify( arr );
+        var expected_requestBody = "client_request=" + json_string + "+&csrfmiddlewaretoken=" + csrf_token;
+
+        // Attention! in this place stub is name for sinon.spy, not sinon.stub
+        stub.ajax               = sinon.spy( $, "ajax" );
+        stub.success            = sinon.stub( window, "success_callback" );
+        stub.error              = sinon.stub( window, "ajax_selRowIndexToSession_error_handler" );
+        stub.getSelElementArr   = sinon.stub( window, "getSelElementArr" ).returns( arr );
+        stub.ajax_settings      = sinon.stub( window, "ajax_settings" ).returns( as );
+
+        var res = ajax_selRowIndexToSession( arr, success_callback );
+
+        assert.notOk( stub.getSelElementArr.called, 'getSelElementArr should not be called' );
+        assert.ok( stub.ajax_settings.calledOnce, 'ajax_settings should be called once' );
+        assert.ok( stub.ajax_settings.calledWithExactly( ), 'ajax_settings should be called with arg' );
+        assert.ok( stub.ajax.calledOnce, 'ajax should be called once' );
+        assert.ok( stub.ajax.calledWithExactly( as ), 'ajax should be called with arg' );
+
+        assert.equal( as.url, expected_url, 'function should set as.url' );
+        assert.deepEqual( as.data, {
+                                    client_request : json_string,
+                                    csrfmiddlewaretoken: csrf_token
+                                    }, 
+                                    'function should set as.data' );
+        assert.equal( as.success, success_callback, 'function should set as.success' );
+        assert.equal( as.error,   ajax_selRowIndexToSession_error_handler, 'function should set as.error' );
+
+        assert.equal( requests.length, 1 , "requests length should be 1" );
+        assert.equal( requests[0].url, expected_url, "request should have proper url" );
+		
+	    requests[0].respond( response_status, response_headers, response_body );
+
+        assert.ok( stub.success.calledOnce, 'success should be called once' );
+        assert.notOk( stub.error.called, 'error should not be called' );
+
+        assert.equal( res, false, 'ajax_selRowIndexToSession should return false' );
+        done(); // start QUnit runner after it was keep waiting until async operations executed. 
+    });
+    QUnit.test( 'ajax_selRowIndexToSession #2', function ( assert ) {
+        expect( 14 );
+        done = assert.async();  // Instruct QUnit to wait for an asynchronous operation. 
+        var arr = {'id':55};
+        var expected_url = "/ajax-selrowindex-to-session";
+        var response_status   = 200; 
+        var response_headers  = { "Content-Type": "application/json" };
+        var response_body     = '[77]';
+
+        var as = ajax_settings();
+        var json_string = JSON.stringify( arr );
+        var expected_requestBody = "client_request=" + json_string + "+&csrfmiddlewaretoken=" + csrf_token;
+
+        // Attention! in this place stub is name for sinon.spy, not sinon.stub
+        stub.ajax               = sinon.spy( $, "ajax" );
+        stub.success            = sinon.stub( window, "success_callback" );
+        stub.error              = sinon.stub( window, "error_callback" );
+        stub.getSelElementArr   = sinon.stub( window, "getSelElementArr" ).returns( arr );
+        stub.ajax_settings      = sinon.stub( window, "ajax_settings" ).returns( as );
+
+        var res = ajax_selRowIndexToSession( arr, success_callback, error_callback );
+
+        assert.notOk( stub.getSelElementArr.called, 'getSelElementArr should not be called' );
+        assert.ok( stub.ajax_settings.calledOnce, 'ajax_settings should be called once' );
+        assert.ok( stub.ajax_settings.calledWithExactly( ), 'ajax_settings should be called with arg' );
+        assert.ok( stub.ajax.calledOnce, 'ajax should be called once' );
+        assert.ok( stub.ajax.calledWithExactly( as ), 'ajax should be called with arg' );
+
+        assert.equal( as.url, expected_url, 'function should set as.url' );
+        assert.deepEqual( as.data, {
+                                    client_request : json_string,
+                                    csrfmiddlewaretoken: csrf_token
+                                    }, 
+                                    'function should set as.data' );
+        assert.equal( as.success, success_callback, 'function should set as.success' );
+        assert.equal( as.error,   error_callback, 'function should set as.error' );
+
+        assert.equal( requests.length, 1 , "requests length should be 1" );
+        assert.equal( requests[0].url, expected_url, "request should have proper url" );
+		
+	    requests[0].respond( response_status, response_headers, response_body );
+
+        assert.ok( stub.success.calledOnce, 'success should be called once' );
+        assert.notOk( stub.error.called, 'error should not be called' );
+
+        assert.equal( res, false, 'ajax_selRowIndexToSession should return false' );
+        done(); // start QUnit runner after it was keep waiting until async operations executed. 
+    });
     QUnit.test( 'ajax_selRowIndexToSession error', function ( assert ) {
-        expect( 15 );
+        expect( 14 );
         done = assert.async();  // Instruct QUnit to wait for an asynchronous operation. 
         var arr = {'id':55};
         var expected_url = "/ajax-selrowindex-to-session";
@@ -409,10 +512,9 @@ QUnit.module( "browtab_ajax ajax", function( hooks ) {
         stub.getSelElementArr   = sinon.stub( window, "getSelElementArr" ).returns( arr );
         stub.ajax_settings      = sinon.stub( window, "ajax_settings" ).returns( as );
 
-        var res = ajax_selRowIndexToSession( );
+        var res = ajax_selRowIndexToSession( arr );
 
-        assert.ok( stub.getSelElementArr.calledOnce, 'getSelElementArr should be called once' );
-        assert.ok( stub.getSelElementArr.calledWithExactly( ), 'getSelElementArr should be called with arg' );
+        assert.notOk( stub.getSelElementArr.called, 'getSelElementArr should not be called' );
         assert.ok( stub.ajax_settings.calledOnce, 'ajax_settings should be called once' );
         assert.ok( stub.ajax_settings.calledWithExactly( ), 'ajax_settings should be called with arg' );
         assert.ok( stub.ajax.calledOnce, 'ajax should be called once' );

@@ -27,7 +27,7 @@ from folders.viewsajaxfolder import \
                     AjaxReportRename, \
                     AjaxReportDelete, \
                     XHRReportDownload, \
-                    AjaxElementMove
+                    AjaxElementMove, ajaxSearchElementsInBase
 
 """
 /folders/ - під'єднано у модулі koopsite.urls.py:
@@ -58,12 +58,11 @@ urlpatterns = [
     url(r'^report/(?P<pk>[0-9]+)/download/$',   reportDownload,         name='report-download'),
     url(r'^report/(?P<pk>[0-9]+)/preview/$',    ReportPreview.as_view(), name='report-preview'),
 #--------- Кінець коду, охопленого функціональними тестами ------------
-    url(r'^report/(?P<pk>[0-9]+)/view/$',       reportPreview,          name='report-view'),
-    url(r'^report/(?P<pk>[0-9]+)/deco/$',       reportDecorView,        name='report-deco'),
+    url(r'^report/(?P<pk>[0-9]+)/view/$',   reportPreview,          name='report-view'),
+    url(r'^report/(?P<pk>[0-9]+)/deco/$',   reportDecorView,        name='report-deco'),
 
-    url(r'^(?P<pk>[0-9]+)/contents/$',  FolderContents.as_view(),   name='folder-contents'),
+    url(r'^(?P<pk>[0-9]+)/contents/$',      FolderContents.as_view(),   name='folder-contents'),
 
-    url(r'^ajax-folders-tree-from-base$',   ajaxFoldersTreeFromBase,    name='ajax-folders-tree-from-base'),
     url(r'^ajax-folder-create$',            AjaxFolderCreate.as_view(), name='ajax-folder-create'),
     url(r'^ajax-folder-rename$',            AjaxFolderRename.as_view(), name='ajax-folder-rename'),
     url(r'^ajax-folder-delete$',            AjaxFolderDelete.as_view(), name='ajax-folder-delete'),
@@ -73,6 +72,8 @@ urlpatterns = [
     url(r'^ajax-folder-download$',          XHRFolderDownload.as_view(),name='ajax-folder-download'),
     url(r'^ajax-report-download$',          XHRReportDownload.as_view(),name='ajax-report-download'),
     url(r'^ajax-report-upload$',            XHRReportUpload.as_view(),  name='ajax-report-upload$'),
+    url(r'^ajax-folders-tree-from-base$',   ajaxFoldersTreeFromBase,    name='ajax-folders-tree-from-base'),
+    url(r'^ajax-search-elements-in-base$',  ajaxSearchElementsInBase,   name='ajax-search-elements-in-base'),
 
     url(r'^folder-not-empty/$',
         TemplateView.as_view(template_name='folders/folder_not_empty.html'),

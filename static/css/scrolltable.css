@@ -127,6 +127,7 @@ table.scrolltable {
     height:             100%; 
     margin:             0;
     padding:            0;
+    background-color:   #F0E68C;
 }
 
 .tbody-height-55vh tbody {

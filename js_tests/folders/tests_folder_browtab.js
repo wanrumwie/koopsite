@@ -101,12 +101,21 @@ QUnit.test( 'folder_browtab set_name_to_selElement', function ( assert ) {
     assert.equal( qs_TR_arr[selRowIndex][0].name, newName, 'set_name_to_selElement should set val tp global');
     assert.equal( res, undefined, 'set_name_to_selElement should return undefined value' );
 });
-QUnit.test( 'folder_browtab createEmptyTR', function ( assert ) {
+QUnit.test( 'folder_browtab createEmptyTR folder', function ( assert ) {
+    expect( 1 );
+    var f_model  = 'folder';  
+    var f_id     = 555;
+    var f_name   = 'fred';
+    var expected = "<tr id=\"tr-folder#555\" ><td id=\"td1-folder#555\" ><img src=\"\" alt=\"folder\"/></td><td id=\"td2-folder#555\" ><a id=\"folder#555\" href=\"/folders/555/contents/\"></a></td><td id=\"td3-folder#555\" ><span></span></td><td id=\"td4-folder#555\" ><span></span></td></tr>";
+    var res = createEmptyTR( f_model, f_id, f_name );
+    assert.equal( res, expected, 'createEmptyTR should return expected value' );
+});
+QUnit.test( 'folder_browtab createEmptyTR report', function ( assert ) {
     expect( 1 );
     var f_model  = 'report';  
     var f_id     = 555;
     var f_name   = 'fred.pdf';
-    var expected = "<tr id=\"tr-report#555\" ><td id=\"td1-report#555\" ><img src=\"\" alt=\"report\"/></td><td id=\"td2-report#555\" ><a id=\"report#555\" href=\"/folders/report/555/\"></a></td><td id=\"td3-report#555\" ><span></span></td><td id=\"td4-report#555\" ><span></span></td></tr>";
+    var expected = "<tr id=\"tr-report#555\" ><td id=\"td1-report#555\" ><img src=\"\" alt=\"report\"/></td><td id=\"td2-report#555\" ><a id=\"report#555\" href=\"/folders/report/555/view/\"></a></td><td id=\"td3-report#555\" ><span></span></td><td id=\"td4-report#555\" ><span></span></td></tr>";
     var res = createEmptyTR( f_model, f_id, f_name );
     assert.equal( res, expected, 'createEmptyTR should return expected value' );
 });

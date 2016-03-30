@@ -1,7 +1,3 @@
-/*
-Global:  $ (?), JSON (?), QUnit (?), TR_start (?), auxiliary_handler, browtab_document_ready_handler (?), changeSelElement (?), columnsNumber, create_qs_TR_arr (?), deleteElement (?), display_qs_TR_arr (?), expect (?), getRowIndexbyID (?), getSelRowIndexLimited (?), getSelectorTR (?), getTRbyID (?), getTRbyIndex (?), getTRfromTbodyByIndex (?), getVisibleIndex (?), get_m_id_n_ByIndex (?), get_qs_TR_arr (?), markSelRow (?), normalStyle (?), onClick_handler (?), onDblclick_handler (?), onKeyDown (?), onKeydown_handler (?), qs_TR_arr (?), restore_qs_TR_arr (?), rowsNumber (?), scrollToRow (?), selElement (?), selRowFocus (?), selRowIndex (?), selTR (?), selectRow (?), selectStyle (?), setSelRow (?), setStartRow (?), setValToHTML, setValToHTMLrow (?), set_browtab_listeners (?), sinon (?), storeSelRowIndex (?), stub, totalOuterHeight (?), window (?)
-*/
-
 //QUnit.config.reorder = false;
 
 var stub;   // common for all tests, is set to {} before and restored after each test
@@ -2073,7 +2069,6 @@ QUnit.module( "browtab Scrolling", function( hooks ) { // This test described in
 //=============================================================================
 function setValToHTML( i, j, val, supplement ) {    // function declared in another js file, not in browtab.js 
 }
-
 QUnit.module( "browtab Changing both <tbody> and qs_TR_arr", function( hooks ) { 
     hooks.beforeEach( function( assert ) {
         stub = {};
@@ -2137,5 +2132,71 @@ QUnit.module( "browtab Changing both <tbody> and qs_TR_arr", function( hooks ) {
         assert.deepEqual( res, undefined, 'changeSelElement should return proper value' );  
     });
     //-------------------------------------------------------------------------
+} );
+//=============================================================================
+QUnit.module( "browtab parse_href_id", function( hooks ) { 
+    hooks.beforeEach( function( assert ) {
+        stub = {};
+    } );
+    hooks.afterEach( function( assert ) {
+        var meth;
+        for ( meth in stub ) {
+            stub[meth].restore();
+        }
+    } );
+    //-------------------------------------------------------------------------
+    QUnit.test( '#1', function ( assert ) {
+        expect( 1 );
+        var href_id = "a_id-folder#11";
+        var s0 = undefined;
+        var s1 = undefined;
+        var arr = {};
+        arr.model = 'folder';
+        arr.id    = "11";
+        var res = parse_href_id( href_id, s0, s1 );
+        assert.deepEqual( res, arr, 'parse_href_id should return proper value' );  
+    });
+    QUnit.test( '#2', function ( assert ) {
+        expect( 1 );
+        var href_id = "a_id-folder#11";
+        var s0 = "a_id-";
+        var s1 = "#";
+        var arr = {};
+        arr.model = 'folder';
+        arr.id    = "11";
+        var res = parse_href_id( href_id, s0, s1 );
+        assert.deepEqual( res, arr, 'parse_href_id should return proper value' );  
+    });
+} );
+//=============================================================================
+QUnit.module( "browtab parse_href_parent_folder_id", function( hooks ) { 
+    hooks.beforeEach( function( assert ) {
+        stub = {};
+    } );
+    hooks.afterEach( function( assert ) {
+        var meth;
+        for ( meth in stub ) {
+            stub[meth].restore();
+        }
+    } );
+    //-------------------------------------------------------------------------
+    QUnit.test( '#1', function ( assert ) {
+        expect( 1 );
+        var href = "/folders/11/contents/";
+        var s0 = undefined;
+        var s1 = undefined;
+        var parent_id = "11";
+        var res = parse_href_parent_folder_id( href, s0, s1 );
+        assert.deepEqual( res, parent_id, 'parse_href_parent_folder_id should return proper value' );  
+    });
+    QUnit.test( '#2', function ( assert ) {
+        expect( 1 );
+        var href = "/folders/11/contents/";
+        var s0 = "/folders/";
+        var s1 = "/";
+        var parent_id = "11";
+        var res = parse_href_parent_folder_id( href, s0, s1 );
+        assert.deepEqual( res, parent_id, 'parse_href_parent_folder_id should return proper value' );  
+    });
 } );
 //=============================================================================

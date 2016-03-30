@@ -1,6 +1,9 @@
+from asyncore import read
 import os
+import re
 import zipfile
 from io import BytesIO
+from django.core.urlresolvers import reverse
 from django.http.response import HttpResponse
 from django.utils.http import urlquote
 from folders.models import Report, Folder
@@ -150,5 +153,48 @@ def get_folders_tree_HTML(parent_qs=None, level=0, tab=' '*4):
     html = wrap_ul(qs, level, tab)
     return html
 
+def search_in_folders(search_val):
+    # Повертає список тек і список файлів,
+    # у назвах яких присутня стрічка search_val
+    fs = []
+    rs = []
+    if search_val:
+        for f in Folder.objects.all().order_by('name'.lower()):
+            if search_val.lower() in f.name.lower():
+                fs.append(f)
+        for f in Report.objects.all().order_by('filename'.lower()):
+            if search_val.lower() in f.filename.lower():
+                rs.append(f)
+    html = get_search_results_HTML(search_val, fs, rs)
+    return html
+
+def get_search_results_HTML(search_val, fs, rs):
+    # Повертає список результатів пошуку як готовий html
+    html = '<span>Знайдено тек: %s</span><br>\n' % len(fs)
+    for f in fs:
+        parent = f.parent
+        href= reverse('folders:folder-contents', kwargs={'pk': parent.pk})
+        name = f.name
+        name = wrap_fragment_by_span(name, search_val)
+        id="a_id-%s#%s" % (f._meta.model_name, f.id)
+        html += '<li><a id="%s" href="%s">%s</a></li>\n' % (id, href, name)
+    html += '<br><span>Знайдено файлів: %s</span><br>\n' % len(rs)
+    for f in rs:
+        parent = f.parent
+        href= reverse('folders:folder-contents', kwargs={'pk': parent.pk})
+        name = f.filename
+        name = wrap_fragment_by_span(name, search_val)
+        id="a_id-%s#%s" % (f._meta.model_name, f.id)
+        html += '<li><a id="%s" href="%s">%s</a></li>\n' % (id, href, name)
+    html = '<ul>\n%s</ul>\n' % html
+    return html
 
 #---------------- Кінець коду, охопленого тестуванням ------------------
+
+def wrap_fragment_by_span(s, fragment):
+    matcher = re.compile(fragment, re.IGNORECASE)
+    result = matcher.search(s)
+    old = result.group()
+    new = "<span>%s</span>" % old
+    ss = s.replace(old, new)
+    return ss

@@ -8,6 +8,7 @@ from unittest.case import skipIf, skip
 from django.contrib.auth.models import AnonymousUser
 from django.core.urlresolvers import reverse
 from django.utils.timezone import now
+from os import unlink
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 from folders.functions import get_full_named_path, get_parents
@@ -15,6 +16,7 @@ from folders.models import Folder, Report
 from folders.tests.test_base import DummyFolder
 from folders.views import FolderReportList
 from functional_tests.koopsite.ft_base import PageVisitTest, get_test_files_cwd
+from koopsite.functions import dict_print
 from koopsite.settings import SKIP_TEST
 
 
@@ -30,6 +32,7 @@ class FolderContentsPageVisitTest(PageVisitTest):
     this_url    = '/folders/2/contents/'
     page_title  = 'Пасічний'
     page_name   = 'КАРТОТЕКА ФАЙЛІВ'
+    saved_report_file_path = [] # файли, які треба видалити з диска після тестів
 
     def links_in_template(self, user):
         # Повертає список словників, які поступають як параметри до функції self.check_go_to_link(...)
@@ -308,6 +311,9 @@ class FolderContentsPageVisitTest(PageVisitTest):
         report = Report.objects.last()
         self.assertEqual(report.filename, new_filename)
         self.assertEqual(report.parent, this_folder)
+
+        print('report.file.path =', report.file.path)
+        self.saved_report_file_path.append(report.file.path)
         # TODO-перевірити правильність збереження вмісту файла
 
         (mode, ino, dev, nlink, uid, gid, size, atime, modtime, cretime) \
@@ -332,7 +338,7 @@ class FolderContentsPageVisitTest(PageVisitTest):
         return report, a    # new report & <a> element of new added row
 
 
-# @skipIf(SKIP_TEST, "пропущено для економії часу")
+@skipIf(SKIP_TEST, "пропущено для економії часу")
 class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
     """
     Тест відвідання сторінки сайту
@@ -341,8 +347,8 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
     def setUp(self):
         self.dummy_user = self.create_dummy_user()
         self.add_user_cookie_to_browser(self.dummy_user)
-        self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
-        self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
+        # self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
+        # self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
         DummyFolder().create_dummy_alfa_beta_catalogue()
         self.get_data_links_number()
 
@@ -350,25 +356,25 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         self.browser.delete_all_cookies()
         super().tearDown()
 
-    @skip
+    # @skip
     def test_can_visit_page(self):
         # Заголовок і назва сторінки правильні
         self.can_visit_page()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    @skip
+    # @skip
     def test_layout_and_styling_page(self):
         # CSS завантажено і працює
         self.layout_and_styling_page()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    @skip
+    # @skip
     def test_visitor_can_go_to_links(self):
         # Користувач може перейти по всіх лінках на сторінці
         self.visitor_can_go_to_links()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    @skip
+    # @skip
     def test_visitor_can_go_to_parent_links(self):
         # Користувач може перейти по лінках над таблицею
         this_folder = Folder.objects.get(id=self.this_folder_id)
@@ -383,14 +389,33 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
                 link_text, url_name=url_name, kwargs=kwargs)
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-    @skip
+    # @skip
     def test_visitor_can_click_popup_activation_buttons(self):
         # Користувач може клацнути по всіх кнопках на сторінці і повернутися назад
         self.visitor_can_click_popup_activation_buttons()
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
+
+@skipIf(SKIP_TEST, "пропущено для економії часу")
+class FolderContentsPageVisitorCanCreateFolderTest(FolderContentsPageVisitTest):
+    """
+    Тест відвідання сторінки сайту
+    аутентифікованим користувачем
+    """
+    def setUp(self):
+        self.dummy_user = self.create_dummy_user()
+        self.add_user_cookie_to_browser(self.dummy_user)
+        self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
+        # self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
+        DummyFolder().create_dummy_alfa_beta_catalogue()
+        self.get_data_links_number()
+
+    def tearDown(self):
+        self.browser.delete_all_cookies()
+        super().tearDown()
+
     # TODO-зробити тест створення нової теки у ПОРОЖНІЙ теці
-    @skip
+    # @skip
     def test_visitor_can_create_folder(self):
         # Користувач відкриває сторінку
         self.browser.get('%s%s' % (self.server_url, self.this_url))
@@ -433,11 +458,37 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
 
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 
-# TODO-зробити тест завантаження нового файла у ПОРОЖНЮ теку
-# TODO-не працює завантаження файла 500Kb у порожню теку
-# ("...probably file too long"). Однак після того як файл
-# був завантаженй синхронним методом (Картотека(ст.)),
-# у цю ж теку він був повторно завантажений аяксом без проблем.
+
+@skipIf(SKIP_TEST, "пропущено для економії часу")
+class FolderContentsPageVisitorCanUploadReportTest(FolderContentsPageVisitTest):
+    """
+    Тест відвідання сторінки сайту
+    аутентифікованим користувачем
+    """
+    def setUp(self):
+        self.dummy_user = self.create_dummy_user()
+        self.add_user_cookie_to_browser(self.dummy_user)
+        # self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
+        self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
+        DummyFolder().create_dummy_alfa_beta_catalogue()
+        self.get_data_links_number()
+        self.saved_report_file_path = []
+
+    def tearDown(self):
+        for path in self.saved_report_file_path:
+            try:
+                unlink(path)
+                print('deleted: ', path)
+            except:
+                pass
+        self.browser.delete_all_cookies()
+        super().tearDown()
+
+    # TODO-зробити тест завантаження нового файла у ПОРОЖНЮ теку
+    # TODO-не працює завантаження файла 500Kb у порожню теку
+    # ("...probably file too long"). Однак після того як файл
+    # був завантаженй синхронним методом (Картотека(ст.)),
+    # у цю ж теку він був повторно завантажений аяксом без проблем.
 
     def test_visitor_can_upload_report(self):
         # Користувач відкриває сторінку
@@ -467,6 +518,93 @@ class FolderContentsPageAuthenticatedVisitorTest(FolderContentsPageVisitTest):
         # AssertionError: Regex didn't match: '/folders/report/3/view/' not found in 'http://localhost:8081/folders/report/3/'
 
         self.check_passed_link(expected_regex=href)
+
+        print('finished: %s' % inspect.stack()[0][3], end=' >> ')
+
+
+
+# @skipIf(SKIP_TEST, "пропущено для економії часу")
+class FolderContentsPageVisitorCanSearchTest(FolderContentsPageVisitTest):
+    """
+    Тест пошуку теки в каталозі
+    """
+    def setUp(self):
+        self.dummy_user = self.create_dummy_user()
+        # self.add_user_cookie_to_browser(self.dummy_user)
+        # self.add_dummy_permission(self.dummy_user, codename='add_folder', model='folder')
+        # self.add_dummy_permission(self.dummy_user, codename='add_report', model='report')
+        DummyFolder().create_dummy_alfa_beta_catalogue()
+        self.get_data_links_number()
+
+    def tearDown(self):
+        self.browser.delete_all_cookies()
+        super().tearDown()
+
+    # @skip
+    def test_visitor_can_search_folder(self):
+        # Користувач відкриває сторінку
+        self.browser.get('%s%s' % (self.server_url, self.this_url))
+
+        # В каталозі є кілька тек/файлів з однаковими фрагментами назв
+        # Користувач збирається знайти теку або файл, у назві якої є букви "sigm"
+        button_text = "Пошук"
+        dialog_title = "Результати пошуку"
+        inputbox_search_val = "sigm"
+        exact_search_val = "sigma_report_3"
+        expected_n = 3
+        expected_report = Report.objects.get(filename=exact_search_val)
+        expected_parent = expected_report.parent
+        expected_href= reverse('folders:folder-contents', kwargs={'pk': expected_parent.pk})
+
+        # Користувач знаходить поле пошуку
+        inputbox = self.browser.find_element_by_id("id_search")
+
+        # Вводить в полі пошуку
+        inputbox.send_keys(inputbox_search_val)
+
+        # Під полем пошуку з'являється список слів, які вже колись шукав користувач
+
+
+        # Знаходить потрібну кнопку і НАТИСКАЄ кнопку
+        parent = self.browser.find_element_by_css_selector("#body-aside-2")
+        xpath = ".//button[contains(.,'%s')]" % button_text
+        button = self.find_single_by_xpath(parent, xpath)
+
+        ActionChains(self.browser).move_to_element(button)\
+            .click(button).perform()
+
+        # Чекає на появу спливаючого вікна
+        dialog = self.get_waited_visible_element(self.dialog_search_results_selector)
+
+        # Бачить правильний заголовок спливаючого вікна
+        xpath = ".//span[contains(.,'%s')]" % dialog_title
+        self.find_single_by_xpath(dialog, xpath)
+
+        # Бачить у спливаючому вікні список всіх знайдених тек
+        # і файлів, у яких є шукане слово
+
+        rows = dialog.find_elements_by_css_selector("tbody tr")
+
+        # Кількість знайдених тек/файлів - правильна
+        self.assertEqual(len(rows), expected_n)
+
+        # Шукане слово виділене у кожному рядку списку іншим кольором/шрифтом
+
+        # Користувач вибирає один з рядків і клікає мишкою
+        xpath = ".//a[contains(.,'%s')]" % exact_search_val
+        a = rows.self.find_single_by_xpath(rows, xpath)
+
+        a.send_keys(Keys.ENTER)
+
+        # Спливаюче вікно закривається, і користувач опиняється у теці, яка містить обраний файл/теку
+        self.check_passed_link(expected_regex=expected_href)
+
+        # Бачить шуканий файл/теку, який є виділеним
+        tr = self.get_waited_visible_element(".selected")
+
+        xpath = ".//a[contains(.,'%s')]" % exact_search_val
+        a = self.find_single_by_xpath(tr, xpath)
+
 
         print('finished: %s' % inspect.stack()[0][3], end=' >> ')
 

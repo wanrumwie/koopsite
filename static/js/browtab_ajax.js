@@ -24,7 +24,8 @@ function set_browtab_ajax_listeners( $selRowIndex ){
     $selRowIndex.off( "change"        ).on( "change",         onChange_handler );
 }
 function onChange_handler( event ) {
-    ajax_selRowIndexToSession();                    // Sending selected row index to session
+    var arr = getSelElementArr();       // get parameters of selected row from nemplate and from memory 
+    ajax_selRowIndexToSession( arr );   // Sending selected row index, id, model etc to session
     return false;
 }
 /*
@@ -86,6 +87,7 @@ function ajax_settings() {
  *********************************************************************
  */
 function ajax_selRowIndexToSession_success_handler( json ) { // response no needed
+console.log('json=', json);
 }
 function ajax_selRowIndexToSession_error_handler( xhr ) {
     xhrErrorAlert( xhr, 'ajax_selRowIndexToSession' );
@@ -110,8 +112,10 @@ function ajax_startRowIndexFromSession_error_handler( xhr ) {
  *  AJAX sending data to session:
  *********************************************************************
  */
-function ajax_selRowIndexToSession() {
-    var arr = getSelElementArr();
+function ajax_selRowIndexToSession( arr, success, error ) {
+    if ( success === undefined ) { success  = ajax_selRowIndexToSession_success_handler; }
+    if ( error === undefined ) 	 { error    = ajax_selRowIndexToSession_error_handler; }
+    // var arr = getSelElementArr();
     var json_string = JSON.stringify( arr );
     // Changing ajax settings:
     var as = ajax_settings();
@@ -120,8 +124,8 @@ function ajax_selRowIndexToSession() {
             client_request : json_string,
             csrfmiddlewaretoken: csrf_token
         };
-    as.success  = ajax_selRowIndexToSession_success_handler;            
-    as.error    = ajax_selRowIndexToSession_error_handler;
+    as.success  = success;
+    as.error    = error;
     $.ajax( as );
     return false;
 }

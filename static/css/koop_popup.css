@@ -38,3 +38,12 @@ CSS for pop-up form for all app of koopsite
 #dialog-message {
     white-space:    pre-wrap;
 }
+#dialog-search-results {
+	overflow-Y:     scroll;
+}
+
+#dialog-search-results a:link      		{color: blue; text-decoration: none}
+#dialog-search-results a:visited   	{color: blue}
+#dialog-search-results a:hover     	{color: #00008B; /* DarkBlue */ /*border-bottom: 2px dotted red*/ }
+#dialog-search-results a:active    	{color: blue; font-style: normal}
+#dialog-search-results a:focus     	{outline-style: none;}

@@ -104,7 +104,8 @@ function createEmptyTR( f_model, f_id, f_name ) {
     var hr;
     switch ( f_model ) {
         case "folder": hr = "/folders/" + f_id + "/contents/"; break;
-        case "report": hr = "/folders/report/" + f_id + "/"; break;
+        // case "report": hr = "/folders/report/" + f_id + "/"; break;
+        case "report": hr = "/folders/report/" + f_id + "/view/"; break;
     }
     // replacing respective elements :
     s = s.replace( '<<1>>', '<img src="" alt="' + f_model + '"/>' );

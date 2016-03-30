@@ -53,11 +53,16 @@ class DummyFolder():
 
     def create_dummy_alfa_beta_catalogue(self):
         root_folder = self.create_dummy_root_folder(name="root_folder")
-        root_folder_2 = self.create_dummy_folder(id=2, parent=root_folder, name="root_folder_2")
-        self.create_dummy_folder(id=3, parent=root_folder_2, name="alfa_folder_2")
-        self.create_dummy_folder(id=4, parent=root_folder_2, name="sigma_folder_2")
-        self.create_dummy_report(id=1, parent=root_folder_2, filename="beta_report_2")
-        self.create_dummy_report(id=2, parent=root_folder_2, filename="tau_report_2")
+        folder_2 = self.create_dummy_folder(id=2, parent=root_folder, name="root_folder_2")
+        folder_3 = self.create_dummy_folder(id=3, parent=folder_2, name="Alfa_folder_2")
+        self.create_dummy_folder(id=4, parent=folder_2, name="Sigma_folder_2")
+        self.create_dummy_report(id=1, parent=folder_2, filename="Beta_report_2")
+        self.create_dummy_report(id=2, parent=folder_2, filename="Tau_report_2")
+        self.create_dummy_folder(id=5, parent=folder_3, name="alfa_folder_3")
+        self.create_dummy_folder(id=6, parent=folder_3, name="sigma_folder_3")
+        self.create_dummy_report(id=3, parent=folder_3, filename="beta_report_3")
+        self.create_dummy_report(id=4, parent=folder_3, filename="tau_report_3")
+        self.create_dummy_report(id=5, parent=folder_3, filename="sigma_report_3")
 
 
 def create_byte_string(length=12):

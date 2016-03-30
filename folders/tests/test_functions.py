@@ -7,8 +7,9 @@ from io import BytesIO
 from folders.functions import response_for_download, \
     response_for_download_zip, get_folders_tree_HTML, \
     wrap_li, wrap_ul, get_recursive_path, get_parents, \
-    get_subfolders, get_subreports, get_full_named_path
-from folders.models import Folder
+    get_subfolders, get_subreports, get_full_named_path, \
+    search_in_folders, get_search_results_HTML
+from folders.models import Folder, Report
 from folders.tests.test_base import DummyFolder
 from bs4 import BeautifulSoup
 from koopsite.functions import transliterate
@@ -211,32 +212,34 @@ class Get_folders_tree_HTML_Test(TestCase):
         self.assertEqual(soup.li.string.strip(), "dummy_root_folder")
 
     def test_get_folders_tree_HTML(self):
-        expected ='''<ul>
-<li id="1">dum_f_0
-<ul>
-<li id="2">dum_f_0_0_0
-<ul>
-<li id="3">dum_f_0_0_0_1_0
-</li>
-<li id="4">dum_f_0_0_0_1_1
-</li>
-</ul>
-</li>
-<li id="5">dum_f_0_0_1
-<ul>
-<li id="6">dum_f_0_0_1_1_0
-</li>
-<li id="7">dum_f_0_0_1_1_1
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-'''
+        expected = '''
+        <ul>
+        <li id="1">dum_f_0
+        <ul>
+        <li id="2">dum_f_0_0_0
+        <ul>
+        <li id="3">dum_f_0_0_0_1_0
+        </li>
+        <li id="4">dum_f_0_0_0_1_1
+        </li>
+        </ul>
+        </li>
+        <li id="5">dum_f_0_0_1
+        <ul>
+        <li id="6">dum_f_0_0_1_1_0
+        </li>
+        <li id="7">dum_f_0_0_1_1_1
+        </li>
+        </ul>
+        </li>
+        </ul>
+        </li>
+        </ul>
+        '''
         DummyFolder().create_dummy_catalogue()
         html = get_folders_tree_HTML(tab='')
-        self.assertEqual(html, expected)
+        self.maxDiff = None
+        self.assertHTMLEqual(html, expected)
         # print(html)
         # print(html.strip())
         # soup = BeautifulSoup(html, 'html.parser')
@@ -244,4 +247,80 @@ class Get_folders_tree_HTML_Test(TestCase):
         # print(soup.li.text)
         # print(soup.prettify())
 
+
+class Search_in_folders_Test(TestCase):
+
+    def setUp(self):
+        DummyFolder().create_dummy_alfa_beta_catalogue()
+
+    def test_get_searchResults_none(self):
+        search_val = None
+        fs, rs = search_in_folders(search_val)
+        expected_fs = []
+        expected_rs = []
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
+
+    def test_get_searchResults_0(self):
+        search_val = ""
+        fs, rs = search_in_folders(search_val)
+        expected_fs = []
+        expected_rs = []
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
+
+    def test_get_searchResults_1(self):
+        search_val = "alfa"
+        fs, rs = search_in_folders(search_val)
+        expected_fs = [
+            Folder.objects.get(id=3),
+            Folder.objects.get(id=5),
+            ]
+        expected_rs = []
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
+
+    def test_get_searchResults_2(self):
+        search_val = "gm"
+        fs, rs = search_in_folders(search_val)
+        expected_fs = [
+            Folder.objects.get(id=4),
+            Folder.objects.get(id=6),
+            ]
+        expected_rs = [
+            Report.objects.get(id=5),
+            ]
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
+        expected_html = '''
+        <ul>
+        <li>Знайдено тек: 2</li>
+        <li><a href=/folders/2/contents/>sigma_folder_2</a></li>
+        <li><a href=/folders/3/contents/>sigma_folder_3</a></li>
+        <li>Знайдено файлів: 1</li>
+        <li><a href=/folders/3/contents/>sigma_report_3</a></li>
+        </ul>
+        '''
+        html = get_search_results_HTML(fs, rs)
+        self.assertHTMLEqual(html, expected_html)
+
+    def test_get_searchResults_3(self):
+        search_val = "et"
+        fs, rs = search_in_folders(search_val)
+        expected_fs = [
+            ]
+        expected_rs = [
+            Report.objects.get(id=1),
+            Report.objects.get(id=3),
+            ]
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
+
+    def test_get_searchResults_4(self):
+        search_val = "zet"
+        fs, rs = search_in_folders(search_val)
+        expected_fs = []
+        expected_rs = []
+        self.assertEqual(fs, expected_fs)
+        self.assertEqual(rs, expected_rs)
 

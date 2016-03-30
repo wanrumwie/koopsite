@@ -12,7 +12,8 @@ from django.test import TestCase
 from django.test.client import RequestFactory
 from django.utils.timezone import now
 
-from folders.functions import response_for_download, response_for_download_zip, get_folders_tree_HTML
+from folders.functions import response_for_download, response_for_download_zip, get_folders_tree_HTML, \
+    get_search_results_HTML, search_in_folders
 from folders.models import Folder, Report
 from folders.tests.test_base import DummyFolder, create_byte_string
 from folders.viewsajaxfolder import FolderContentsArray, FolderContents, \
@@ -21,7 +22,7 @@ from folders.viewsajaxfolder import FolderContentsArray, FolderContents, \
                                     AjaxElementMove, AjaxFolderDelete, \
                                     AjaxReportDelete, XHRTableRowView, \
                                     XHRReportDownload, XHRFolderDownload, \
-                                    XHRReportUpload, ajaxFoldersTreeFromBase
+                                    XHRReportUpload, ajaxFoldersTreeFromBase, ajaxSearchElementsInBase
 from functional_tests.koopsite.ft_base import DummyUser
 from koopsite.functions import get_or_none, \
                                 dict_from_json_str_or_bytes
@@ -1874,6 +1875,45 @@ class AjaxFoldersTreeFromBaseTest(AjaxTableRowTestBase):
         expected = {'content-type': ('Content-Type', 'application/json')}
         self.assertEqual(response._headers, expected)
         expected = {'server_response': get_folders_tree_HTML()}
+        d = dict_from_json_str_or_bytes(response._container[0])
+        # Чи ф-ція повертає правильний response?
+        self.assertEqual(d, expected)
+
+    def test_handler_return_empty_response_if_no_client_request(self):
+        view = self.cls_view
+        request = self.client.request()
+        request.POST = {}
+        response = view(request)
+        self.assertTrue(isinstance(response, HttpResponse))
+        self.assertEqual(response._container, [b''])
+        expected = {'content-type': ('Content-Type', 'text/html; charset=utf-8')}
+        self.assertEqual(response._headers, expected)
+
+
+# @skipIf(SKIP_TEST, "пропущено для економії часу")
+class ajaxSearchElementInBaseTest(AjaxTableRowTestBase):
+
+    def setUp(self):
+        super().setUp()
+        DummyFolder().create_dummy_alfa_beta_catalogue()
+        self.cls_view = ajaxSearchElementsInBase
+
+    def test_view(self):
+        view = self.cls_view
+        search_val = 'gma'
+        record = None
+        kwargs = self.get_kwargs_for_ajax_data_one_record(record)
+        kwargs['search_val'] = search_val
+        ajax_data = DummyAjaxRequest(**kwargs).ajax_data()
+        request = self.client.request()
+        request.POST = ajax_data
+        request.session = {}
+        response = view(request)
+        # Очікувані дані з response
+        expected = {'content-type': ('Content-Type', 'application/json')}
+        self.assertEqual(response._headers, expected)
+        fs, rs = search_in_folders(search_val)
+        expected = {'server_response': get_search_results_HTML(fs, rs)}
         d = dict_from_json_str_or_bytes(response._container[0])
         # Чи ф-ція повертає правильний response?
         self.assertEqual(d, expected)

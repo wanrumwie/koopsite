@@ -220,6 +220,7 @@ class PageVisitTest(DummyUser, FunctionalTest):
     dialog_confirm_selector  = "[aria-describedby=dialog-confirm]"
     dialog_message_selector  = "[aria-describedby=dialog-message]"
     dialog_box_tree_selector = "[aria-describedby=dialog-box-tree]"
+    dialog_search_results_selector = "[aria-describedby=dialog-search-results]"
 
     def add_user_cookie_to_browser(self, user, url=None):
         session = create_user_session(user)

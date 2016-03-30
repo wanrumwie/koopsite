@@ -13,7 +13,8 @@ from django.views.generic.list import ListView
 from folders.functions import response_for_download, \
                         response_for_download_zip, \
                         get_folders_tree_HTML, get_parents, \
-                        get_subfolders, get_subreports
+                        get_subfolders, get_subreports, \
+                        get_search_results_HTML, search_in_folders
 from folders.models import Folder, Report
 from koopsite.decorators import author_or_permission_required
 from koopsite.functions import fileNameCheckInsert, \
@@ -803,4 +804,27 @@ def ajaxFoldersTreeFromBase(request):
         print("There is no 'client_request' in request.POST")
         return HttpResponse()
 
+def ajaxSearchElementsInBase(request):
+    if 'client_request' in request.POST:
+        # Розбираємо дані від клієнта:
+        try:
+            d = parseClientRequest(request.POST)
+        except ValueError as err:
+            # запит від клієнта містить невідповідні дані:
+            print('ajaxSearchElementsInBase:', err.args)
+            return HttpResponse()
+        search_val = d.get('search_val')
+        print('search_val =', search_val)
+        # Шукаємо  :
+        search_results_HTML = search_in_folders(search_val)
+        # Посилаємо відповідь клієнту:
+        response_dict = {'server_response': search_results_HTML }
+        print('response_dict =', response_dict)
+        # return JsonResponse(response_dict)
+        return HttpResponse(json.dumps(response_dict), content_type="application/json")
+    else:
+        print("There is no 'client_request' in request.POST")
+        return HttpResponse()
+
 #---------------- Кінець коду, охопленого тестуванням ------------------
+
